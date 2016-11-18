@@ -1954,6 +1954,10 @@ pinkie@^2.0.0:
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/pinkie/-/pinkie-2.0.4.tgz#72556b80cfa0d48a974e80e77248e80ed4f7f870"
 
+point.css:
+  version "1.0.0-pre"
+  resolved "https://registry.yarnpkg.com/point.css/-/point.css-1.0.0-pre.tgz#f54e503880d760a5a5ecf30b635b9eac0dc914df"
+
 preserve@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/preserve/-/preserve-0.2.0.tgz#815ed1f6ebc65926f865b310c0713bcb3315ce4b"

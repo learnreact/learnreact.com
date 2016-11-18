@@ -64,6 +64,11 @@ exports.config = {
   },
 
   npm: {
-    enabled: true
+    enabled: true,
+    styles: {
+      "point.css": [
+        "point.css"
+      ]
+    }
   }
 };
