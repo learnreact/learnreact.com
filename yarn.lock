@@ -718,6 +718,10 @@ brunch@2.7.4:
     skemata "~0.1.0"
     source-map "~0.5.0"
 
+btn.css:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/btn.css/-/btn.css-0.3.0.tgz#1a974ed0149c5c1e6d135d4b1d328c677597ba56"
+
 buffer-shims@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/buffer-shims/-/buffer-shims-1.0.0.tgz#9978ce317388c649ad8793028c3477ef044a8b51"

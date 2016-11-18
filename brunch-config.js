@@ -66,9 +66,8 @@ exports.config = {
   npm: {
     enabled: true,
     styles: {
-      "point.css": [
-        "point.css"
-      ]
+      "btn.css": ["btn.css"],
+      "point.css": ["point.css"],
     }
   }
 };
