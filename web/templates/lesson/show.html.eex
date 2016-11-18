@@ -1,0 +1,38 @@
+<h2>Show lesson</h2>
+
+<ul>
+
+  <li>
+    <strong>Title:</strong>
+    <%= @lesson.title %>
+  </li>
+
+  <li>
+    <strong>Description:</strong>
+    <%= @lesson.description %>
+  </li>
+
+  <li>
+    <strong>Video embed:</strong>
+    <%= @lesson.video_embed %>
+  </li>
+
+  <li>
+    <strong>Thumbnail url:</strong>
+    <%= @lesson.thumbnail_url %>
+  </li>
+
+  <li>
+    <strong>Notes:</strong>
+    <%= @lesson.notes %>
+  </li>
+
+  <li>
+    <strong>Hidden:</strong>
+    <%= @lesson.hidden %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: lesson_path(@conn, :edit, @lesson) %>
+<%= link "Back", to: lesson_path(@conn, :index) %>

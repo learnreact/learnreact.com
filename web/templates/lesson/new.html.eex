@@ -1,0 +1,6 @@
+<h2>New lesson</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: lesson_path(@conn, :create) %>
+
+<%= link "Back", to: lesson_path(@conn, :index) %>
