@@ -1,6 +1,9 @@
+<ul class="lst-n pl-0">
 <%= for lesson <- @lessons do %>
-  <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
-    <%= lesson.title %>
-    <%= lesson.description %>
-  <% end%>
+  <li>
+    <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
+      <h4><%= lesson.title %></h4>
+    <% end%>
+  </li>
 <% end %>
+</ul>
