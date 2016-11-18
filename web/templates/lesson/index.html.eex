@@ -1,36 +1,6 @@
-<h2>Listing lessons</h2>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Video embed</th>
-      <th>Thumbnail url</th>
-      <th>Notes</th>
-      <th>Hidden</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
 <%= for lesson <- @lessons do %>
-    <tr>
-      <td><%= lesson.title %></td>
-      <td><%= lesson.description %></td>
-      <td><%= lesson.video_embed %></td>
-      <td><%= lesson.thumbnail_url %></td>
-      <td><%= lesson.notes %></td>
-      <td><%= lesson.hidden %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: lesson_path(@conn, :show, lesson), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: lesson_path(@conn, :edit, lesson), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: lesson_path(@conn, :delete, lesson), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
+  <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
+    <%= lesson.title %>
+    <%= lesson.description %>
+  <% end%>
 <% end %>
-  </tbody>
-</table>
-
-<%= link "New lesson", to: lesson_path(@conn, :new) %>
