@@ -27,5 +27,6 @@
     
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render "_analytics.html" %>
+    <%= render "_newsletter.html" %>
   </body>
 </html>
