@@ -2412,6 +2412,10 @@ tunnel-agent@~0.4.1:
   version "0.4.3"
   resolved "https://registry.yarnpkg.com/tunnel-agent/-/tunnel-agent-0.4.3.tgz#6373db76909fe570e08d73583365ed828a74eeeb"
 
+turbolinks@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/turbolinks/-/turbolinks-5.0.0.tgz#94c73fa299716824b0d96639b993b2efd7ef0e44"
+
 tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.3.tgz#3da382f670f25ded78d7b3d1792119bca0b7132d"
