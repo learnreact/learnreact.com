@@ -7,3 +7,7 @@
   </li>
 <% end %>
 </ul>
+
+<%= if @current_user && @current_user.name do %>
+  <h6>Hi <%= @current_user.name %></h6>
+<% end %>
