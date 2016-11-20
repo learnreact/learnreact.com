@@ -36,10 +36,30 @@ defmodule LearnReact.AuthController do
     #
     # If you need to make additional resource requests, you may want to store
     # the access token as well.
-    conn
-    |> put_session(:current_user, user)
-    |> put_session(:access_token, client.token.access_token)
-    |> redirect(to: "/")
+    #
+    # conn
+    # |> put_session(:current_user, user)
+    # |> put_session(:access_token, client.token.access_token)
+    # |> redirect(to: "/")
+
+    result =
+      case Repo.get_by(LearnReact.User, github_id: user[:github_id]) do
+        nil  -> %LearnReact.User{}
+        user -> user
+      end
+      |> LearnReact.User.changeset(user)
+      |> Repo.insert_or_update
+
+    case result do
+      {:ok, _user} ->
+        conn
+        |> put_session(:current_user, user)
+        |> put_session(:access_token, client.token.access_token)
+        |> redirect(to: "/")
+      {:error, changeset} ->
+        conn
+        |> redirect(to: "/")
+    end
   end
 
   defp authorize_url!("github"),   do: GitHub.authorize_url!
@@ -50,6 +70,14 @@ defmodule LearnReact.AuthController do
 
   defp get_user!("github", client) do
     %{body: user} = OAuth2.Client.get!(client, "/user")
-    %{name: user["name"], avatar: user["avatar_url"]}
+    %{github_id: user["id"], name: user["name"], avatar: user["avatar_url"], email: user["email"]}
   end
+
+  defp get_user!("github", token) do
+     {:ok, %{body: user}} = OAuth2.AccessToken.get(token, "/user")
+     %{github_id: user["id"],
+       name: user["name"],
+       avatar_url: user["avatar_url"],
+       email: user["email"]}
+   end
 end
