@@ -18,6 +18,7 @@ defmodule LearnReact.Router do
     pipe_through :browser # Use the default browser stack
     
     resources "/lessons", LessonController
+    resources "/users", UserController
     get "/", LessonController, :index
   end
 

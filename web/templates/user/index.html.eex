@@ -1,0 +1,32 @@
+<h2>Listing users</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Github</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Avatar url</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for user <- @users do %>
+    <tr>
+      <td><%= user.github_id %></td>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><%= user.avatar_url %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: user_path(@conn, :edit, user), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: user_path(@conn, :delete, user), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New user", to: user_path(@conn, :new) %>
