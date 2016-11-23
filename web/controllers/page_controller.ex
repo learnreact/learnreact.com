@@ -1,7 +1,7 @@
 defmodule LearnReact.PageController do
   use LearnReact.Web, :controller
 
-  def index(conn, _params) do
-    render conn, "index.html"
+  def patterns(conn, _params) do
+    render conn, "patterns.html", layout: false
   end
 end

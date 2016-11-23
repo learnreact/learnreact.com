@@ -16,9 +16,10 @@ defmodule LearnReact.Router do
 
   scope "/", LearnReact do
     pipe_through :browser # Use the default browser stack
-    
+
     resources "/lessons", LessonController
     resources "/users", UserController
+    get "/patterns", PageController, :patterns
     get "/", LessonController, :index
   end
 
