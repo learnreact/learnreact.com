@@ -13,7 +13,7 @@ use Mix.Config
 # which you typically run after static files are built.
 config :learn_react, LearnReact.Endpoint,
   http: [port: {:system, "PORT"}],
-  url: [host: "learnreact-phoenix.herokuapp.com", port: 443],
+  url: [host: "learnreact.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/manifest.json",
   secret_key_base: System.get_env("SECRET_KEY_BASE")
