@@ -19,6 +19,7 @@ defmodule LearnReact.Router do
 
     resources "/lessons", LessonController
     resources "/users", UserController
+    resources "/courses", CourseController
     get "/patterns", PageController, :patterns
     get "/", LessonController, :index
   end
