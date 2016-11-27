@@ -16,6 +16,6 @@ defmodule LearnReact.User do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:github_id, :name, :email, :avatar_url])
-    |> validate_required([:github_id, :name, :email, :avatar_url])
+    |> validate_required([:github_id])
   end
 end
