@@ -3,7 +3,7 @@ defmodule LearnReact.CourseController do
 
   alias LearnReact.Course
 
-  plug :require_ownership, "user" when action in [:index, :new, :show, :create, :update, :delete]
+  plug :require_ownership, "user" when action in [:new, :create, :edit, :update, :delete]
 
   defp require_ownership(conn, _params) do
     user = get_session(conn, :current_user)
