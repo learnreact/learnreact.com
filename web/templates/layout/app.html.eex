@@ -21,10 +21,18 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       <main role="main">
+        <div style="display:none"><!-- hidden for now -->
+          <%= if @current_user do %>
+            <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
+          <% else %>
+            <a href="/auth/github" class="btn">Sign in with Github</a>
+          <% end %>
+        </div>
+
         <%= render @view_module, @view_template, assigns %>
       </main>
     </div>
-    
+
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render "_analytics.html" %>
     <%= render "_newsletter.html" %>
