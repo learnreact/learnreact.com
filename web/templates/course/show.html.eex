@@ -24,5 +24,17 @@
 
 </ul>
 
+<h2>Lessons</h2>
+
+<ul class="lst-n pl-0">
+<%= for lesson <- @course.lessons do %>
+  <li>
+    <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
+      <h4><%= lesson.title %></h4>
+    <% end%>
+  </li>
+<% end %>
+</ul>
+
 <%= link "Edit", to: course_path(@conn, :edit, @course) %>
 <%= link "Back", to: course_path(@conn, :index) %>

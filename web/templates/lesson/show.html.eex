@@ -1,4 +1,6 @@
 <h2><%= @lesson.title %></h2>
+<h2>Course: <%= @lesson.course.title %></h2>
+<%= link "Course", to: course_path(@conn, :show, @lesson.course) %>
 
 <p>
 <%= @lesson.description %>

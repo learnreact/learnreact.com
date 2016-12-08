@@ -41,6 +41,7 @@ defmodule LearnReact.CourseController do
 
   def show(conn, %{"id" => id}) do
     course = Repo.get!(Course, id)
+    |> Repo.preload([:lessons])
     render(conn, "show.html", course: course)
   end
 

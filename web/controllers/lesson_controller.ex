@@ -2,6 +2,7 @@ defmodule LearnReact.LessonController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Lesson
+  alias LearnReact.Course
 
   plug :require_ownership, "user" when action in [:new, :create, :edit, :update, :delete]
 
@@ -27,7 +28,10 @@ defmodule LearnReact.LessonController do
   end
 
   def create(conn, %{"lesson" => lesson_params}) do
-    changeset = Lesson.changeset(%Lesson{}, lesson_params)
+    changeset =
+      Repo.get!(Course, lesson_params["course"]["id"])
+      |> build_assoc(:lessons)
+      |> Lesson.changeset(lesson_params)
 
     case Repo.insert(changeset) do
       {:ok, _lesson} ->
@@ -41,17 +45,29 @@ defmodule LearnReact.LessonController do
 
   def show(conn, %{"id" => id}) do
     lesson = Repo.get!(Lesson, id)
+    |> Repo.preload([:course])
     render(conn, "show.html", lesson: lesson)
   end
 
   def edit(conn, %{"id" => id}) do
     lesson = Repo.get!(Lesson, id)
+    |> Repo.preload([:course])
     changeset = Lesson.changeset(lesson)
     render(conn, "edit.html", lesson: lesson, changeset: changeset)
   end
 
   def update(conn, %{"id" => id, "lesson" => lesson_params}) do
-    lesson = Repo.get!(Lesson, id)
+    # video = Repo.get!(user_videos(user), id)
+    # changeset = Video.changeset(video, video_params)
+    # case Repo.update(changeset) do {:ok, video} ->
+    # conn
+    # |> put_flash(:info, "Video updated successfully.") |> redirect(to: video_path(conn, :show, video))
+    # {:error, changeset} ->
+    # render(conn, "edit.html", video: video, changeset: changeset)
+    # end
+
+    course = Repo.get!(Course, lesson_params["course"]["id"])
+    lesson = Repo.get!(assoc(course, :lessons), id)
     changeset = Lesson.changeset(lesson, lesson_params)
 
     case Repo.update(changeset) do

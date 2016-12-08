@@ -11,6 +11,8 @@ defmodule LearnReact.Lesson do
     field :notes, :string
     field :hidden, :boolean, default: false
 
+    belongs_to :course, LearnReact.Course
+
     timestamps()
   end
 
