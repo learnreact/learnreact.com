@@ -1,0 +1,30 @@
+<h2>Listing charges</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Token</th>
+      <th>Tokentype</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for charge <- @charges do %>
+    <tr>
+      <td><%= charge.email %></td>
+      <td><%= charge.token %></td>
+      <td><%= charge.tokenType %></td>
+
+      <td class="text-right">
+        <%= link "Show", to: charge_path(@conn, :show, charge), class: "btn btn-default btn-xs" %>
+        <%= link "Edit", to: charge_path(@conn, :edit, charge), class: "btn btn-default btn-xs" %>
+        <%= link "Delete", to: charge_path(@conn, :delete, charge), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<%= link "New charge", to: charge_path(@conn, :new) %>

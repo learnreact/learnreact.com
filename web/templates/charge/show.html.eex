@@ -1,0 +1,23 @@
+<h2>Show charge</h2>
+
+<ul>
+
+  <li>
+    <strong>Email:</strong>
+    <%= @charge.email %>
+  </li>
+
+  <li>
+    <strong>Token:</strong>
+    <%= @charge.token %>
+  </li>
+
+  <li>
+    <strong>Tokentype:</strong>
+    <%= @charge.tokenType %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: charge_path(@conn, :edit, @charge) %>
+<%= link "Back", to: charge_path(@conn, :index) %>
