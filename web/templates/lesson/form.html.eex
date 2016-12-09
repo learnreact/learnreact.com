@@ -35,13 +35,11 @@
     <%= error_tag f, :notes %>
   </div>
 
-  <%= inputs_for f, :course, fn c -> %>
     <div class="form-group">
-      <%= label c, :id, class: "control-label" %>
-      <%= text_input c, :id, class: "form-control" %>
-      <%= error_tag c, :id %>
+      <%= label f, :course_id, class: "control-label" %>
+      <%= text_input f, :course_id, class: "form-control" %>
+      <%= error_tag f, :course_id %>
     </div>
-  <% end %>
 
   <div class="form-group">
     <%= label f, :hidden, class: "control-label" %>

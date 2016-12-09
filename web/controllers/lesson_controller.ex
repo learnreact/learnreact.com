@@ -57,17 +57,7 @@ defmodule LearnReact.LessonController do
   end
 
   def update(conn, %{"id" => id, "lesson" => lesson_params}) do
-    # video = Repo.get!(user_videos(user), id)
-    # changeset = Video.changeset(video, video_params)
-    # case Repo.update(changeset) do {:ok, video} ->
-    # conn
-    # |> put_flash(:info, "Video updated successfully.") |> redirect(to: video_path(conn, :show, video))
-    # {:error, changeset} ->
-    # render(conn, "edit.html", video: video, changeset: changeset)
-    # end
-
-    course = Repo.get!(Course, lesson_params["course"]["id"])
-    lesson = Repo.get!(assoc(course, :lessons), id)
+    lesson = Repo.get!(Lesson, id)
     changeset = Lesson.changeset(lesson, lesson_params)
 
     case Repo.update(changeset) do
