@@ -28,10 +28,7 @@ defmodule LearnReact.LessonController do
   end
 
   def create(conn, %{"lesson" => lesson_params}) do
-    changeset =
-      Repo.get!(Course, lesson_params["course"]["id"])
-      |> build_assoc(:lessons)
-      |> Lesson.changeset(lesson_params)
+    changeset = Lesson.changeset(%Lesson{}, lesson_params)
 
     case Repo.insert(changeset) do
       {:ok, _lesson} ->
