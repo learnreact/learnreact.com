@@ -22,7 +22,7 @@ defmodule LearnReact.Lesson do
   def changeset(struct, params \\ %{}) do
     struct
     |> cast(params, [:title, :description, :video_embed, :thumbnail_url, :notes, :hidden, :course_id])
-    |> validate_required([:title, :description, :video_embed, :thumbnail_url, :notes, :hidden, :course_id])
+    |> validate_required([:title, :description, :video_embed, :thumbnail_url, :hidden, :course_id])
   end
 end
 
