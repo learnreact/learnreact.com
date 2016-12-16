@@ -9,7 +9,7 @@
 <%= @lesson.description %>
 </p>
 
-<%= if String.strip(@lesson.notes) != "" do %>
+<%= if is_bitstring(@lesson.notes) do %>
   <hr />
 
   <section class="notes-markdown">
