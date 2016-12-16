@@ -1,30 +1,6 @@
-<h2>Show course</h2>
+<h2><%= @course.title %></h2>
 
-<ul>
-
-  <li>
-    <strong>Title:</strong>
-    <%= @course.title %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @course.description %>
-  </li>
-
-  <li>
-    <strong>Thumbnail url:</strong>
-    <%= @course.thumbnail_url %>
-  </li>
-
-  <li>
-    <strong>Hidden:</strong>
-    <%= @course.hidden %>
-  </li>
-
-</ul>
-
-<h2>Lessons</h2>
+<p><%= @course.description %></p>
 
 <ul class="lst-n pl-0">
 <%= for lesson <- @course.lessons do %>
@@ -36,5 +12,4 @@
 <% end %>
 </ul>
 
-<%= link "Edit", to: course_path(@conn, :edit, @course) %>
 <%= link "Back", to: course_path(@conn, :index) %>

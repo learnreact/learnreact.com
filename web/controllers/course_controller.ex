@@ -18,6 +18,7 @@ defmodule LearnReact.CourseController do
 
   def index(conn, _params) do
     courses = Repo.all(Course)
+    |> Repo.preload([:lessons])
     render(conn, "index.html", courses: courses)
   end
 

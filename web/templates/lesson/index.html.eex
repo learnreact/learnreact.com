@@ -1,4 +1,5 @@
 <ul class="lst-n pl-0">
+
 <%= for lesson <- @lessons do %>
   <li>
     <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
