@@ -1,32 +1,18 @@
-<h2>Listing courses</h2>
+<ul class="lst-n pl-0" style="margin-top: 2rem">
+  <%= for course <- @courses do %>
+    <li style="margin-top: 2rem; margin-bottom: 2rem">
+      <h4><%= course.title %></h4>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Thumbnail url</th>
-      <th>Hidden</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for course <- @courses do %>
-    <tr>
-      <td><%= course.title %></td>
-      <td><%= course.description %></td>
-      <td><%= course.thumbnail_url %></td>
-      <td><%= course.hidden %></td>
-
-      <td class="text-right">
-        <%= link "Show", to: course_path(@conn, :show, course), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: course_path(@conn, :edit, course), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: course_path(@conn, :delete, course), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<%= link "New course", to: course_path(@conn, :new) %>
+      <ul class="lst-n pl-0">
+      <%= for lesson <- course.lessons do %>
+        <li>
+          <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
+            <h4><%= lesson.title %></h4>
+          <% end%>
+        </li>
+      <% end %>
+      </ul>
+    </li>
+    <hr />
+  <% end %>
+</ul>
