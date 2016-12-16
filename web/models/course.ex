@@ -6,6 +6,7 @@ defmodule LearnReact.Course do
     field :description, :string
     field :thumbnail_url, :string
     field :hidden, :boolean, default: false
+    field :draft, :boolean, default: false
 
     timestamps()
 
@@ -17,7 +18,7 @@ defmodule LearnReact.Course do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :thumbnail_url, :hidden])
-    |> validate_required([:title, :description, :thumbnail_url, :hidden])
+    |> cast(params, [:title, :description, :thumbnail_url, :hidden, :draft])
+    |> validate_required([:title, :description, :thumbnail_url, :hidden, :draft])
   end
 end
