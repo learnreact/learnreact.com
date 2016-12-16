@@ -9,6 +9,16 @@
 <%= @lesson.description %>
 </p>
 
+<%= if String.trim(@lesson.notes) != "" do %>
+  <hr />
+
+  <section class="notes-markdown">
+    <%= Earmark.to_html(@lesson.notes, %Earmark.Options{code_class_prefix: "language-"}) |> raw %>
+  </section>
+
+  <hr />
+<% end %>
+
 <%= raw(@lesson.video_embed) %>
 
 <%= link "Back", to: course_path(@conn, :index) %>

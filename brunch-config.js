@@ -68,6 +68,7 @@ exports.config = {
     styles: {
       "btn.css": ["btn.css"],
       "point.css": ["point.css"],
+      "prismjs": ["themes/prism.css"],
     }
   }
 };
