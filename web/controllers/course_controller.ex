@@ -2,6 +2,7 @@ defmodule LearnReact.CourseController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Course
+  alias LearnReact.Lesson
 
   plug :require_ownership, "user" when action in [:new, :create, :edit, :update, :delete]
 
@@ -17,8 +18,8 @@ defmodule LearnReact.CourseController do
   end
 
   def index(conn, _params) do
-    courses = Repo.all(Course)
-    |> Repo.preload([:lessons])
+    lessons_query = from(l in Lesson, order_by: [asc: :id])
+    courses = Repo.all(from c in Course, preload: [lessons: ^lessons_query])
     render(conn, "index.html", courses: courses)
   end
 
@@ -42,7 +43,7 @@ defmodule LearnReact.CourseController do
 
   def show(conn, %{"id" => id}) do
     course = Repo.get!(Course, id)
-    |> Repo.preload([:lessons])
+    |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
     render(conn, "show.html", course: course)
   end
 
