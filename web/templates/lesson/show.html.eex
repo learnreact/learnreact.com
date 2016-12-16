@@ -9,7 +9,7 @@
 <%= @lesson.description %>
 </p>
 
-<%= if String.trim(@lesson.notes) != "" do %>
+<%= if String.strip(@lesson.notes) != "" do %>
   <hr />
 
   <section class="notes-markdown">
