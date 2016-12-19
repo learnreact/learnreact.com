@@ -1,18 +1,111 @@
-<ul class="lst-n pl-0" style="margin-top: 2rem">
-  <%= for course <- @courses do %>
-    <li style="margin-top: 2rem; margin-bottom: 2rem">
-      <h4><%= course.title %></h4>
+<style>
+.outline {
+    outline: 1px solid;
+}
 
-      <ul class="lst-n pl-0">
-      <%= for lesson <- course.lessons do %>
-        <li>
-          <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
-            <h4><%= lesson.title %></h4>
-          <% end%>
-        </li>
+.link {
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+
+.link:link, .link:visited {
+    transition: color .15s ease-in;
+}
+
+.link:hover {
+    transition: color .15s ease-in;
+}
+
+.link:active {
+    transition: color .15s ease-in;
+}
+
+.link:focus {
+    transition: color .15s ease-in;
+    outline: 1px dotted currentColor;
+}
+
+.black-10 {
+    color: rgba(0, 0, 0, .1);
+}
+
+.black {
+    color: #000;
+}
+
+.gray {
+    color: #777;
+}
+
+.clip {
+    position: fixed !important;
+    _position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.dim {
+    opacity: 1;
+    transition: opacity .15s ease-in;
+}
+
+.dim:hover, .dim:focus {
+    opacity: .5;
+    transition: opacity .15s ease-in;
+}
+
+.dim:active {
+    opacity: .8;
+    transition: opacity .15s ease-out;
+}
+
+@media (min-width: 0px) {
+  .pr-0%\@mn{padding-right:0}
+  .w-100\%\@mn{width:100%}
+}
+
+@media (min-width: 30em) {
+  .pr-2\@xs{padding-right:1rem}
+  .w-50\%\@xs{width:50%}
+}
+
+@media (min-width: 37.5em) {
+  .w-33\%\@sm{width:33.3333%}
+}
+
+@media (min-width: 45em) {
+  .w-25\%\@md{width:25%}
+}
+
+@media (min-width: 60em) {
+  .w-20\%\@lg{width:20%}
+}
+
+</style>
+
+<div class="cf">
+  <%= for course <- @courses do %>
+    <div class="
+      f-l
+      w-100%@mn w-50%@xs w-33%@sm w-25%@md w-20%@lg
+      pb-2
+      pr-0@mn pr-2@xs
+    ">
+      <%= link to: course_path(@conn, :show, course), class: "d-b link dim ta-c" do %>
+        <img
+          src="<%= course.thumbnail_url %>"
+          alt="<%= course.title %> course image"
+          class="w-100% d-b outline black-10"
+        />
+
+        <dl class="mt-2 fs-5 lh-1.5">
+          <dt class="clip">Title</dt>
+          <dd class="ml-0 black truncate w-100%"><%= course.title %></dd>
+
+          <dt class="clip">Artist</dt>
+          <dd class="ml-0 gray truncate w-100%"><%= course.description %></dd>
+        </dl>
       <% end %>
-      </ul>
-    </li>
-    <hr />
+    </div>
   <% end %>
-</ul>
+</div>

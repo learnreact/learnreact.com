@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
   </head>
 
-  <body class="ff-system-sans xw-1200p m-0a p-2">
+  <body class="ff-system-sans xw-60e m-0a p-2">
     <header>
       <h1 class="fw-900">Learn React</h1>
     </header>

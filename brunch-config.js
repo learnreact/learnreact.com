@@ -67,8 +67,22 @@ exports.config = {
     enabled: true,
     styles: {
       "btn.css": ["btn.css"],
+      "box-sizing.css": ["box-sizing.css"],
       "point.css": ["point.css"],
       "prismjs": ["themes/prism.css"],
+      "cf.css": ["cf.css"],
+      "font-scale.css": ["font-scale.css"],
+      "truncate.css": ["truncate.css"],
+      "minions.css": [
+        "packages/disply/display.css",
+        "packages/float/float.css",
+        "packages/font-family/font-family.css",
+        "packages/font-weight/font-weight.css",
+        "packages/line-height/line-height.css",
+        "packages/list-style-type/list-style-type.css",
+        "packages/text-align/text-align.css",
+        "packages/width/width.css",
+      ],
     }
   }
 };
