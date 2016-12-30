@@ -41,20 +41,20 @@ defmodule LearnReact.CourseController do
     end
   end
 
-  def show(conn, %{"id" => id}) do
-    course = Repo.get!(Course, id)
+  def show(conn, %{"id" => slug}) do
+    course = Repo.get_by!(Course, slug: slug)
     |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
     render(conn, "show.html", course: course)
   end
 
-  def edit(conn, %{"id" => id}) do
-    course = Repo.get!(Course, id)
+  def edit(conn, %{"id" => slug}) do
+    course = Repo.get_by!(Course, slug: slug)
     changeset = Course.changeset(course)
     render(conn, "edit.html", course: course, changeset: changeset)
   end
 
-  def update(conn, %{"id" => id, "course" => course_params}) do
-    course = Repo.get!(Course, id)
+  def update(conn, %{"id" => slug, "course" => course_params}) do
+    course = Repo.get_by!(Course, slug: slug)
     changeset = Course.changeset(course, course_params)
 
     case Repo.update(changeset) do
@@ -67,8 +67,8 @@ defmodule LearnReact.CourseController do
     end
   end
 
-  def delete(conn, %{"id" => id}) do
-    course = Repo.get!(Course, id)
+  def delete(conn, %{"id" => slug}) do
+    course = Repo.get_by!(Course, slug: slug)
 
     # Here we use delete! (with a bang) because we expect
     # it to always work (and if it does not, it will raise).
