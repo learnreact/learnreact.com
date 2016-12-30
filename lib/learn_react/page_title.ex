@@ -1,9 +1,7 @@
 defmodule LearnReact.PageTitle do
   alias LearnReact.{
     LessonView,
-    CourseView,
-    PageView,
-    UserView
+    CourseView
   }
 
   @suffix "Learn React"
