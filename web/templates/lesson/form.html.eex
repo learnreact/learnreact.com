@@ -14,6 +14,7 @@
   <div class="form-group">
     <%= label f, :slug, class: "control-label" %>
     <%= text_input f, :slug, class: "form-control" %>
+    <small><span><em>react-{courseName}-{lessonName}(-{other})</em></span></small>
     <%= error_tag f, :slug %>
   </div>
 
