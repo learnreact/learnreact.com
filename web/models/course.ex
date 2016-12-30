@@ -40,16 +40,14 @@ defmodule LearnReact.Course do
   Returns title slug for friendly URLs
   """
   defp slugify(str) do
-    str
-    |> String.downcase()
-    |> String.replace(~r/[^\w-]+/u, "-")
-  end
-
-  defimpl Phoenix.Param, for: LearnReact.Course do
     alias LearnReact.Inflectors
 
-    def to_param(%{id: id, title: title, slug: slug}) do
-      "#{slug}"
-    end
+    Inflectors.parameterize(str)
+  end
+end
+
+defimpl Phoenix.Param, for: LearnReact.Course do
+  def to_param(%{slug: slug}) do
+    slug
   end
 end
