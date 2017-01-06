@@ -2,7 +2,6 @@ defmodule LearnReact.LessonController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Lesson
-  alias LearnReact.Course
 
   plug :require_ownership, "user" when action in [:new, :create, :edit, :update, :delete]
 
