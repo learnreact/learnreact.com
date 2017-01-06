@@ -56,7 +56,7 @@ defmodule LearnReact.AuthController do
         |> put_session(:current_user, user)
         |> put_session(:access_token, client.token.access_token)
         |> redirect(to: "/")
-      {:error, changeset} ->
+      {:error, _changeset} ->
         conn
         |> redirect(to: "/")
     end
@@ -72,12 +72,4 @@ defmodule LearnReact.AuthController do
     %{body: user} = OAuth2.Client.get!(client, "/user")
     %{github_id: user["id"], name: user["name"], avatar: user["avatar_url"], email: user["email"]}
   end
-
-  defp get_user!("github", token) do
-     {:ok, %{body: user}} = OAuth2.AccessToken.get(token, "/user")
-     %{github_id: user["id"],
-       name: user["name"],
-       avatar_url: user["avatar_url"],
-       email: user["email"]}
-   end
 end
