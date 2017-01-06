@@ -3,6 +3,19 @@ defmodule LearnReact.ChargeController do
 
   alias LearnReact.Charge
 
+  plug :require_ownership, "user" when action in [:index, :new, :create, :edit, :update, :delete]
+
+  defp require_ownership(conn, _params) do
+    user = get_session(conn, :current_user)
+
+    if user && user.github_id == 658360 do
+      conn
+    else
+      conn
+      |> redirect(to: "/")
+    end
+  end
+
   def index(conn, _params) do
     charges = Repo.all(Charge)
     render(conn, "index.html", charges: charges)
