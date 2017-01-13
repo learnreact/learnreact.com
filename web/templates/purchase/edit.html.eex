@@ -1,0 +1,6 @@
+<h2>Edit purchase</h2>
+
+<%= render "form.html", changeset: @changeset,
+                        action: purchase_path(@conn, :update, @purchase) %>
+
+<%= link "Back", to: purchase_path(@conn, :index) %>

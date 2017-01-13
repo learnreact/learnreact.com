@@ -1,0 +1,23 @@
+<h2>Show purchase</h2>
+
+<ul>
+
+  <li>
+    <strong>User:</strong>
+    <%= @purchase.user_id %>
+  </li>
+
+  <li>
+    <strong>Course:</strong>
+    <%= @purchase.course_id %>
+  </li>
+
+  <li>
+    <strong>Charge:</strong>
+    <%= @purchase.charge_id %>
+  </li>
+
+</ul>
+
+<%= link "Edit", to: purchase_path(@conn, :edit, @purchase) %>
+<%= link "Back", to: purchase_path(@conn, :index) %>
