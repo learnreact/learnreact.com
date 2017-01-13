@@ -13,14 +13,23 @@
   </head>
 
   <body class="ff-system-sans xw-60e m-0a p-2">
+    <%= if get_flash(@conn, :failure) do %>
+      <p class="gc-red7 c-white py-1 px-2" role="alert"><%= get_flash(@conn, :failure) %></p>
+    <% end %>
+
+    <%= if get_flash(@conn, :error) do %>
+      <p class="gc-red7 c-white py-1 px-2 ta-c" role="alert"><%= get_flash(@conn, :error) %></p>
+    <% end %>
+
+    <%= if get_flash(@conn, :info) do %>
+      <p class="gc-blue5 c-white py-1 px-2 ta-c" role="alert"><%= get_flash(@conn, :info) %></p>
+    <% end %>
+
     <header>
       <h1 class="fw-900">Learn React</h1>
     </header>
 
     <div>
-      <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-      <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
-
       <main role="main">
         <div style="display:none"><!-- hidden for now -->
           <%= if @current_user do %>
