@@ -73,6 +73,7 @@ exports.config = {
       "cf.css": ["cf.css"],
       "font-scale.css": ["font-scale.css"],
       "truncate.css": ["truncate.css"],
+      "open-color.css": ["open-color.css"],
       "minions.css": [
         "packages/disply/display.css",
         "packages/float/float.css",
