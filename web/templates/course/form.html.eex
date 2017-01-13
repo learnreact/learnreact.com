@@ -30,6 +30,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :free, class: "control-label" %>
+    <%= checkbox f, :free, class: "form-control" %>
+    <%= error_tag f, :free %>
+  </div>
+
+  <div class="form-group">
     <%= label f, :draft, class: "control-label" %>
     <%= checkbox f, :draft, class: "form-control" %>
     <%= error_tag f, :draft %>

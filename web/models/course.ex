@@ -8,6 +8,7 @@ defmodule LearnReact.Course do
     field :hidden, :boolean, default: false
     field :draft, :boolean, default: false
     field :slug, :string
+    field :free, :boolean, default: false
 
     timestamps()
 
@@ -19,15 +20,12 @@ defmodule LearnReact.Course do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :thumbnail_url, :hidden, :draft])
-    |> validate_required([:title, :description, :thumbnail_url, :hidden, :draft])
+    |> cast(params, [:title, :description, :thumbnail_url, :hidden, :draft, :free])
+    |> validate_required([:title, :description, :thumbnail_url, :hidden, :draft, :free])
     |> slugify_title()
     |> unique_constraint(:slug)
   end
 
-  @doc """
-  Modifies the changeset to use slugify'd title.
-  """
   defp slugify_title(changeset) do
     if title = get_change(changeset, :title) do
       put_change(changeset, :slug, slugify(title))
@@ -36,9 +34,6 @@ defmodule LearnReact.Course do
     end
   end
 
-  @doc """
-  Returns title slug for friendly URLs
-  """
   defp slugify(str) do
     alias LearnReact.Inflectors
 
