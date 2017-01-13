@@ -1,7 +1,7 @@
 defmodule Stripe do
   use HTTPoison.Base
 
-  @expected_fields ~w(id)
+  @expected_fields ~w(id url)
 
   def process_url(url) do
     "https://api.stripe.com/v1" <> url

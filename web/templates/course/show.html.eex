@@ -22,8 +22,21 @@
       data-description="Widget"
       data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
       data-locale="auto"
-      data-zip-code="true">
+      data-zip-code="true"
+    >
     </script>
+
+    <input
+      type="hidden"
+      name="course_id"
+      value="<%= @course.id %>"
+    />
+
+    <input
+      type="hidden"
+      name="course_slug"
+      value="<%= @course.slug %>"
+    />
   </form>
 </div>
 

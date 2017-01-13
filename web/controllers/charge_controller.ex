@@ -26,7 +26,7 @@ defmodule LearnReact.ChargeController do
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"stripeEmail" => email, "stripeToken" => token, "stripeTokenType" => tokenType}) do
+  def create(conn, %{"stripeEmail" => email, "stripeToken" => token, "stripeTokenType" => tokenType, "course_id" => course_id, "course_slug" => course_slug}) do
     changeset = Charge.changeset(%Charge{}, %{
       email: email,
       token: token,
@@ -36,21 +36,21 @@ defmodule LearnReact.ChargeController do
     case Stripe.post("/charges", {:form, [{"amount", "500"}, {"currency", "USD"}, {"source", token}]}, [{"Authorization", "Bearer #{System.get_env("STRIPE_SECRET")}"}]) do
       {:ok, %HTTPoison.Response{status_code: 200, "body": body}} ->
         IO.puts body[:id]
-      {:ok, %HTTPoison.Response{status_code: 400, "body": body}} ->
-        IO.puts body
-      {:ok, %HTTPoison.Response{status_code: 401, "body": body}} ->
-        IO.puts body
-      {:error, %HTTPoison.Error{reason: reason}} ->
-        IO.inspect reason
-    end
+        IO.puts body[:url]
+        IO.puts course_id
 
-    case Repo.insert(changeset) do
-      {:ok, _charge} ->
+        case Repo.insert(changeset) do
+          {:ok, _charge} ->
+            conn
+            |> put_flash(:info, "Your course hase been purchased. Enjoy!")
+            |> redirect(to: course_path(conn, :show, course_slug))
+          {:error, changeset} ->
+            render(conn, "new.html", changeset: changeset)
+        end
+      {:error, %HTTPoison.Error{reason: reason}} ->
         conn
-        |> put_flash(:info, "Charge created successfully.")
-        |> redirect(to: charge_path(conn, :index))
-      {:error, changeset} ->
-        render(conn, "new.html", changeset: changeset)
+        |> put_flash(:error, "There was an error charging your card. Please try again.")
+        |> redirect(to: course_path(conn, :show, course_slug))
     end
   end
 
