@@ -33,6 +33,17 @@ defmodule LearnReact.ChargeController do
       tokenType: tokenType,
     })
 
+    case Stripe.post("/charges", {:form, [{"amount", "500"}, {"currency", "USD"}, {"source", token}]}, [{"Authorization", "Bearer #{System.get_env("STRIPE_SECRET")}"}]) do
+      {:ok, %HTTPoison.Response{status_code: 200, "body": body}} ->
+        IO.puts body[:id]
+      {:ok, %HTTPoison.Response{status_code: 400, "body": body}} ->
+        IO.puts body
+      {:ok, %HTTPoison.Response{status_code: 401, "body": body}} ->
+        IO.puts body
+      {:error, %HTTPoison.Error{reason: reason}} ->
+        IO.inspect reason
+    end
+
     case Repo.insert(changeset) do
       {:ok, _charge} ->
         conn

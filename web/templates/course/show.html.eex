@@ -12,4 +12,19 @@
 <% end %>
 </ul>
 
+<div style="display: none">
+  <%= form_tag("/charges", method: :post) %>
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-key="<%= System.get_env("STRIPE_PUBLISHABLE") %>"
+      data-amount="500"
+      data-name="Learnreact"
+      data-description="Widget"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-locale="auto"
+      data-zip-code="true">
+    </script>
+  </form>
+</div>
+
 <%= link "Back", to: course_path(@conn, :index) %>
