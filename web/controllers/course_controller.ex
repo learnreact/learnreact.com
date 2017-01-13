@@ -19,7 +19,7 @@ defmodule LearnReact.CourseController do
 
   def index(conn, _params) do
     lessons_query = from(l in Lesson, order_by: [asc: :id])
-    courses = Repo.all(from c in Course, preload: [lessons: ^lessons_query])
+    courses = Repo.all(from c in Course, where: c.hidden != true, preload: [lessons: ^lessons_query])
     render(conn, "index.html", courses: courses)
   end
 
