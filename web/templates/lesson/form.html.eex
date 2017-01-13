@@ -55,6 +55,12 @@
   </div>
 
   <div class="form-group">
+    <%= label f, :free, class: "control-label" %>
+    <%= checkbox f, :free, class: "form-control" %>
+    <%= error_tag f, :free %>
+  </div>
+
+  <div class="form-group">
     <%= submit "Submit", class: "btn btn-primary" %>
   </div>
 <% end %>

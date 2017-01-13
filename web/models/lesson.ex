@@ -9,6 +9,7 @@ defmodule LearnReact.Lesson do
     field :notes, :string
     field :hidden, :boolean, default: false
     field :slug, :string
+    field :free, :boolean, default: false
 
     belongs_to :course, LearnReact.Course
 
@@ -20,8 +21,8 @@ defmodule LearnReact.Lesson do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:title, :description, :video_embed, :thumbnail_url, :notes, :hidden, :course_id, :slug])
-    |> validate_required([:title, :description, :video_embed, :thumbnail_url, :hidden, :course_id, :slug])
+    |> cast(params, [:title, :description, :video_embed, :thumbnail_url, :notes, :hidden, :course_id, :slug, :free])
+    |> validate_required([:title, :description, :video_embed, :thumbnail_url, :hidden, :course_id, :slug, :free])
     |> unique_constraint(:slug)
   end
 end
