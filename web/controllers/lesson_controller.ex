@@ -42,7 +42,13 @@ defmodule LearnReact.LessonController do
   def show(conn, %{"id" => slug}) do
     lesson = Repo.get_by!(Lesson, slug: slug)
     |> Repo.preload([:course])
-    render(conn, "show.html", lesson: lesson)
+
+    cond do
+      lesson.notes ->
+        render(conn, "show.html", lesson: lesson)
+      true ->
+        render(conn, "show_video_only.html", lesson: lesson)
+    end
   end
 
   def edit(conn, %{"id" => slug}) do

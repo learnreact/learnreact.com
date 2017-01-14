@@ -2,23 +2,41 @@
   <p>This course is not complete. Lessons are subject to change. Videos will be added 1/1/17</p>
 <% end %>
 
-<h2><%= @lesson.title %></h2>
-<h4><%= @lesson.course.title %></h4>
+<div
+  class="d-f fw-w jc-fs"
+  style="margin: -1rem"
+>
+  <div
+    class="p-2 fs-1 fg-1"
+    style="flex-basis: 24em; max-width: 34em"
+  >
+    <%= raw(@lesson.video_embed) %>
+  </div>
 
-<p>
-<%= @lesson.description %>
-</p>
+  <div
+    class="p-2 fs-1 fg-5"
+    style="flex-basis: 24em; max-width: 34em"
+  >
+    <h2 class="mt-0"><%= @lesson.title %></h2>
+    <h4><%= @lesson.course.title %></h4>
 
-<%= if is_bitstring(@lesson.notes) do %>
-  <hr />
+    <%= if is_bitstring(@lesson.notes) do %>
+      <hr />
 
-  <section class="notes-markdown">
-    <%= Earmark.to_html(@lesson.notes, %Earmark.Options{code_class_prefix: "language-"}) |> raw %>
-  </section>
+      <style>
+        .opaque-markdown {
+          color: #333
+        }
+      </style>
 
-  <hr />
-<% end %>
+      <section class="opaque-markdown lh-1.5">
+        <%= Earmark.to_html(@lesson.notes, %Earmark.Options{code_class_prefix: "language-"}) |> raw %>
+      </section>
 
-<%= raw(@lesson.video_embed) %>
+      <hr />
+    <% end %>
+  </div>
+</div>
+
 
 <%= link "Back", to: course_path(@conn, :index) %>

@@ -1,0 +1,12 @@
+<%= if @lesson.course.draft do %>
+  <p>This course is not complete. Lessons are subject to change. Videos will be added 1/1/17</p>
+<% end %>
+
+<h2 class="mt-0"><%= @lesson.title %></h2>
+<h4><%= @lesson.course.title %></h4>
+
+<div>
+  <%= raw(@lesson.video_embed) %>
+</div>
+
+<%= link "Back", to: course_path(@conn, :index) %>
