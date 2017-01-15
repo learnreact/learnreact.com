@@ -50,7 +50,7 @@ defmodule LearnReact.Router do
   defp require_ownership(conn, _params) do
     user = get_session(conn, :current_user)
 
-    if user && user.github_id == 658360 do
+    if User.is_chan(user) do
       conn
     else
       conn

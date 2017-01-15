@@ -3,4 +3,4 @@
 <%= render "form.html", changeset: @changeset,
                         action: course_path(@conn, :update, @course) %>
 
-<%= link "Back", to: course_path(@conn, :index) %>
+<%= link "View Course", to: course_path(@conn, :show, @course), class: "btn" %>

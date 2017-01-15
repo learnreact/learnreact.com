@@ -31,7 +31,7 @@
 
     <div>
       <main role="main">
-        <div style="display:none"><!-- hidden for now -->
+        <div style="display:none">
           <%= if @current_user do %>
             <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
           <% else %>
