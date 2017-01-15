@@ -4,19 +4,6 @@ defmodule LearnReact.CourseController do
   alias LearnReact.Course
   alias LearnReact.Lesson
 
-  plug :require_ownership, "user" when action in [:new, :create, :edit, :update, :delete]
-
-  defp require_ownership(conn, _params) do
-    user = get_session(conn, :current_user)
-
-    if user && user.github_id == 658360 do
-      conn
-    else
-      conn
-      |> redirect(to: "/")
-    end
-  end
-
   def index(conn, _params) do
     lessons_query = from(l in Lesson, order_by: [asc: :id])
     courses = Repo.all(from c in Course, where: c.hidden != true, preload: [lessons: ^lessons_query])

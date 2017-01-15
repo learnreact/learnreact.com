@@ -3,20 +3,6 @@ defmodule LearnReact.PurchaseController do
 
   alias LearnReact.Purchase
 
-  plug :require_ownership, "user" when action in [:index, :new, :create, :show, :edit, :update, :delete]
-
-  defp require_ownership(conn, _params) do
-    user = get_session(conn, :current_user)
-
-    if user && user.github_id == 658360 do
-      conn
-    else
-      conn
-      |> redirect(to: "/")
-    end
-  end
-
-
   def index(conn, _params) do
     purchases = Repo.all(Purchase)
     render(conn, "index.html", purchases: purchases)

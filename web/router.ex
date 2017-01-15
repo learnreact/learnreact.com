@@ -10,20 +10,29 @@ defmodule LearnReact.Router do
     plug :assign_current_user
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :admin do
+    plug :require_ownership
   end
 
   scope "/", LearnReact do
-    pipe_through :browser # Use the default browser stack
+    pipe_through :browser
 
-    resources "/lessons", LessonController
-    resources "/users", UserController
-    resources "/courses", CourseController
-    resources "/charges", ChargeController
-    resources "/purchases", PurchaseController
+    resources "/lessons", LessonController, only: [:show]
+    resources "/courses", CourseController, only: [:index, :show]
+
     get "/patterns", PageController, :patterns
     get "/", CourseController, :index
+  end
+
+  scope "/admin", LearnReact do
+    pipe_through :browser
+    pipe_through :admin
+
+    resources "/lessons", LessonController, only: [:new, :create, :edit, :update, :delete]
+    resources "/courses", CourseController, only: [:new, :create, :edit, :update, :delete]
+    resources "/users", UserController
+    resources "/charges", ChargeController
+    resources "/purchases", PurchaseController
   end
 
   scope "/auth", LearnReact do
@@ -31,18 +40,22 @@ defmodule LearnReact.Router do
 
     get "/:provider", AuthController, :index
     get "/:provider/callback", AuthController, :callback
+
     delete "/logout", AuthController, :delete
   end
 
-  # Fetch the current user from the session and add it to `conn.assigns`. This
-  # will allow you to have access to the current user in your views with
-  # `@current_user`.
   defp assign_current_user(conn, _) do
     assign(conn, :current_user, get_session(conn, :current_user))
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", LearnReact do
-  #   pipe_through :api
-  # end
+  defp require_ownership(conn, _params) do
+    user = get_session(conn, :current_user)
+
+    if user && user.github_id == 658360 do
+      conn
+    else
+      conn
+      |> redirect(to: "/")
+    end
+  end
 end
