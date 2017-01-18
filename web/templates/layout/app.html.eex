@@ -26,7 +26,7 @@
     <% end %>
 
     <header>
-      <h1 class="fw-900">Learn React</h1>
+      <h4 class="fw-900 c-gray6">Learn React</h4>
     </header>
 
     <div>

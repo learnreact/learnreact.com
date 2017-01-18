@@ -2,6 +2,7 @@ defmodule LearnReact.LessonController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Lesson
+  alias LearnReact.Course
 
   def index(conn, _params) do
     lessons = Repo.all(Lesson)
@@ -30,9 +31,17 @@ defmodule LearnReact.LessonController do
     lesson = Repo.get_by!(Lesson, slug: slug)
     |> Repo.preload([:course])
 
+    course = Repo.get!(Course, lesson.course_id)
+    |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
+
     cond do
       lesson.notes ->
-        render(conn, "show.html", lesson: lesson)
+        render(
+          conn,
+          "show.html",
+          lesson: lesson,
+          course: course
+        )
       true ->
         render(conn, "show_video_only.html", lesson: lesson)
     end

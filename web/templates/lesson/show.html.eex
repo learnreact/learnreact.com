@@ -4,25 +4,40 @@
 
 <div
   class="d-f fw-w jc-fs"
-  style="margin: -1rem"
+  style="margin: 0 -1rem"
 >
   <div
-    class="p-2 fs-1 fg-1"
+    class="px-2 fs-1 fg-1"
     style="flex-basis: 24em; max-width: 34em"
   >
     <%= raw(@lesson.video_embed) %>
+
+    <ul class="lst-n p-0">
+      <%= for lesson <- @course.lessons do %>
+        <li>
+          <%= if (@lesson.id == lesson.id) do %>
+            <h4>
+              <%= lesson.title %>
+              <em style="font-weight: normal;">  (You are here)</em>
+            </h4>
+          <%= else %>
+            <%= link to: lesson_path(@conn, :show, lesson), class: "" do %>
+              <h4><%= lesson.title %></h4>
+            <% end%>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
   </div>
 
   <div
-    class="p-2 fs-1 fg-5"
+    class="px-2 fs-1 fg-5"
     style="flex-basis: 24em; max-width: 34em"
   >
-    <h2 class="mt-0"><%= @lesson.title %></h2>
+    <h4 class="mt-0"><%= @lesson.title %></h4>
     <h4><%= @lesson.course.title %></h4>
 
     <%= if is_bitstring(@lesson.notes) do %>
-      <hr />
-
       <style>
         .opaque-markdown {
           color: #333
@@ -32,8 +47,6 @@
       <section class="opaque-markdown lh-1.5">
         <%= Earmark.to_html(@lesson.notes, %Earmark.Options{code_class_prefix: "language-"}) |> raw %>
       </section>
-
-      <hr />
     <% end %>
   </div>
 </div>
