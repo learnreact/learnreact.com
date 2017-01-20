@@ -39,3 +39,7 @@
     />
   </form>
 </div>
+
+<%= if User.is_chan(@current_user) do %>
+  <%= link "Edit", to: course_path(@conn, :edit, @course), class: "#{Minions.admin_only_btn} mr-1" %>
+<% end %>
