@@ -13,9 +13,9 @@
   <tbody>
 <%= for purchase <- @purchases do %>
     <tr>
-      <td><%= purchase.user_id %></td>
-      <td><%= purchase.course_id %></td>
-      <td><%= purchase.charge_id %></td>
+      <td><%= purchase.user.name %></td>
+      <td><%= purchase.course.title %></td>
+      <td><%= purchase.charge.charge_id %></td>
 
       <td class="text-right">
         <%= link "Show", to: purchase_path(@conn, :show, purchase), class: "btn btn-default btn-xs" %>

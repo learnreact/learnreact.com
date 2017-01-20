@@ -2,9 +2,16 @@ defmodule LearnReact.PurchaseController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Purchase
+  alias LearnReact.Course
+  alias LearnReact.Charge
+  alias LearnReact.User
 
   def index(conn, _params) do
-    purchases = Repo.all(Purchase)
+    purchases =
+      Purchase
+      |> Repo.all()
+      |> Repo.preload([:charge, :user, :course])
+
     render(conn, "index.html", purchases: purchases)
   end
 
