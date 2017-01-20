@@ -2,9 +2,9 @@ defmodule LearnReact.Purchase do
   use LearnReact.Web, :model
 
   schema "purchases" do
-    field :user_id, :integer
-    field :course_id, :integer
-    field :charge_id, :integer
+    belongs_to :user, LearnReact.User
+    belongs_to :course, LearnReact.Course
+    belongs_to :charge, LearnReact.Charge
 
     timestamps()
   end

@@ -28,11 +28,11 @@ defmodule LearnReact.LessonController do
   end
 
   def show(conn, %{"id" => slug}) do
-    lesson = Repo.get_by!(Lesson, slug: slug)
-    |> Repo.preload([:course])
+    lesson =
+      Repo.get_by!(Lesson, slug: slug)
+      |> Repo.preload([course: :lessons])
 
-    course = Repo.get!(Course, lesson.course_id)
-    |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
+    course = lesson.course
 
     cond do
       lesson.notes ->
@@ -48,9 +48,12 @@ defmodule LearnReact.LessonController do
   end
 
   def edit(conn, %{"id" => slug}) do
-    lesson = Repo.get_by!(Lesson, slug: slug)
-    |> Repo.preload([:course])
+    lesson =
+      Repo.get_by!(Lesson, slug: slug)
+      |> Repo.preload([:course])
+
     changeset = Lesson.changeset(lesson)
+
     render(conn, "edit.html", lesson: lesson, changeset: changeset)
   end
 

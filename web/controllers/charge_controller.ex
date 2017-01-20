@@ -2,6 +2,8 @@ defmodule LearnReact.ChargeController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Charge
+  alias LearnReact.Purchase
+  alias Ecto.Multi
 
   def index(conn, _params) do
     charges = Repo.all(Charge)
@@ -9,12 +11,9 @@ defmodule LearnReact.ChargeController do
   end
 
   def create(conn, %{
-    "stripeEmail" => email,
     "stripeToken" => token,
-    "stripeTokenType" => tokenType, # TODO: underscore case this
-    "course_id" => course_id,
     "course_slug" => course_slug
-  }) do
+  } = params) do
     case Stripe.post("/charges", {:form, [
       {"amount", "500"},
       {"currency", "USD"},
@@ -22,26 +21,50 @@ defmodule LearnReact.ChargeController do
       [{"Authorization", "Bearer #{System.get_env("STRIPE_SECRET")}"}
     ]) do
       {:ok, %HTTPoison.Response{status_code: 200, "body": body}} ->
-        changeset = Charge.changeset(%Charge{}, %{
-          email: email,
-          token: token,
-          tokenType: tokenType,
-          charge_id: body[:id],
-        })
-
-        case Repo.insert(changeset) do
-          {:ok, _charge} ->
+        case record_purchase(params, body[:id], conn.assigns[:current_user]) do
+          {:ok, %{charge: charge, purchase: purchase}} ->
             conn
-            |> put_flash(:info, "Your course hase been purchased. Enjoy!")
+            |> put_flash(:info, "Your course has been purchased. Enjoy!")
             |> redirect(to: course_path(conn, :show, course_slug))
-          {:error, changeset} ->
-            render(conn, "new.html", changeset: changeset)
+
+          # TODO: handle errors
+          {:error, :charge, failed_value, _changes_successful} ->
+            raise  failed_value
+          {:error, :purchase, failed_value, _changes_successful} ->
+            raise  failed_value
         end
+
       {:error, %HTTPoison.Error{reason: reason}} ->
         conn
         |> put_flash(:error, "There was an error charging your card. Please try again.")
         |> redirect(to: course_path(conn, :show, course_slug))
     end
+  end
+
+  def record_purchase(%{
+    "stripeEmail" => email,
+    "stripeToken" => token,
+    "stripeTokenType" => tokenType, # TODO: underscore case this
+    "course_id" => course_id,
+    "course_slug" => course_slug
+  }, charge_id, current_user) do
+    changeset = Charge.changeset(%Charge{}, %{
+      email: email,
+      token: token,
+      tokenType: tokenType,
+      charge_id: charge_id,
+    })
+
+    Multi.new
+    |> Multi.insert(:charge, changeset)
+    |> Multi.run(:purchase, fn(result) ->
+      Repo.insert(Purchase.changeset(%Purchase{}, %{
+        user_id: current_user.id,
+        course_id: course_id,
+        charge_id: result.charge.id,
+      }))
+    end)
+    |> Repo.transaction()
   end
 
   def show(conn, %{"id" => id}) do

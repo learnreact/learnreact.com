@@ -51,7 +51,7 @@ defmodule LearnReact.AuthController do
       |> Repo.insert_or_update
 
     case result do
-      {:ok, _user} ->
+      {:ok, user} ->
         conn
         |> put_session(:current_user, user)
         |> put_session(:access_token, client.token.access_token)

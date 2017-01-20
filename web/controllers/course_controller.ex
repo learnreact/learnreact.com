@@ -29,8 +29,9 @@ defmodule LearnReact.CourseController do
   end
 
   def show(conn, %{"id" => slug}) do
-    course = Repo.get_by!(Course, slug: slug)
-    |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
+    course =
+      Repo.get_by!(Course, slug: slug)
+      |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
     render(conn, "show.html", course: course)
   end
 
