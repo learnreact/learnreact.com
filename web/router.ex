@@ -19,6 +19,7 @@ defmodule LearnReact.Router do
 
     resources "/lessons", LessonController, only: [:show]
     resources "/courses", CourseController, only: [:index, :show]
+    resources "/charges", ChargeController, only: [:create]
 
     get "/", CourseController, :index
   end
@@ -30,7 +31,7 @@ defmodule LearnReact.Router do
     resources "/lessons", LessonController, only: [:new, :create, :edit, :update, :delete]
     resources "/courses", CourseController, only: [:new, :create, :edit, :update, :delete]
     resources "/users", UserController
-    resources "/charges", ChargeController
+    resources "/charges", ChargeController, only: [:index, :show]
     resources "/purchases", PurchaseController
   end
 
