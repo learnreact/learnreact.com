@@ -74,6 +74,7 @@ exports.config = {
       "truncate.css": ["truncate.css"],
       "open-color.css": ["open-color.css"],
       "minions.css": [
+        "packages/align-items/align-items.css",
         "packages/border-style/border-style.css",
         "packages/border-width/border-width.css",
         "packages/border-bottom-width/border-bottom-width.css",

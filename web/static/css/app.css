@@ -1,9 +1,10 @@
 /* This file is for your main application css. */
+.xw-30e{max-width:30em}
 .xw-60e{max-width:60em}
 .m-0a{margin:0 auto}
 
 .breadcrumb-link { text-decoration: none }
-.breadcrumb-link:hover { border-bottom: .25rem solid }
+.breadcrumb-link:hover { border-bottom: 4px solid }
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -47,3 +48,5 @@ _:-moz-tree-row(hover), body {
   border-width: 1px;
   border-style: solid;
 }
+
+.fb-0\%{flex-basis:0%}

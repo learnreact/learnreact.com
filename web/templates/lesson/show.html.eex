@@ -7,7 +7,7 @@
   style="margin: 0 -1rem"
 >
   <div
-    class="px-2 fs-1 fg-1"
+    class="px-2 fs-1 fg-1 fb-0%"
     style="flex-basis: 24em; max-width: 34em"
   >
     <%= raw(@lesson.video_embed) %>

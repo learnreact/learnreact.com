@@ -26,47 +26,49 @@
     <% end %>
 
     <header
-      class="mb-3 bc-gray3 bw-0 bs-s"
+      class="mb-3 bc-gray3 bw-0 bs-s d-f ai-c"
       style="border-bottom-width: 1px"
     >
-      <h3
-        class="fw-800 c-gray6"
-        style="display: inline-block"
-      >
-        <%= link to: "/", class: "breadcrumb-link c-gray7" do %>
-          Learn React
-        <% end %>
-      </h3>
-
-      <h5
-        class="fw-800 c-gray6"
-        style="display: inline-block"
-      >
-        <%= if course_title(assigns) do %>
-          <span>&nbsp;/&nbsp;</span>
-          <%= link to: course_path(@conn, :show, @course), class: "breadcrumb-link c-gray7" do %>
-            <%= course_title(assigns) %>
+      <div class="fg-1 fs-1 fb-0%">
+        <h3
+          class="fw-800 c-gray6"
+          style="display: inline-block"
+        >
+          <%= link to: "/", class: "breadcrumb-link c-gray7" do %>
+            Learn React
           <% end %>
-        <% end %>
+        </h3>
 
-        <%= if lesson_title(assigns) do %>
-          <span>&nbsp;/&nbsp;</span>
-          <%= link to: lesson_path(@conn, :show, @lesson), class: "breadcrumb-link c-gray7" do %>
-            <%= lesson_title(assigns) %>
+        <h5
+          class="fw-800 c-gray6"
+          style="display: inline-block"
+        >
+          <%= if course_title(assigns) do %>
+            <span>&nbsp;/&nbsp;</span>
+            <%= link to: course_path(@conn, :show, @course), class: "breadcrumb-link c-gray7" do %>
+              <%= course_title(assigns) %>
+            <% end %>
           <% end %>
-        <% end %>
-      </h4>
-    </header>
 
-    <main role="main">
-      <div style="display:none">
+          <%= if lesson_title(assigns) do %>
+            <span>&nbsp;/&nbsp;</span>
+            <%= link to: lesson_path(@conn, :show, @lesson), class: "breadcrumb-link c-gray7" do %>
+              <%= lesson_title(assigns) %>
+            <% end %>
+          <% end %>
+        </h4>
+      </div>
+
+      <div style="display: none">
         <%= if @current_user do %>
           <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
         <% else %>
           <a href="/auth/github" class="btn">Sign in with Github</a>
         <% end %>
       </div>
+    </header>
 
+    <main role="main">
       <%= render @view_module, @view_template, assigns %>
     </main>
 
