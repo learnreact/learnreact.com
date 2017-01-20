@@ -25,8 +25,26 @@
       <p class="gc-blue5 c-white py-1 px-2 ta-c" role="alert"><%= get_flash(@conn, :info) %></p>
     <% end %>
 
-    <header>
-      <h4 class="fw-900 c-gray6">Learn React</h4>
+    <header class="mb-3 bc-gray5 bw-0 bbw-1p">
+      <h4 class="fw-800 c-gray5">
+        <%= link to: "/", class: "breadcrumb-link c-gray6" do %>
+          Learn React
+        <% end %>
+
+        <%= if course_title(assigns) do %>
+          <span>&nbsp;/&nbsp;</span>
+          <%= link to: course_path(@conn, :show, @course), class: "breadcrumb-link c-gray6" do %>
+            <%= course_title(assigns) %>
+          <% end %>
+        <% end %>
+
+        <%= if lesson_title(assigns) do %>
+          <span>&nbsp;/&nbsp;</span>
+          <%= link to: lesson_path(@conn, :show, @lesson), class: "breadcrumb-link c-gray6" do %>
+            <%= lesson_title(assigns) %>
+          <% end %>
+        <% end %>
+      </h4>
     </header>
 
     <div>

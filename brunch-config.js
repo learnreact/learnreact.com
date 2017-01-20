@@ -75,6 +75,8 @@ exports.config = {
       "open-color.css": ["open-color.css"],
       "minions.css": [
         "packages/border-style/border-style.css",
+        "packages/border-width/border-width.css",
+        "packages/border-bottom-width/border-bottom-width.css",
         "packages/display/display.css",
         "packages/float/float.css",
         "packages/font-family/font-family.css",

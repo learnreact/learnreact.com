@@ -1,3 +1,26 @@
 /* This file is for your main application css. */
 .xw-60e{max-width:60em}
 .m-0a{margin:0 auto}
+
+.breadcrumb-link { text-decoration: none }
+.breadcrumb-link:hover { border-bottom: .25rem solid }
+
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
+_:-moz-tree-row(hover), body {
+  font-family: 'Avenir Next', helvetica, arial, sans-serif !important
+}
+
+@media screen and (min-width: 1200px) {
+  html { font-size: 20px }
+}
+
+@media screen and (min-width: 1680px) {
+  html { font-size: 24px }
+}
+
+@media screen and (min-width: 2160px) {
+  html { font-size: 28px }
+}
