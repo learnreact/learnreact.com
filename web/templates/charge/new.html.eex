@@ -1,6 +1,0 @@
-<h2>New charge</h2>
-
-<%= render "form.html", changeset: @changeset,
-                        action: charge_path(@conn, :create) %>
-
-<%= link "Back", to: charge_path(@conn, :index) %>
