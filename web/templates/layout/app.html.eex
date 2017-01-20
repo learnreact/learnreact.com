@@ -25,44 +25,65 @@
       <p class="gc-blue5 c-white py-1 px-2 ta-c" role="alert"><%= get_flash(@conn, :info) %></p>
     <% end %>
 
-    <header class="mb-3 bc-gray5 bw-0 bbw-1p">
-      <h4 class="fw-800 c-gray5">
-        <%= link to: "/", class: "breadcrumb-link c-gray6" do %>
+    <header
+      class="mb-3 bc-gray3 bw-0 bs-s"
+      style="border-bottom-width: 1px"
+    >
+      <h3
+        class="fw-800 c-gray6"
+        style="display: inline-block"
+      >
+        <%= link to: "/", class: "breadcrumb-link c-gray7" do %>
           Learn React
         <% end %>
+      </h3>
 
+      <h5
+        class="fw-800 c-gray6"
+        style="display: inline-block"
+      >
         <%= if course_title(assigns) do %>
           <span>&nbsp;/&nbsp;</span>
-          <%= link to: course_path(@conn, :show, @course), class: "breadcrumb-link c-gray6" do %>
+          <%= link to: course_path(@conn, :show, @course), class: "breadcrumb-link c-gray7" do %>
             <%= course_title(assigns) %>
           <% end %>
         <% end %>
 
         <%= if lesson_title(assigns) do %>
           <span>&nbsp;/&nbsp;</span>
-          <%= link to: lesson_path(@conn, :show, @lesson), class: "breadcrumb-link c-gray6" do %>
+          <%= link to: lesson_path(@conn, :show, @lesson), class: "breadcrumb-link c-gray7" do %>
             <%= lesson_title(assigns) %>
           <% end %>
         <% end %>
       </h4>
     </header>
 
-    <div>
-      <main role="main">
-        <div style="display:none">
-          <%= if @current_user do %>
-            <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
-          <% else %>
-            <a href="/auth/github" class="btn">Sign in with Github</a>
-          <% end %>
-        </div>
+    <main role="main">
+      <div style="display:none">
+        <%= if @current_user do %>
+          <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
+        <% else %>
+          <a href="/auth/github" class="btn">Sign in with Github</a>
+        <% end %>
+      </div>
 
-        <%= render @view_module, @view_template, assigns %>
-      </main>
-    </div>
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+
+    <footer
+      class="mt-3 pt-3 bw-0 bs-s bc-gray3"
+      style="border-top-width: 1px"
+    >
+      <%= if !@current_user do %>
+        <div class="mb-2">
+          <%= render "_newsletter.html" %>
+        </div>
+      <% end %>
+
+      <small class="c-gray5 td-i"><em>&copy; Copyright 2017, Michael Chan</em></small>
+    </footer>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render "_analytics.html" %>
-    <%= render "_newsletter.html" %>
   </body>
 </html>
