@@ -1,13 +1,13 @@
 <%= if @lesson.course.draft do %>
-  <p>This course is not complete. Lessons are subject to change. Videos will be added 1/1/17</p>
+  <p class="gc-yellow5 py-1 px-2 ta-c mb-3" role="alert">Expect changes. This course is incomplete.</p>
 <% end %>
 
 <div
   class="d-f fw-w jc-fs"
-  style="margin: 0 -1rem"
+  style="margin: 0 -2rem"
 >
   <div
-    class="px-2 fs-1 fg-1"
+    class="px-3 fs-1 fg-1"
     style="flex-basis: 24em; max-width: 34em"
   >
     <%= raw(@lesson.video_embed) %>
@@ -31,7 +31,7 @@
   </div>
 
   <div
-    class="px-2 fs-1 fg-5"
+    class="px-3 fs-1 fg-5"
     style="flex-basis: 24em; max-width: 34em"
   >
     <h4 class="mt-0"><%= @lesson.title %></h4>
