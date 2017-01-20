@@ -16,15 +16,13 @@
       <td><%= charge.email %></td>
       <td><%= charge.token %></td>
       <td><%= charge.tokenType %></td>
+      <td><%= charge.charge_id %></td>
 
       <td class="text-right">
+        <%= link "Go", to: "#{System.get_env("STRIPE_DASHBOARD_URI")}#{charge.charge_id}", class: "btn", target: "_blank" %>
         <%= link "Show", to: charge_path(@conn, :show, charge), class: "btn btn-default btn-xs" %>
-        <%= link "Edit", to: charge_path(@conn, :edit, charge), class: "btn btn-default btn-xs" %>
-        <%= link "Delete", to: charge_path(@conn, :delete, charge), method: :delete, data: [confirm: "Are you sure?"], class: "btn btn-danger btn-xs" %>
       </td>
     </tr>
 <% end %>
   </tbody>
 </table>
-
-<%= link "New charge", to: charge_path(@conn, :new) %>

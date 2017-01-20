@@ -5,6 +5,7 @@ defmodule LearnReact.Charge do
     field :email, :string
     field :token, :string
     field :tokenType, :string
+    field :charge_id, :string
 
     timestamps()
   end
@@ -14,7 +15,7 @@ defmodule LearnReact.Charge do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:email, :token, :tokenType])
-    |> validate_required([:email, :token, :tokenType])
+    |> cast(params, [:email, :token, :tokenType, :charge_id])
+    |> validate_required([:email, :token, :tokenType, :charge_id])
   end
 end

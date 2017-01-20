@@ -11,16 +11,10 @@ defmodule LearnReact.ChargeController do
   def create(conn, %{
     "stripeEmail" => email,
     "stripeToken" => token,
-    "stripeTokenType" => tokenType,
+    "stripeTokenType" => tokenType, # TODO: underscore case this
     "course_id" => course_id,
     "course_slug" => course_slug
   }) do
-    changeset = Charge.changeset(%Charge{}, %{
-      email: email,
-      token: token,
-      tokenType: tokenType,
-    })
-
     case Stripe.post("/charges", {:form, [
       {"amount", "500"},
       {"currency", "USD"},
@@ -28,9 +22,12 @@ defmodule LearnReact.ChargeController do
       [{"Authorization", "Bearer #{System.get_env("STRIPE_SECRET")}"}
     ]) do
       {:ok, %HTTPoison.Response{status_code: 200, "body": body}} ->
-        IO.puts body[:id]
-        IO.puts body[:url]
-        IO.puts course_id
+        changeset = Charge.changeset(%Charge{}, %{
+          email: email,
+          token: token,
+          tokenType: tokenType,
+          charge_id: body[:id],
+        })
 
         case Repo.insert(changeset) do
           {:ok, _charge} ->

@@ -17,7 +17,11 @@
     <%= @charge.tokenType %>
   </li>
 
+  <li>
+    <strong>charge_id:</strong>
+    <%= @charge.charge_id %>
+  </li>
+
 </ul>
 
-<%= link "Edit", to: charge_path(@conn, :edit, @charge) %>
-<%= link "Back", to: charge_path(@conn, :index) %>
+<%= link "Charge index", to: charge_path(@conn, :index) %>
