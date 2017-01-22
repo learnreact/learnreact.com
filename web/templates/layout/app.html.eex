@@ -86,6 +86,9 @@
     </footer>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <%= render "_analytics.html" %>
+
+    <% if Mix.env == :prod do %>
+      <%= render "_analytics.html" %>
+    <% end %>
   </body>
 </html>
