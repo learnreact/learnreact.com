@@ -19,7 +19,7 @@ defmodule LearnReact.Mixfile do
   def application do
     [mod: {LearnReact, []},
      applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :oauth2, :httpoison]]
+                    :phoenix_ecto, :postgrex, :oauth2, :httpoison, :timex]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,8 @@ defmodule LearnReact.Mixfile do
      {:cowboy, "~> 1.0"},
      {:oauth2, "~> 0.8"},
      {:earmark, "~> 1.0"},
-     {:httpoison, "~> 0.10.0"}]
+     {:httpoison, "~> 0.10.0"},
+     {:timex, "~> 3.0"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
