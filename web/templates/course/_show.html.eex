@@ -1,0 +1,25 @@
+<div
+  class="
+    f-l
+    w-100%@mn w-50%@xs w-33%@sm w-25%@md w-20%@lg
+    pb-2
+    pr-0@mn pr-2@xs
+  "
+  data-template="course/_show"
+>
+  <%= link to: course_path(@conn, :show, @course), class: "d-b link dim ta-c" do %>
+    <img
+      src="<%= @course.thumbnail_url %>"
+      alt="<%= @course.title %> course image"
+      class="w-100% d-b outline black-10"
+    />
+
+    <dl class="mt-2 fs-5 lh-1.5">
+      <dt class="clip">Title</dt>
+      <dd class="ml-0 black truncate w-100%"><%= @course.title %></dd>
+
+      <dt class="clip">Artist</dt>
+      <dd class="ml-0 gray truncate w-100%"><%= @course.description %></dd>
+    </dl>
+  <% end %>
+</div>

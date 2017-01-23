@@ -50,3 +50,86 @@ _:-moz-tree-row(hover), body {
 }
 
 .fb-0\%{flex-basis:0%}
+
+/* course/show.css */
+.outline {
+    outline: 1px solid;
+}
+
+.link {
+    text-decoration: none;
+    transition: color .15s ease-in;
+}
+
+.link:link, .link:visited {
+    transition: color .15s ease-in;
+}
+
+.link:hover {
+    transition: color .15s ease-in;
+}
+
+.link:active {
+    transition: color .15s ease-in;
+}
+
+.link:focus {
+    transition: color .15s ease-in;
+    outline: 1px dotted currentColor;
+}
+
+.black-10 {
+    color: rgba(0, 0, 0, .1);
+}
+
+.black {
+    color: #000;
+}
+
+.gray {
+    color: #777;
+}
+
+.clip {
+    position: fixed !important;
+    _position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px, 1px, 1px, 1px);
+}
+
+.dim {
+    opacity: 1;
+    transition: opacity .15s ease-in;
+}
+
+.dim:hover, .dim:focus {
+    opacity: .5;
+    transition: opacity .15s ease-in;
+}
+
+.dim:active {
+    opacity: .8;
+    transition: opacity .15s ease-out;
+}
+
+@media (min-width: 0px) {
+  .pr-0%\@mn{padding-right:0}
+  .w-100\%\@mn{width:100%}
+}
+
+@media (min-width: 30em) {
+  .pr-2\@xs{padding-right:1rem}
+  .w-50\%\@xs{width:50%}
+}
+
+@media (min-width: 37.5em) {
+  .w-33\%\@sm{width:33.3333%}
+}
+
+@media (min-width: 45em) {
+  .w-25\%\@md{width:25%}
+}
+
+@media (min-width: 60em) {
+  .w-20\%\@lg{width:20%}
+}

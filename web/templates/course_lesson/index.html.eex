@@ -1,0 +1,8 @@
+<ul
+  class="lst-n pl-0"
+  data-template="course_lesson/index"
+>
+  <%= for lesson <- @course.lessons do %>
+    <%= render "_show.html", conn: @conn, lesson: lesson %>
+  <% end %>
+</ul>
