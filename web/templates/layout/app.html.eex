@@ -59,7 +59,7 @@
         </h4>
       </div>
 
-      <div style="display: none">
+      <div>
         <%= if @current_user do %>
           <%= link "Logout", to: auth_path(@conn, :delete), method: :delete, class: "btn" %>
         <% else %>

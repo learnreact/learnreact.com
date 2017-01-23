@@ -1,0 +1,48 @@
+<h2><%= @course.title %></h2>
+
+<p class="xw-30e"><%= @course.description %></p>
+
+<%= render LearnReact.CourseLessonView, "index.html", conn: @conn, course: @course %>
+
+<%= if !@current_user do %>
+  <div style="display: none">
+    <a
+      href="/auth/github"
+      class="btn"
+    >Sign in with Github to purchase  style="display:none">this course.</a>
+  </div>
+<% end %>
+
+<%= if @current_user do %>
+  <div>
+    <%= form_tag("/charges", method: :post) %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-key="<%= System.get_env("STRIPE_PUBLISHABLE") %>"
+        data-amount="500"
+        data-name="Learnreact"
+        data-description="Widget"
+        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+        data-locale="auto"
+        data-zip-code="true"
+      >
+      </script>
+
+      <input
+        type="hidden"
+        name="course_id"
+        value="<%= @course.id %>"
+      />
+
+      <input
+        type="hidden"
+        name="course_slug"
+        value="<%= @course.slug %>"
+      />
+    </form>
+  </div>
+<% end %>
+
+<%= if User.is_chan(@current_user) do %>
+  <%= link "Edit", to: course_path(@conn, :edit, @course), class: "#{Minions.admin_only_btn} mr-1" %>
+<% end %>
