@@ -52,9 +52,6 @@
   </div>
 </div>
 
-<div style="display:none">
-  <a href="/auth/github" class="btn">Sign in with Github</a> to purchase this course.
-</div>
 
 <%= if User.is_chan(@current_user) do %>
   <%= link "Edit", to: lesson_path(@conn, :edit, @lesson), class: "#{Minions.admin_only_btn} mr-1" %>

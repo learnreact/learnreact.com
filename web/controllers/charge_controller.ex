@@ -28,7 +28,7 @@ defmodule LearnReact.ChargeController do
           {:ok, %{charge: _, purchase: _}} ->
             conn
             |> put_flash(:info, "Your course has been purchased. Enjoy!")
-            |> redirect(to: course_path(conn, :show, course_slug))
+            |> redirect(to: course_path(conn, :show, course_slug)) # TODO: this should probably redirect to the last_requst_path
 
           # TODO: handle errors
           {:error, :charge, failed_value, _changes_successful} ->

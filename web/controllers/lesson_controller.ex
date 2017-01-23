@@ -1,7 +1,10 @@
 defmodule LearnReact.LessonController do
   use LearnReact.Web, :controller
 
-  alias LearnReact.Lesson
+  alias LearnReact.{
+    Lesson,
+    Purchase,
+  }
 
   def action(conn, _) do
     apply(__MODULE__, action_name(conn),
@@ -31,12 +34,25 @@ defmodule LearnReact.LessonController do
     end
   end
 
-  def show(conn, %{"id" => slug}, _) do
+  def show(conn, %{"id" => slug}, %{:id => user_id}) do
     lesson =
       Repo.get_by!(Lesson, slug: slug)
       |> Repo.preload([course: :lessons])
 
-    course = lesson.course
+    purchase = Repo.get_by(Purchase, course_id: lesson.course.id, user_id: user_id)
+
+    case purchase do
+      nil ->
+        render(conn, "show_unpurchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
+      _ ->
+        render(conn, "show_purchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
+    end
+  end
+
+  def show(conn, %{"id" => slug}, _) do
+    lesson =
+      Repo.get_by!(Lesson, slug: slug)
+      |> Repo.preload([course: :lessons])
 
     cond do
       lesson.notes ->
@@ -44,7 +60,7 @@ defmodule LearnReact.LessonController do
           conn,
           "show.html",
           lesson: lesson,
-          course: course
+          course: lesson.course
         )
       true ->
         render(conn, "show_video_only.html", lesson: lesson)

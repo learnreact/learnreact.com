@@ -7,7 +7,6 @@ defmodule LearnReact.CourseController do
     Purchase,
   }
 
-  # http://stackoverflow.com/questions/33292548/current-user-in-phoenix-controller-passed-by-plug#answer-33292939
   def action(conn, _) do
     apply(__MODULE__, action_name(conn),
       [conn, conn.params, conn.assigns.current_user])
@@ -42,8 +41,7 @@ defmodule LearnReact.CourseController do
       Repo.get_by!(Course, slug: slug)
       |> Repo.preload([lessons: from(l in Lesson, order_by: [asc: :id])])
 
-    purchase =
-      Repo.get_by(Purchase, course_id: course.id, user_id: user_id)
+    purchase = Repo.get_by(Purchase, course_id: course.id, user_id: user_id)
 
     case purchase do
       nil ->
