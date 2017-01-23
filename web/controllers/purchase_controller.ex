@@ -2,9 +2,6 @@ defmodule LearnReact.PurchaseController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Purchase
-  alias LearnReact.Course
-  alias LearnReact.Charge
-  alias LearnReact.User
 
   def index(conn, _params) do
     purchases =

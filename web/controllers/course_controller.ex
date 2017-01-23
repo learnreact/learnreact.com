@@ -1,8 +1,10 @@
 defmodule LearnReact.CourseController do
   use LearnReact.Web, :controller
 
-  alias LearnReact.Course
-  alias LearnReact.Lesson
+  alias LearnReact.{
+    Course,
+    Lesson,
+  }
 
   def index(conn, _params) do
     lessons_query = from(l in Lesson, order_by: [asc: :id])

@@ -2,7 +2,6 @@ defmodule LearnReact.LessonController do
   use LearnReact.Web, :controller
 
   alias LearnReact.Lesson
-  alias LearnReact.Course
 
   def index(conn, _params) do
     lessons = Repo.all(Lesson)

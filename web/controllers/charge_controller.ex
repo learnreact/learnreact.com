@@ -1,8 +1,11 @@
 defmodule LearnReact.ChargeController do
   use LearnReact.Web, :controller
 
-  alias LearnReact.Charge
-  alias LearnReact.Purchase
+  alias LearnReact.{
+    Charge,
+    Purchase,
+  }
+
   alias Ecto.Multi
 
   def index(conn, _params) do
@@ -22,7 +25,7 @@ defmodule LearnReact.ChargeController do
     ]) do
       {:ok, %HTTPoison.Response{status_code: 200, "body": body}} ->
         case record_purchase(params, body[:id], conn.assigns[:current_user]) do
-          {:ok, %{charge: charge, purchase: purchase}} ->
+          {:ok, %{charge: _, purchase: _}} ->
             conn
             |> put_flash(:info, "Your course has been purchased. Enjoy!")
             |> redirect(to: course_path(conn, :show, course_slug))
@@ -34,7 +37,7 @@ defmodule LearnReact.ChargeController do
             raise  failed_value
         end
 
-      {:error, %HTTPoison.Error{reason: reason}} ->
+      {:error, %HTTPoison.Error{reason: _}} ->
         conn
         |> put_flash(:error, "There was an error charging your card. Please try again.")
         |> redirect(to: course_path(conn, :show, course_slug))
@@ -46,7 +49,6 @@ defmodule LearnReact.ChargeController do
     "stripeToken" => token,
     "stripeTokenType" => tokenType, # TODO: underscore case this
     "course_id" => course_id,
-    "course_slug" => course_slug
   }, charge_id, current_user) do
     changeset = Charge.changeset(%Charge{}, %{
       email: email,
