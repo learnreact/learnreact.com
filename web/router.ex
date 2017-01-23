@@ -14,8 +14,13 @@ defmodule LearnReact.Router do
     plug :require_ownership
   end
 
+  pipeline :tracking do
+    plug :put_uri_on_session
+  end
+
   scope "/", LearnReact do
     pipe_through :browser
+    pipe_through :tracking
 
     resources "/lessons", LessonController, only: [:show]
     resources "/courses", CourseController, only: [:index, :show]
@@ -48,6 +53,11 @@ defmodule LearnReact.Router do
     assign(conn, :current_user, get_session(conn, :current_user))
   end
 
+  defp put_uri_on_session(conn, _) do
+    conn
+    |> put_session(:last_request_path, conn.request_path)
+  end
+
   defp require_ownership(conn, _params) do
     user = get_session(conn, :current_user)
 
@@ -55,7 +65,7 @@ defmodule LearnReact.Router do
       conn
     else
       conn
-      |> redirect(to: "/")
+      |> redirect(to: "/") # TODO: 404 instead?
     end
   end
 end

@@ -13,7 +13,7 @@ defmodule LearnReact.AuthController do
     conn
     |> put_flash(:info, "You have been logged out!")
     |> configure_session(drop: true)
-    |> redirect(to: "/")
+    |> redirect(to: get_session(conn, :last_request_path))
   end
 
   @doc """
@@ -55,7 +55,7 @@ defmodule LearnReact.AuthController do
         conn
         |> put_session(:current_user, user)
         |> put_session(:access_token, client.token.access_token)
-        |> redirect(to: "/")
+        |> redirect(to: get_session(conn, :last_request_path))
       {:error, _changeset} ->
         conn
         |> redirect(to: "/")
