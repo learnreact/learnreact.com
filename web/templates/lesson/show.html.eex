@@ -51,3 +51,8 @@
     <% end %>
   </div>
 </div>
+
+
+<%= if User.is_chan(@current_user) do %>
+  <%= link "Edit", to: lesson_path(@conn, :edit, @lesson), class: "#{Minions.admin_only_btn} mr-1" %>
+<% end %>
