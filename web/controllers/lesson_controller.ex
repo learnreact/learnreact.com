@@ -3,17 +3,22 @@ defmodule LearnReact.LessonController do
 
   alias LearnReact.Lesson
 
-  def index(conn, _params) do
+  def action(conn, _) do
+    apply(__MODULE__, action_name(conn),
+      [conn, conn.params, conn.assigns.current_user])
+  end
+
+  def index(conn, _params, _) do
     lessons = Repo.all(Lesson)
     render(conn, "index.html", lessons: lessons)
   end
 
-  def new(conn, _params) do
+  def new(conn, _params, _) do
     changeset = Lesson.changeset(%Lesson{})
     render(conn, "new.html", changeset: changeset)
   end
 
-  def create(conn, %{"lesson" => lesson_params}) do
+  def create(conn, %{"lesson" => lesson_params}, _) do
     changeset = Lesson.changeset(%Lesson{}, lesson_params)
 
     case Repo.insert(changeset) do
@@ -26,7 +31,7 @@ defmodule LearnReact.LessonController do
     end
   end
 
-  def show(conn, %{"id" => slug}) do
+  def show(conn, %{"id" => slug}, _) do
     lesson =
       Repo.get_by!(Lesson, slug: slug)
       |> Repo.preload([course: :lessons])
@@ -46,7 +51,7 @@ defmodule LearnReact.LessonController do
     end
   end
 
-  def edit(conn, %{"id" => slug}) do
+  def edit(conn, %{"id" => slug}, _) do
     lesson =
       Repo.get_by!(Lesson, slug: slug)
       |> Repo.preload([:course])
@@ -56,7 +61,7 @@ defmodule LearnReact.LessonController do
     render(conn, "edit.html", lesson: lesson, changeset: changeset)
   end
 
-  def update(conn, %{"id" => slug, "lesson" => lesson_params}) do
+  def update(conn, %{"id" => slug, "lesson" => lesson_params}, _) do
     lesson = Repo.get_by!(Lesson, slug: slug)
     changeset = Lesson.changeset(lesson, lesson_params)
 
@@ -70,7 +75,7 @@ defmodule LearnReact.LessonController do
     end
   end
 
-  def delete(conn, %{"id" => slug}) do
+  def delete(conn, %{"id" => slug}, _) do
     lesson = Repo.get_by!(Lesson, slug: slug)
 
     # Here we use delete! (with a bang) because we expect
