@@ -3,7 +3,7 @@ defmodule LearnReact.UserTest do
 
   alias LearnReact.User
 
-  @valid_attrs %{avatar_url: "some content", email: "some content", github_id: 42, name: "some content"}
+  @valid_attrs %{avatar: "some content", email: "some content", github_id: 42, name: "some content"}
   @invalid_attrs %{}
 
   test "changeset with valid attributes" do

@@ -5,7 +5,7 @@ defmodule LearnReact.User do
     field :github_id, :integer
     field :name, :string
     field :email, :string
-    field :avatar_url, :string
+    field :avatar, :string
 
     timestamps()
   end
@@ -15,7 +15,7 @@ defmodule LearnReact.User do
   """
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:github_id, :name, :email, :avatar_url])
+    |> cast(params, [:github_id, :name, :email, :avatar])
     |> validate_required([:github_id])
   end
 end

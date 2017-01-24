@@ -70,6 +70,6 @@ defmodule LearnReact.AuthController do
 
   defp get_user!("github", client) do
     %{body: user} = OAuth2.Client.get!(client, "/user")
-    %{github_id: user["id"], name: user["name"], avatar: user["avatar_url"], email: user["email"]}
+    %{github_id: user["id"], name: user["name"], avatar: user["avatar"], email: user["email"]}
   end
 end

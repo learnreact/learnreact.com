@@ -19,7 +19,7 @@
 
   <li>
     <strong>Avatar url:</strong>
-    <%= @user.avatar_url %>
+    <%= @user.avatar %>
   </li>
 
 </ul>

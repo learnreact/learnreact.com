@@ -3,10 +3,10 @@
 <table class="table">
   <thead>
     <tr>
+      <th>Avatar</th>
       <th>Github</th>
       <th>Name</th>
       <th>Email</th>
-      <th>Avatar url</th>
 
       <th></th>
     </tr>
@@ -14,10 +14,16 @@
   <tbody>
 <%= for user <- @users do %>
     <tr>
+      <td>
+        <img
+          class="s-4"
+          src="<%= user.avatar %>"
+          rel="<%= user.name %> avatar"
+        />
+      </td>
       <td><%= user.github_id %></td>
       <td><%= user.name %></td>
       <td><%= user.email %></td>
-      <td><%= user.avatar_url %></td>
 
       <td class="text-right">
         <%= link "Show", to: user_path(@conn, :show, user), class: "btn btn-default btn-xs" %>
