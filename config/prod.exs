@@ -28,6 +28,10 @@ config :learn_react, LearnReact.Repo,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# Bugsnag
+config :bugsnag, release_stage: "prod"
+
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

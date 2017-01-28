@@ -18,8 +18,9 @@ defmodule LearnReact.Mixfile do
   # Type `mix help compile.app` for more information.
   def application do
     [mod: {LearnReact, []},
-     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :oauth2, :httpoison, :timex]]
+     applications: [:phoenix, :phoenix_pubsub, :phoenix_html, :cowboy, :logger,
+                    :gettext, :phoenix_ecto, :postgrex, :oauth2, :httpoison,
+                    :timex, :bugsnag]]
   end
 
   # Specifies which paths to compile per environment.
@@ -41,7 +42,8 @@ defmodule LearnReact.Mixfile do
      {:oauth2, "~> 0.8"},
      {:earmark, "~> 1.0"},
      {:httpoison, "~> 0.10.0"},
-     {:timex, "~> 3.0"}]
+     {:timex, "~> 3.0"},
+     {:bugsnag, "~> 1.3.2"}]
   end
 
   # Aliases are shortcuts or tasks specific to the current project.
