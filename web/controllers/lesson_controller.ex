@@ -37,7 +37,7 @@ defmodule LearnReact.LessonController do
   def show(conn, %{"id" => slug}, %{:id => user_id}) do
     lesson =
       Repo.get_by!(Lesson, slug: slug)
-      |> Repo.preload([course: :lessons])
+      |> Repo.preload([course: [lessons: from(l in Lesson, order_by: [asc: :id])]])
 
     purchase = Repo.get_by(Purchase, course_id: lesson.course.id, user_id: user_id)
 
