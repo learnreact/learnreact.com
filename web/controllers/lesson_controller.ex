@@ -41,30 +41,41 @@ defmodule LearnReact.LessonController do
 
     purchase = Repo.get_by(Purchase, course_id: lesson.course.id, user_id: user_id)
 
-    case purchase do
-      nil ->
-        render(conn, "show_unpurchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
-      _ ->
-        render(conn, "show_purchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
-    end
+    # case purchase do
+    #   nil ->
+    #     render(conn, "show_unpurchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
+    #   _ ->
+    #     render(conn, "show_purchased.html", lesson: lesson, course: lesson.course, purchase: purchase)
+    # end
+    #
+
+    render(conn, "show_logged_in.html", lesson: lesson, course: lesson.course)
   end
 
   def show(conn, %{"id" => slug}, _) do
     lesson =
       Repo.get_by!(Lesson, slug: slug)
-      |> Repo.preload([course: :lessons])
+      |> Repo.preload([course: [lessons: from(l in Lesson, order_by: [asc: :id])]])
 
-    cond do
-      lesson.notes ->
-        render(
-          conn,
-          "show.html",
-          lesson: lesson,
-          course: lesson.course
-        )
-      true ->
-        render(conn, "show_video_only.html", lesson: lesson)
-    end
+    # cond do
+    #   lesson.notes ->
+    #     render(
+    #       conn,
+    #       "show.html",
+    #       lesson: lesson,
+    #       course: lesson.course
+    #     )
+    #   true ->
+    #     render(conn, "show_video_only.html", lesson: lesson)
+    #   render(conn, "show_video_only.html", lesson: lesson)
+    # end
+
+    render(
+      conn,
+      "show.html",
+      lesson: lesson,
+      course: lesson.course
+    )
   end
 
   def edit(conn, %{"id" => slug}, _) do

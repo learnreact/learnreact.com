@@ -43,12 +43,13 @@ defmodule LearnReact.CourseController do
 
     purchase = Repo.get_by(Purchase, course_id: course.id, user_id: user_id)
 
-    case purchase do
-      nil ->
-        render(conn, "show_unpurchased.html", course: course)
-      _ ->
-        render(conn, "show_purchased.html", course: course, purchase: purchase)
-    end
+    # case purchase do
+    #   nil ->
+    #     render(conn, "show_unpurchased.html", course: course)
+    #   _ ->
+    #     render(conn, "show_purchased.html", course: course, purchase: purchase)
+    # end
+    render(conn, "show_logged_in.html", course: course, purchase: purchase)
   end
 
   def show(conn, %{"id" => slug}, _) do
