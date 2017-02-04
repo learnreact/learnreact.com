@@ -87,7 +87,7 @@
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
 
-    <% if Mix.env == :prod do %>
+    <%= if Mix.env == :prod do %>
       <%= render "_analytics.html" %>
     <% end %>
   </body>
