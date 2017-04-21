@@ -13,7 +13,7 @@ gem 'pg', '~> 0.18'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
-gem 'sass-rails', github: "rails/sass-rails"
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
+gem 'administrate', '~> 0.5.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
