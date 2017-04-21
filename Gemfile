@@ -37,6 +37,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
 gem 'administrate', '~> 0.5.0'
+gem 'bugsnag', '~> 5.3', '>= 5.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
