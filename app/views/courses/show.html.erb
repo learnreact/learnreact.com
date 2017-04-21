@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @course.title %>
-</p>
+<img
+  src="<%= @course.image_url %>"
+  alt="<%= @course.title %> image"
+  style="height: 128px; width: 128px"
+/>
 
-<p>
-  <strong>Description:</strong>
-  <%= @course.description %>
-</p>
+<h4><%= @course.title %></h4>
 
-<p>
-  <strong>Image url:</strong>
-  <%= @course.image_url %>
-</p>
+<p><%= @course.description %></p>
 
-<p>
-  <strong>Hidden:</strong>
-  <%= @course.hidden %>
-</p>
+<ul>
+  <% @course.lessons.each do |lesson| %>
+      <li>
+        <%= link_to lesson do %>
+          <%= lesson.title %>
+        <% end %>
+      </li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Slug:</strong>
-  <%= @course.slug %>
-</p>
-
-<%= link_to 'Edit', edit_course_path(@course) %> |
 <%= link_to 'Back', courses_path %>

@@ -1,6 +1,6 @@
 require "administrate/base_dashboard"
 
-class CourseDashboard < Administrate::BaseDashboard
+class LessonDashboard < Administrate::BaseDashboard
   # ATTRIBUTE_TYPES
   # a hash that describes the type of each of the model's fields.
   #
@@ -8,11 +8,13 @@ class CourseDashboard < Administrate::BaseDashboard
   # which determines how the attribute is displayed
   # on pages throughout the dashboard.
   ATTRIBUTE_TYPES = {
+    course: Field::BelongsTo,
     id: Field::Number,
     title: Field::String,
     description: Field::String,
-    image_url: Field::String,
-    hidden: Field::Boolean,
+    video_embed: Field::String,
+    transcript: Field::Text,
+    free: Field::Boolean,
     slug: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -24,20 +26,22 @@ class CourseDashboard < Administrate::BaseDashboard
   # By default, it's limited to four items to reduce clutter on index pages.
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = [
+    :course,
     :id,
     :title,
     :description,
-    :image_url,
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = [
+    :course,
     :id,
     :title,
     :description,
-    :image_url,
-    :hidden,
+    :video_embed,
+    :transcript,
+    :free,
     :slug,
     :created_at,
     :updated_at,
@@ -47,17 +51,19 @@ class CourseDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = [
+    :course,
     :title,
     :description,
-    :image_url,
-    :hidden,
+    :video_embed,
+    :transcript,
+    :free,
     :slug,
   ].freeze
 
-  # Overwrite this method to customize how courses are displayed
+  # Overwrite this method to customize how lessons are displayed
   # across all pages of the admin dashboard.
   #
-  def display_resource(course)
-    course.title
-  end
+  # def display_resource(lesson)
+  #   "Lesson ##{lesson.id}"
+  # end
 end

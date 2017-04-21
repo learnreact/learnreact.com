@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h4><%= @lesson.course.title %></h4>
+
+<h4><%= @lesson.title %></h4>
+
+<p><%= @lesson.description %></p>
+
+<div>
+  <%= @lesson.video_embed.html_safe %>
+</div>
+
+<%= @lesson.transcript %>
+
+<ul>
+  <% @lesson.course.lessons.each do |lesson| %>
+    <li>
+      <%= link_to lesson do %>
+        <%= lesson.title %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+
+<%= link_to 'Back', course_path(@lesson.course) %>
