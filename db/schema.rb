@@ -16,8 +16,10 @@ ActiveRecord::Schema.define(version: 20170421024054) do
   enable_extension "plpgsql"
 
   create_table "users", force: :cascade do |t|
-    t.integer "github"
+    t.string "provider"
+    t.integer "provider_id"
     t.string "name"
+    t.string "nickname"
     t.string "email"
     t.string "avatar_url"
     t.datetime "created_at", null: false

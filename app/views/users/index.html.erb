@@ -5,8 +5,10 @@
 <table>
   <thead>
     <tr>
-      <th>Github</th>
+      <th>Provider</th>
+      <th>Provider id</th>
       <th>Name</th>
+      <th>Nickname</th>
       <th>Email</th>
       <th>Avatar url</th>
       <th colspan="3"></th>
@@ -16,8 +18,10 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.github %></td>
+        <td><%= user.provider %></td>
+        <td><%= user.provider_id %></td>
         <td><%= user.name %></td>
+        <td><%= user.nickname %></td>
         <td><%= user.email %></td>
         <td><%= user.avatar_url %></td>
         <td><%= link_to 'Show', user %></td>

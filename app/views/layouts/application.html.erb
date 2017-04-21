@@ -9,6 +9,23 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+    <% end %>
+
     <%= yield %>
+
+    <% if user_signed_in? %>
+        <li><%= link_to 'Sign out', signout_path %></li>
+    <% else %>
+        <li><%= link_to 'Sign in', signin_path %></li>
+    <% end %>
+    <% if user_signed_in? %>
+        <li><%= link_to 'Users', users_path %></li>
+    <% end %>
   </body>
 </html>

@@ -12,13 +12,23 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :github %>
-    <%= form.number_field :github, id: :user_github %>
+    <%= form.label :provider %>
+    <%= form.text_field :provider, id: :user_provider %>
+  </div>
+
+  <div class="field">
+    <%= form.label :provider_id %>
+    <%= form.number_field :provider_id, id: :user_provider_id %>
   </div>
 
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, id: :user_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :nickname %>
+    <%= form.text_field :nickname, id: :user_nickname %>
   </div>
 
   <div class="field">
