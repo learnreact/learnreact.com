@@ -4,7 +4,7 @@
 
 <h4><%= @lesson.title %></h4>
 
-<p><%= @lesson.description %></p>
+<p><%= format_markdown(@lesson.description) %></p>
 
 <div>
   <%= @lesson.video_embed.html_safe %>

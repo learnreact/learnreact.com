@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :lessons
   end
 
+  resources :charges
   resources :courses, only: [:index, :show]
   resources :lessons, only: [:show]
 
