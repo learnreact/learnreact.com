@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  email: MyString
+  token: MyString
+  token_type: MyString
+  charge_id: MyString
+
+two:
+  email: MyString
+  token: MyString
+  token_type: MyString
+  charge_id: MyString
