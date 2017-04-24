@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resources :users
     resources :courses
     resources :lessons
+    resources :charges
+    resources :purchases
   end
 
   resources :charges

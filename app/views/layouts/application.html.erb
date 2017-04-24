@@ -26,7 +26,8 @@
     <% end %>
 
     <% if user_signed_in? %>
-      <li><%= link_to 'Users', admin_users_path %></li>
+      <div><%= current_user.id %></div>
+      <div><%= link_to 'Users', admin_users_path %></div>
     <% end %>
   </body>
 </html>

@@ -22,6 +22,8 @@ class ChargesController < ApplicationController
 
     charge.save
 
+    # TODO: make a purchase with User, Course, and Charge
+
   rescue Stripe::CardError => e
     Bugsnag.notify(e)
     flash[:error] = e.message
