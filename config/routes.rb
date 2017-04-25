@@ -3,15 +3,17 @@ Rails.application.routes.draw do
     resources :users
     resources :courses
     resources :lessons
-    resources :charges
     resources :purchases
   end
 
-  resources :charges
-  resources :courses, only: [:index, :show]
+  resources :courses, only: [:index, :show] do
+    scope module: "courses" do
+      resources :purchases, only: [:new, :create]
+    end
+  end
   resources :lessons, only: [:show]
 
-  root "pages#index"
+  root "courses#index"
 
   get '/auth/:provider/callback' => 'sessions#create'
   get '/signin' => 'sessions#new', :as => :signin

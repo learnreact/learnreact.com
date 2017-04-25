@@ -1,2 +1,0 @@
-class Charge < ApplicationRecord
-end

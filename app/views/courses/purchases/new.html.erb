@@ -1,4 +1,8 @@
-<%= form_tag charges_path do %>
+<p>
+    You are purchasing <%= @course.title %>
+</p>
+
+<%= form_tag course_purchases_path do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -13,7 +17,7 @@
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description="A month's subscription"
+    data-description="buy course"
     data-amount="700"
     data-locale="auto"
   ></script>

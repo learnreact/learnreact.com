@@ -20,7 +20,11 @@ module SessionsHelper
 
   def authenticate_user!
     if !current_user
-      redirect_to root_url, :alert => 'You need to sign in for access to this page.'
+      redirect_to session[:return_to] || root_url, :alert => 'You need to sign in for access to this page.'
     end
+  end
+
+  def set_session_return_to
+    session[:return_to] = request.url
   end
 end

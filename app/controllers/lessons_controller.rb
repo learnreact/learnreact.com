@@ -1,5 +1,9 @@
 class LessonsController < ApplicationController
+  include SessionsHelper
+
   before_action :set_lesson, only: [:show, :edit, :update, :destroy]
+
+  before_action :set_session_return_to
 
   # GET /lessons
   # GET /lessons.json

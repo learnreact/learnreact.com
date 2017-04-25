@@ -10,16 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170422002046) do
+ActiveRecord::Schema.define(version: 20170424033841) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "charges", force: :cascade do |t|
-    t.string "charge_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "courses", force: :cascade do |t|
     t.string "title"
@@ -47,10 +41,9 @@ ActiveRecord::Schema.define(version: 20170422002046) do
   create_table "purchases", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "course_id"
-    t.bigint "charge_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["charge_id"], name: "index_purchases_on_charge_id"
+    t.string "charge_token"
     t.index ["course_id"], name: "index_purchases_on_course_id"
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
@@ -67,7 +60,6 @@ ActiveRecord::Schema.define(version: 20170422002046) do
   end
 
   add_foreign_key "lessons", "courses"
-  add_foreign_key "purchases", "charges"
   add_foreign_key "purchases", "courses"
   add_foreign_key "purchases", "users"
 end

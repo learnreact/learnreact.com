@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>LearnReact</title>
-    <%= csrf_meta_tags %>
+      <title>LearnReact</title>
+      <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <link rel="stylesheet" href="https://unpkg.com/btn.css@0.3.0" />
+
+      <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
@@ -19,6 +21,7 @@
 
     <%= yield %>
 
+    <hr />
     <% if user_signed_in? %>
         <li><%= link_to 'Sign out', signout_path %></li>
     <% else %>
