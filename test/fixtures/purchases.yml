@@ -3,9 +3,9 @@
 one:
   user: one
   course: one
-  charge: one
+  charge_token: one
 
 two:
   user: two
   course: two
-  charge: two
+  charge_token: two

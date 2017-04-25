@@ -11,7 +11,6 @@ module Courses
     def create
       course = Course.find(params[:course_id])
 
-      # Amount in cents
       @amount = 700
 
       customer = Stripe::Customer.create(
@@ -35,9 +34,9 @@ module Courses
       purchase.save
 
     rescue Stripe::CardError => e
-        Bugsnag.notify(e)
-        flash[:error] = e.message
-        redirect_to new_course_purchases_path
+      Bugsnag.notify(e)
+      flash[:error] = e.message
+      redirect_to new_course_purchases_path
     end
   end
 end

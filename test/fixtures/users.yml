@@ -1,13 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  github: 1
+  provider: some_provider
+  provider_id: 1
   name: MyString
   email: MyString
   avatar_url: MyString
 
 two:
-  github: 1
+  provider: some_other_provider
+  provider_id: 2
   name: MyString
   email: MyString
   avatar_url: MyString

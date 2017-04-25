@@ -3,8 +3,14 @@
 <img
   src="<%= @course.image_url %>"
   alt="<%= @course.title %> image"
-  style="height: 128px; width: 128px"
+  class="s-8"
 />
+
+<% if user_signed_in? %>
+    <%= link_to 'Buy this Class', new_course_purchase_path(@course), class: "btn buy-btn" %>
+<% else %>
+    <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
+<% end %>
 
 <h4><%= @course.title %></h4>
 
@@ -19,11 +25,5 @@
       </li>
   <% end %>
 </ul>
-
-<% if user_signed_in? %>
-    <%= link_to 'Purchase this course', new_course_purchase_path(@course) %>
-<% else %>
-    <li><%= link_to 'Sign in to purchase this course', signin_path %></li>
-<% end %>
 
 <%= link_to 'Back', courses_path %>

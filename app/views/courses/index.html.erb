@@ -1,7 +1,5 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Courses</h1>
-
 <div>
   <% @courses.each do |course| %>
     <%= link_to course do %>
@@ -14,5 +12,3 @@
     <% end %>
   <% end %>
 </div>
-
-<%= session[:return_to] %>

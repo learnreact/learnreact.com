@@ -5,6 +5,7 @@
       <%= csrf_meta_tags %>
 
       <link rel="stylesheet" href="https://unpkg.com/btn.css@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/rem-point@1.0.0" />
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -19,18 +20,25 @@
       <div class="alert"><%= flash[:alert] %></div>
     <% end %>
 
-    <%= yield %>
+    <% if user_signed_in? %>
+        <%= link_to 'Sign out', signout_path, class: "btn" %>
+    <% else %>
+        <%= link_to 'Sign in', signin_path, class: "btn" %>
+    <% end %>
+
+    <% if user_signed_in? %>
+      <div>
+        <img
+          src="<%= @current_user.avatar_url %>"
+          alt="your github avatar"
+          class="s-4"
+        />
+        <div><%= @current_user.name %>
+      </div>
+    <% end %>
 
     <hr />
-    <% if user_signed_in? %>
-        <li><%= link_to 'Sign out', signout_path %></li>
-    <% else %>
-        <li><%= link_to 'Sign in', signin_path %></li>
-    <% end %>
 
-    <% if user_signed_in? %>
-      <div><%= current_user.id %></div>
-      <div><%= link_to 'Users', admin_users_path %></div>
-    <% end %>
+    <%= yield %>
   </body>
 </html>
