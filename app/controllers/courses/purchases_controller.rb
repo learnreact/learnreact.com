@@ -5,11 +5,11 @@ module Courses
     before_action :authenticate_user!
 
     def new
-      @course = Course.find(params[:course_id])
+      @course = Course.find_by(params[:slug])
     end
 
     def create
-      course = Course.find(params[:course_id])
+      course = Course.find_by(params[:slug])
 
       @amount = 700
 
