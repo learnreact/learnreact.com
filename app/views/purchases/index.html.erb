@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<table>
+  <% @purchases.each do |purchase| %>
+    <tr>
+      <td>
+          <%= link_to course_path(purchase.course) do %>
+<%= purchase.course.title %>
+              <% end %>
+      </td>
+      <td>
+        <%= purchase.created_at %>
+      </td>
+      <!-- TODO: show the price. -->
+    </tr>
+  <% end %>
+</table>

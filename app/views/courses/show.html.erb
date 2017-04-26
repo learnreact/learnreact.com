@@ -7,7 +7,11 @@
 />
 
 <% if user_signed_in? %>
+  <% if current_user.courses.include?(@course) %>
+    <%= link_to "Purchased", purchases_path %>
+  <% else %>
     <%= link_to 'Buy this Class', new_course_purchase_path(@course), class: "btn buy-btn" %>
+  <% end %>
 <% else %>
     <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
 <% end %>
@@ -18,11 +22,11 @@
 
 <ul>
   <% @course.lessons.each do |lesson| %>
-      <li>
-        <%= link_to lesson do %>
-          <%= lesson.title %>
-        <% end %>
-      </li>
+    <li>
+      <%= link_to lesson do %>
+        <%= lesson.title %>
+      <% end %>
+    </li>
   <% end %>
 </ul>
 

@@ -6,39 +6,52 @@
 
       <link rel="stylesheet" href="https://unpkg.com/btn.css@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/rem-point@1.0.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.font-weight@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.display@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.flex@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.align-items@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.text-align@0.3.0" />
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>
+    <div>
+      <div class="d-f ai-c">
+        <div class="f-1">
+          <h1 class="ta-c m-0" style="font-size: 1rem">Learn React</h1>
+        </div>
 
-    <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
-    <% end %>
-
-    <% if user_signed_in? %>
-        <%= link_to 'Sign out', signout_path, class: "btn" %>
-    <% else %>
-        <%= link_to 'Sign in', signin_path, class: "btn" %>
-    <% end %>
-
-    <% if user_signed_in? %>
-      <div>
-        <img
-          src="<%= @current_user.avatar_url %>"
-          alt="your github avatar"
-          class="s-4"
-        />
-        <div><%= @current_user.name %>
+        <div>
+          <% if user_signed_in? %>
+            <img
+              src="<%= @current_user.avatar_url %>"
+              alt="your github avatar"
+              class="s-3"
+            />
+          <% end %>
+        </div>
       </div>
-    <% end %>
 
-    <hr />
+      <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+      <% end %>
 
-    <%= yield %>
+      <% if flash[:alert] %>
+      <div class="alert"><%= flash[:alert] %></div>
+      <% end %>
+
+      <% if user_signed_in? %>
+          <%= link_to 'Sign out', signout_path, class: "btn" %>
+      <% else %>
+          <%= link_to 'Sign in', signin_path, class: "btn" %>
+      <% end %>
+
+
+      <hr />
+
+      <%= yield %>
+    </div>
   </body>
 </html>
