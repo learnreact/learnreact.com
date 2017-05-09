@@ -1,33 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<img
-  src="<%= @course.image_url %>"
-  alt="<%= @course.title %> image"
-  class="s-8"
-/>
-
-<% if user_signed_in? %>
-  <% if current_user.courses.include?(@course) %>
-    <%= link_to "Purchased", purchases_path %>
-  <% else %>
-    <%= link_to 'Buy this Class', new_course_purchase_path(@course.slug), class: "btn buy-btn" %>
+<div class="p-2">
+  <%= link_to courses_path do %>
+    <img src='https:icon.now.sh/chevron/left/11' alt='chevron icon' />
+    Back
   <% end %>
-<% else %>
-    <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
-<% end %>
 
-<h4><%= @course.title %></h4>
+  <div class="dt mw6 pv3 pv4-m pv5-ns">
+    <div class="dtc v-top">
+      <img
+        src="<%= @course.image_url %>"
+        alt="<%= @course.title %> image"
+        class="mw3 db"
+      />
+    </div>
+    <div class="dtc v-top pl3">
+      <h4 class="ma0 mb2"><%= @course.title %></h4>
+      <p class="lh-copy mv0"></p>
 
-<p><%= format_markdown(@course.description) %></p>
+      <div>
+        <% if user_signed_in? %>
+          <% if current_user.courses.include?(@course) %>
+            <%= link_to "Purchased", purchases_path %>
+          <% else %>
+            <%= link_to 'Buy this Class', new_course_purchase_path(@course.slug), class: "btn buy-btn" %>
+          <% end %>
+        <% else %>
+            <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 
-<ul>
-  <% @course.lessons.each do |lesson| %>
-    <li>
-      <%= link_to lesson do %>
-        <%= lesson.title %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+  <p><%= format_markdown(@course.description) %></p>
 
-<%= link_to 'Back', courses_path %>
+  <ul class="list pl0 measure center">
+    <% @course.lessons.each_with_index do |lesson, i| %>
+      <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
+        <%= link_to lesson, style: "text-decoration: none" do %>
+          <%= i %>
+          <%= lesson.title %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+</div>
