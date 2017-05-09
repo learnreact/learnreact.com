@@ -1,3 +1,4 @@
+<div style="display: none">
 <% if user_signed_in? %>
   <% if current_user.courses.include?(course) %>
      <%= link_to "Purchased", purchases_path %>
@@ -7,3 +8,4 @@
 <% else %>
     <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
 <% end %>
+</div>
