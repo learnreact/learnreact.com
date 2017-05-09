@@ -54,5 +54,8 @@
       <%= yield %>
     </div>
     <%= render "layouts/newsletter_form" %>
+    <% if Rails.env.production? %>
+      <%= render "layouts/analytics" %>
+    <% end %>
   </body>
 </html>
