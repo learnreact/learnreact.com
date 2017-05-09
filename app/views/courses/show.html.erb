@@ -19,15 +19,8 @@
       <p class="lh-copy mv0"></p>
 
       <div>
-        <% if user_signed_in? %>
-          <% if current_user.courses.include?(@course) %>
-            <%= link_to "Purchased", purchases_path %>
-          <% else %>
-            <%= link_to 'Buy this Class', new_course_purchase_path(@course.slug), class: "btn buy-btn" %>
-          <% end %>
-        <% else %>
-            <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
-        <% end %>
+        <%= render partial: "courses/purchase_button_or_info",
+                   locals:  { course: @course } %>
       </div>
     </div>
   </div>

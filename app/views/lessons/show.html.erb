@@ -1,14 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<% if user_signed_in? %>
-  <% if current_user.courses.include?(@lesson.course) %>
-     <%= link_to "Purchased", purchases_path %>
-  <% else %>
-    <%= link_to 'Buy this Class', new_course_purchase_path(@lesson.course), class: "btn buy-btn" %>
-  <% end %>
-<% else %>
-    <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn" %>
-<% end %>
+<%= render partial: "courses/purchase_button_or_info",
+           locals:  { course: @lesson.course } %>
 
 <h4><%= @lesson.course.title %></h4>
 
