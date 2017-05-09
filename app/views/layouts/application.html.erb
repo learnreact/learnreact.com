@@ -19,21 +19,30 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
+  <body class="black-80">
     <div>
-      <header class="d-f ai-c">
+      <header class="d-f ai-c bb b--black-10 pv3">
         <div class="f-1">
           <h1 class="ta-c m-0" style="font-size: 1rem">Learn React</h1>
         </div>
 
         <div>
           <% if user_signed_in? %>
-            <img
-              src="<%= @current_user.avatar_url %>"
-              alt="your github avatar"
-              class="s-3"
-            />
+            <div style="display: none">
+              <img
+                src="<%= @current_user.avatar_url %>"
+                class="s-3 br-100 ba dib" alt="avatar"
+              >
+            </div>
           <% end %>
+
+          <div style="display: none">
+            <% if user_signed_in? %>
+                <%= link_to 'Sign out', signout_path, class: "btn" %>
+            <% else %>
+                <%= link_to 'Sign in', signin_path, class: "btn" %>
+            <% end %>
+          </div>
         </div>
       </header>
 
@@ -45,21 +54,14 @@
         <div class="alert"><%= flash[:alert] %></div>
       <% end %>
 
-      <% if user_signed_in? %>
-          <%= link_to 'Sign out', signout_path, class: "btn" %>
-      <% else %>
-          <%= link_to 'Sign in', signin_path, class: "btn" %>
-      <% end %>
-
-      <hr />
-
       <%= yield %>
 
-      <footer>
+      <footer class="pv3">
         <%= render "layouts/newsletter_form" %>
-        <small class="c-gray5 td-i">
-          <em>© Copyright 2017, Michael Chan</em>
-        </small>
+
+        <div class="gray mt3 i">
+          <small>© Copyright 2017, Michael Chan</small>
+        </div>
       </footer>
     </div>
 
