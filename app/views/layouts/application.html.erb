@@ -13,12 +13,14 @@
       <link rel="stylesheet" href="https://unpkg.com/minions.text-align@0.3.0" />
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <div>
-      <div class="d-f ai-c">
+      <header class="d-f ai-c">
         <div class="f-1">
           <h1 class="ta-c m-0" style="font-size: 1rem">Learn React</h1>
         </div>
@@ -32,14 +34,14 @@
             />
           <% end %>
         </div>
-      </div>
+      </header>
 
       <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
+        <div class="notice"><%= flash[:notice] %></div>
       <% end %>
 
       <% if flash[:alert] %>
-      <div class="alert"><%= flash[:alert] %></div>
+        <div class="alert"><%= flash[:alert] %></div>
       <% end %>
 
       <% if user_signed_in? %>
@@ -51,14 +53,14 @@
       <hr />
 
       <%= yield %>
-    </div>
 
-    <footer>
-      <%= render "layouts/newsletter_form" %>
-      <small class="c-gray5 td-i">
-        <em>© Copyright 2017, Michael Chan</em>
-      </small>
-    </footer>
+      <footer>
+        <%= render "layouts/newsletter_form" %>
+        <small class="c-gray5 td-i">
+          <em>© Copyright 2017, Michael Chan</em>
+        </small>
+      </footer>
+    </div>
 
     <% if Rails.env.production? %>
       <%= render "layouts/analytics" %>

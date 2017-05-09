@@ -1,14 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<div>
-  <% @courses.each do |course| %>
-    <%= link_to course do %>
-      <img
-        src="<%= course.image_url %>"
-        alt="<%= course.title %> image"
-        style="height: 128px; width: 128px"
-      />
-      <h4><%= course.title %></h4>
+<article>
+  <div class="cf pa2">
+    <% @courses.each do |course| %>
+      <div class="fl w-50 w-25-m w-20-l pa2">
+        <%= link_to course, class: "db link dim black", title: "#{course.title} on learnreact.com" do %>
+          <img
+            class="w-100 db outline black-10"/
+            src="<%= course.image_url %>"
+            alt="<%= course.title %> Course Cover Image"
+            style="width: 100%"
+          />
+          <dl class="mt2 f6 lh-copy">
+            <dt class="clip">Title</dt>
+            <dd class="ml0 fw9"><%= course.title %></dd>
+            <dt class="clip">Description</dt>
+            <dd class="ml0 gray"><%= course.title %></dd>
+          </dl>
+        <% end %>
+      </div>
     <% end %>
-  <% end %>
-</div>
+  </div>
+</article>
