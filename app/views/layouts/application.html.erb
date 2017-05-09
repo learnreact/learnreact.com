@@ -48,12 +48,18 @@
           <%= link_to 'Sign in', signin_path, class: "btn" %>
       <% end %>
 
-
       <hr />
 
       <%= yield %>
     </div>
-    <%= render "layouts/newsletter_form" %>
+
+    <footer>
+      <%= render "layouts/newsletter_form" %>
+      <small class="c-gray5 td-i">
+        <em>© Copyright 2017, Michael Chan</em>
+      </small>
+    </footer>
+
     <% if Rails.env.production? %>
       <%= render "layouts/analytics" %>
     <% end %>
