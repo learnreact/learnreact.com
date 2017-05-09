@@ -1,28 +1,44 @@
-<p id="notice"><%= notice %></p>
+<% if notice.present? %>
+  <p id="notice"><%= notice %></p>
+<% end %>
 
-<%= render partial: "courses/purchase_button_or_info",
-           locals:  { course: @lesson.course } %>
+<div class="pa3">
+  <div>
+    <div>
+      <%= @lesson.video_embed.html_safe %>
+    </div>
 
-<h4><%= @lesson.course.title %></h4>
+    <div>
+      <ul>
+        <% @lesson.course.lessons.each do |lesson| %>
+          <li>
+            <% if @lesson == lesson %>
+              <div class="ba b--green">
+                <%= lesson.title %>
+              </div>
+            <% else %>
+              <div>
+                <%= link_to lesson do %>
+                  <%= lesson.title %>
+                <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 
-<h4><%= @lesson.title %></h4>
+  <%= render partial: "courses/purchase_button_or_info",
+             locals:  { course: @lesson.course } %>
 
-<p><%= format_markdown(@lesson.description) %></p>
+  <h4><%= @lesson.course.title %></h4>
 
-<div>
-  <%= @lesson.video_embed.html_safe %>
+  <h4><%= @lesson.title %></h4>
+
+  <p><%= format_markdown(@lesson.description) %></p>
+
+  <%= @lesson.transcript %>
+
+  <%= link_to 'Back', course_path(@lesson.course) %>
 </div>
-
-<%= @lesson.transcript %>
-
-<ul>
-  <% @lesson.course.lessons.each do |lesson| %>
-    <li>
-      <%= link_to lesson do %>
-        <%= lesson.title %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
-
-<%= link_to 'Back', course_path(@lesson.course) %>
