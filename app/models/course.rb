@@ -3,6 +3,10 @@ class Course < ApplicationRecord
 
   validates_presence_of :slug
 
+  def preview_length
+    4
+  end
+
   def to_param
     "#{slug}"
   end
