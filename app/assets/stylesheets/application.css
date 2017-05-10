@@ -41,3 +41,21 @@ html { box-sizing: border-box }
 .buy-btn:hover:focus {
   border-color: #a88734 #8c7e31 #846a29;
 }
+
+.dropdown {
+  position: relative;
+  cursor: pointer;
+}
+.dropdown-menu {
+  position: absolute;
+  visibility: hidden;
+  right: .5rem;
+}
+
+.symbol {
+  display: inline-block;
+  vertical-align: text-top;
+  fill: currentColor;
+  height: 1em;
+  width: 1em;
+}
