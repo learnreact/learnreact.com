@@ -4,7 +4,7 @@ class LessonsController < ApplicationController
   before_action :set_session_return_to
 
   def show
-    @lesson = Lesson.find_by(params[:slug])
+    @lesson = Lesson.find_by_slug(params[:id])
   end
 
   private
