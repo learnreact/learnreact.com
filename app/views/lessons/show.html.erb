@@ -8,17 +8,20 @@
       <%= @lesson.video_embed.html_safe %>
     </div>
 
+    <h4><%= @lesson.course.title %></h4>
+
     <div>
-      <ul>
+      <ul class="list pl0">
         <% @lesson.course.lessons.each do |lesson| %>
-          <li>
-            <% if @lesson == lesson %>
+          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
+            <% if @lesson.id == lesson.id %>
               <div class="ba b--green">
                 <%= lesson.title %>
+                <span class="fr">Now playing</span>
               </div>
             <% else %>
               <div>
-                <%= link_to lesson do %>
+                <%= link_to lesson, style: "text-decoration: none" do %>
                   <%= lesson.title %>
                 <% end %>
               </div>
@@ -31,14 +34,4 @@
 
   <%= render partial: "courses/purchase_button_or_info",
              locals:  { course: @lesson.course } %>
-
-  <h4><%= @lesson.course.title %></h4>
-
-  <h4><%= @lesson.title %></h4>
-
-  <p><%= format_markdown(@lesson.description) %></p>
-
-  <%= @lesson.transcript %>
-
-  <%= link_to 'Back', course_path(@lesson.course) %>
 </div>

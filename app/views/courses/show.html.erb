@@ -25,9 +25,7 @@
     </div>
   </div>
 
-  <p><%= format_markdown(@course.description) %></p>
-
-  <ul class="list pl0 measure center">
+  <ul class="list pl0">
     <% @course.lessons.each_with_index do |lesson, i| %>
       <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
         <%= link_to lesson, style: "text-decoration: none" do %>
