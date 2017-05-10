@@ -22,8 +22,10 @@
   <body class="black-80">
     <div>
       <header class="d-f ai-c bb b--black-10 pv3">
-        <div class="f-1">
-          <h1 class="ta-c m-0" style="font-size: 1rem">Learn React</h1>
+        <div class="f-1 mw8 center">
+          <h1 class="ta-c m-0" style="font-size: 1rem">
+            <%= link_to 'Learn React', root_path, class: "black-80", style: "text-decoration: none" %>
+          </h1>
         </div>
 
         <div>
@@ -56,7 +58,7 @@
 
       <%= yield %>
 
-      <footer class="pv3">
+      <footer class="pv3 mw8 center">
         <%= render "layouts/newsletter_form" %>
 
         <div class="gray mt3 i">

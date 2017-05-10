@@ -1,14 +1,18 @@
-<% if notice.present? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+<div class="pa3 mw8 center">
+  <% if notice.present? %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 
-<div class="pa3">
   <div>
     <div>
       <%= @lesson.video_embed.html_safe %>
     </div>
 
-    <h4><%= @lesson.course.title %></h4>
+    <h4>
+      <%= link_to course_path(@lesson.course), class: "black-80", style: "text-decoration: none" do %>
+        <%= @lesson.course.title %>
+      <% end %>
+    </h4>
 
     <div>
       <ul class="list pl0">
