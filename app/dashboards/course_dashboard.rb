@@ -17,6 +17,7 @@ class CourseDashboard < Administrate::BaseDashboard
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
     cover: Field::Text,
+    free: Field::Boolean,
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -43,6 +44,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :created_at,
     :updated_at,
     :cover,
+    :free,
   ].freeze
 
   # FORM_ATTRIBUTES
@@ -55,6 +57,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :hidden,
     :slug,
     :cover,
+    :free,
   ].freeze
 
   # Overwrite this method to customize how courses are displayed
