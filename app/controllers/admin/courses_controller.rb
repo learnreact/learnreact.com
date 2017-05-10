@@ -10,6 +10,7 @@ module Admin
     #     per(10)
     # end
 
+    # Define a custom finder by overriding the `find_resource` method:
     def find_resource(param)
       Course.find_by!(slug: param)
     end
