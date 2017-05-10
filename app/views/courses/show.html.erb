@@ -9,8 +9,6 @@
 <% end %>
 
 <div class="p-2 mw8 center">
-  <p id="notice"><%= notice %></p>
-
   <%= link_to courses_path do %>
     <img src='https://icon.now.sh/chevron/left/11' alt='chevron icon' />
     Courses
@@ -30,7 +28,7 @@
       ><%= @course.title %></h4>
       <p class="lh-copy mv0 measure-wide"><%= @course.description %></p>
 
-      <div>
+      <div class="pv4">
         <%= render partial: "courses/purchase_button_or_info",
                    locals:  { course: @course } %>
       </div>

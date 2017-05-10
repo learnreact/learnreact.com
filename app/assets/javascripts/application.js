@@ -21,6 +21,8 @@ document.addEventListener("turbolinks:load", function() {
   // KLUDGE
   var userDropdown = document.getElementById("userDropdown");
 
+  if (!userDropdown) return
+
   userDropdown.addEventListener("click", function (e) {
     var menu = e.target
       .closest("[data-dropdown]")

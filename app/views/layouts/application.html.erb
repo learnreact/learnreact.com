@@ -74,17 +74,19 @@
       </header>
 
       <% if flash[:notice] %>
-        <div class="notice"><%= flash[:notice] %></div>
+        <div class="white bg-blue pa3 pv2 mw8 center"><%= flash[:notice] %></div>
       <% end %>
 
       <% if flash[:alert] %>
-        <div class="alert"><%= flash[:alert] %></div>
+        <div class="white bg-red ph3 pv2 mw8 center"><%= flash[:alert] %></div>
       <% end %>
 
       <%= yield %>
 
       <footer class="pv3 mw8 center">
-        <%= render "layouts/newsletter_form" %>
+        <% if !user_signed_in? %>
+          <%= render "layouts/newsletter_form" %>
+        <% end %>
 
         <div class="gray mt3 i ph3">
           <small>© Copyright 2017, Michael Chan</small>

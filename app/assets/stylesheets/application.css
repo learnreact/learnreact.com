@@ -8,13 +8,16 @@ body {
 html { box-sizing: border-box }
 *, *:before, *:after { box-sizing: inherit }
 
+.btn {
+  border-radius: .125rem;
+}
+
 .buy-btn {
   background: #f0c14b;
   border-color: #a88734 #9c7e31 #846a29;
   color: #111;
-  border-radius: 3px;
+  border-radius: .125rem;
   background: #f3d078;
-  background: -webkit-linear-gradient(top,#f7dfa5,#f0c14b);
   background: linear-gradient(to bottom,#f7dfa5,#f0c14b);
   box-shadow: 0 1px 0 rgba(255,255,255,.4) inset;
 }
@@ -22,7 +25,6 @@ html { box-sizing: border-box }
 .buy-btn:hover {
   border-color: #a88734 #9c7e31 #846a29;
   background: #f1c860;
-  background: -webkit-linear-gradient(top,#f5d78e,#eeb933);
   background: linear-gradient(to bottom,#f5d78e,#eeb933);
 }
 
@@ -43,6 +45,7 @@ html { box-sizing: border-box }
 }
 
 .dropdown {
+  cursor: pointer;
   position: relative;
   cursor: pointer;
 }
