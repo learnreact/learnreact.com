@@ -23,54 +23,57 @@
 
   <body class="black-80">
     <div>
-      <header class="d-f ai-c bb b--black-10">
-        <div class="f-1 mw8 center">
-          <h1 class="ta-c m-0" style="font-size: 1rem">
-            <%= link_to 'Learn React', root_path, class: "black-80", style: "text-decoration: none" %>
-          </h1>
+      <header class="bb b--black-10">
+        <div class="mw8 d-f ai-c center">
+          <div class="f-1 center">
+            <h1 class="m-0 pl3" style="font-size: 1rem">
+              <%= link_to 'Learn React', root_path, class: "black-80", style: "text-decoration: none" %>
+            </h1>
+          </div>
+
+          <div>
+            <% if user_signed_in? %>
+              <div id="userDropdown" data-dropdown class="dropdown pa3">
+                <div>
+                  <img
+                    src="<%= @current_user.avatar_url %>"
+                    class="s-3 br-100 ba dib" alt="avatar"
+                  >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 16 16"
+                    class="symbol symbol-caret-down"
+                    style="vertical-align: .5rem; font-size: .5rem"
+                    aria-labelledby="title"
+                    role="img"
+                  >
+                    <title id="title">caret-down icon</title>
+                    <path
+                      class="cls-1"
+                      d="M15.865 4.049l-7.537 9.288a.422.422 0 0 1-.655 0L.135 4.049a.422.422 0 0 1 .328-.688h15.074a.422.422 0 0 1 .328.688z"
+                      data-name="Layer 1"
+                      role="presentation"
+                    />
+                  </svg>
+                </div>
+                <div
+                  data-dropdown-menu
+                  class="dropdown-menu ba b--black-40 bg-white"
+                >
+                  <ul class="list pa1 ma1">
+                    <li><%= link_to 'Purchases', purchases_path %></li>
+                    <li><%= link_to 'Sign out', signout_path, "data-no-turbolink": true %></li>
+                  </ul>
+                </div>
+              </div>
+            <% else %>
+              <div>
+                <%= link_to 'Sign in with Github', signin_path, class: "btn ma3", "data-no-turbolink": true %>
+              </div>
+            <% end %>
+          </div>
         </div>
 
-        <div>
-          <% if user_signed_in? %>
-            <div id="userDropdown" data-dropdown class="dropdown pa3">
-              <div>
-                <img
-                  src="<%= @current_user.avatar_url %>"
-                  class="s-3 br-100 ba dib" alt="avatar"
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 16 16"
-                  class="symbol symbol-caret-down"
-                  style="vertical-align: .5rem; font-size: .5rem"
-                  aria-labelledby="title"
-                  role="img"
-                >
-                  <title id="title">caret-down icon</title>
-                  <path
-                    class="cls-1"
-                    d="M15.865 4.049l-7.537 9.288a.422.422 0 0 1-.655 0L.135 4.049a.422.422 0 0 1 .328-.688h15.074a.422.422 0 0 1 .328.688z"
-                    data-name="Layer 1"
-                    role="presentation"
-                  />
-                </svg>
-              </div>
-              <div
-                data-dropdown-menu
-                class="dropdown-menu ba b--black-40 bg-white"
-              >
-                <ul class="list pa1 ma1">
-                  <li><%= link_to 'Purchases', purchases_path %></li>
-                  <li><%= link_to 'Sign out', signout_path, "data-no-turbolink": true %></li>
-                </ul>
-              </div>
-            </div>
-          <% else %>
-            <div>
-              <%= link_to 'Sign in with Github', signin_path, class: "btn ma3", "data-no-turbolink": true %>
-            </div>
-          <% end %>
-        </div>
       </header>
 
       <% if flash[:notice] %>

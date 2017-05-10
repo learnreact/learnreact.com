@@ -45,14 +45,15 @@ html { box-sizing: border-box }
 }
 
 .dropdown {
-  cursor: pointer;
   position: relative;
   cursor: pointer;
 }
+
 .dropdown-menu {
   position: absolute;
   visibility: hidden;
   right: .5rem;
+  z-index: 900;
 }
 
 .symbol {

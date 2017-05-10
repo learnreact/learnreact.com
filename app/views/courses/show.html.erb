@@ -8,13 +8,8 @@
   -->
 <% end %>
 
-<div class="p-2 mw8 center">
-  <%= link_to courses_path do %>
-    <img src='https://icon.now.sh/chevron/left/11' alt='chevron icon' />
-    Courses
-  <% end %>
-
-  <div class="dt pv3 pv4-m pv5-ns">
+<main class="p-2 mw8 center">
+  <div class="dt">
     <div class="dtc v-top">
       <div class="mw4 db outline black-10">
         <%= embedded_svg(@course.cover, size: "100%") %>
@@ -45,4 +40,4 @@
       </li>
     <% end %>
   </ul>
-</div>
+</main>

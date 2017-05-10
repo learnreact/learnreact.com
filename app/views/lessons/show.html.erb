@@ -1,4 +1,4 @@
-<div class="pa3 mw8 center">
+<main class="pa3 mw8 center">
   <div>
     <div class="ba b--black-10">
       <%= @lesson.video_embed.html_safe %>
@@ -34,4 +34,4 @@
 
   <%= render partial: "courses/purchase_button_or_info",
              locals:  { course: @lesson.course } %>
-</div>
+</main>
