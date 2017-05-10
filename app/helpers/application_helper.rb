@@ -13,4 +13,15 @@ module ApplicationHelper
       ""
     end
   end
+
+  def embedded_svg(svg, options = {})
+    doc = Nokogiri::HTML::DocumentFragment.parse(svg)
+    output_svg = doc.at_css("svg")
+    output_svg["style"] = "display: block"
+    if options[:size].present?
+      output_svg["width"] = options[:size]
+      output_svg["height"] = options[:size]
+    end
+    raw doc
+  end
 end
