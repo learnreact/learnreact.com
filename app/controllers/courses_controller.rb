@@ -8,7 +8,7 @@ class CoursesController < ApplicationController
   end
 
   def show
-    @course = Course.find_by_slug(params[:id])
+    @course = Course.find_by(slug: params[:id])
   end
 
   private
