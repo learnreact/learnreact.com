@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
   <head>
       <title>LearnReact</title>
       <%= csrf_meta_tags %>
@@ -12,6 +12,8 @@
       <link rel="stylesheet" href="https://unpkg.com/minions.align-items@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.text-align@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+
+      <%= yield :opg %>
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 

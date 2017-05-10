@@ -1,3 +1,13 @@
+<% provide :opg do %>
+  <meta property="og:title" content="<%= @course.title %> on learnreact.com" />
+  <meta property="og:type" content="video.other" />
+  <meta property="og:description" content="<% @course.description %>" />
+  <meta property="og:url" content="<%= course_url(@course) %>" />
+  <!-- TODO
+  <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
+  -->
+<% end %>
+
 <div class="p-2 mw8 center">
   <p id="notice"><%= notice %></p>
 
@@ -13,7 +23,11 @@
       </div>
     </div>
     <div class="dtc v-top pl3">
-      <h4 class="ma0 mb2"><%= @course.title %></h4>
+      <h4
+        class="ma0 mb2"
+        property="og:title"
+        content="<%= @course.title%>"
+      ><%= @course.title %></h4>
       <p class="lh-copy mv0 measure-wide"><%= @course.description %></p>
 
       <div>
