@@ -86,13 +86,20 @@
 
       <%= yield %>
 
-      <footer class="pv3 mw8 center">
-        <% if !user_signed_in? %>
-          <%= render "layouts/newsletter_form" %>
-        <% end %>
+      <footer class="bt b--black-10">
+        <div class="pv3 mw8 center">
+          <% if !user_signed_in? %>
+            <%= render "layouts/newsletter_form" %>
+          <% end %>
 
-        <div class="gray mt3 i ph3">
-          <small>© Copyright 2017, Michael Chan</small>
+          <div class="gray mt3 ph3">
+            <div class="mt3 i">
+              <small>© Copyright 2017, Michael Chan</small>
+            </div>
+            <div>
+              <small><a href="/terms" class="gray no-underline" target="_blank" rel="noopener">Terms and Conditions of Use</a></small>
+            </div>
+          </div>
         </div>
       </footer>
     </div>
