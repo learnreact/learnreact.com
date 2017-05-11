@@ -22,7 +22,7 @@
     </div>
 
     <div class="ml3 pa3 ba b--black-30">
-      <%= form_tag course_purchases_path do %>
+      <%= form_tag course_purchases_path, class: "tc" do %>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
           data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
