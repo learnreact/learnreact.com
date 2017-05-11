@@ -1,7 +1,7 @@
 <% provide :opg do %>
   <meta property="og:title" content="<%= @course.title %> on learnreact.com" />
   <meta property="og:type" content="video.other" />
-  <meta property="og:description" content="<% @course.description %>" />
+  <meta property="og:description" content="<%= @course.description %>" />
   <meta property="og:url" content="<%= course_url(@course) %>" />
   <!-- TODO
   <meta property="og:image" content="http://ia.media-imdb.com/images/rock.jpg" />
