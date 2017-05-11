@@ -1,7 +1,42 @@
 <main class="pa3 mw8 center">
   <div>
     <div class="ba b--black-10">
-      <%= @lesson.video_embed.html_safe %>
+      <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@lesson.course) %>
+        <%= @lesson.video_embed.html_safe %>
+      <% else %>
+        <div style="position: relative">
+          <img
+            style="display:block"
+            src="http://images.learnreact.com.s3.amazonaws.com/course-unavailable.jpg"
+            alt="<%= @lesson.title %> is available with the purchase of the <%= @lesson.course %> course."
+          />
+          <div style="position: absolute; top: 0; justify-content: center; left: 0; color: white; flex-direction: column; width: 100%; height: 100%; display: flex;">
+            <h2 style="margin: 0 auto; font-weight: bold;">
+              This Lesson is for course owners.
+            </h2>
+
+            <br />
+
+            <p style="margin: 0 auto; color: #ccc">
+              Purchase this course to get lifetime access to all <%= @lesson.course.lessons.count %> lessons.
+            </p>
+
+            <br />
+
+            <div class="center" style="font-size: 1.5rem">
+              <%= render partial: "courses/purchase_button_or_info",
+                         locals:  { course: @lesson.course } %>
+            </div>
+
+
+            <% if !user_signed_in? %>
+              <p style="margin: 1rem auto; color: #ccc">
+                Already own it? <%= link_to 'Sign in', signin_path %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
     <h4>
@@ -12,7 +47,7 @@
 
     <!-- DUP: courses/show -->
     <ul class="list pl0">
-      <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@course) %>
+      <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@lesson.course) %>
         <% @lesson.course.lessons.each_with_index do |lesson, i| %>
           <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
             <%= link_to lesson, style: "text-decoration: none" do %>
