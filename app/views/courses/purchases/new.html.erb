@@ -1,24 +1,47 @@
-<p>
-    You are purchasing <%= @course.title %>
-</p>
+<main class="mw8 pa3 center">
+  <h3>Review your order</h3>
 
-<%= form_tag course_purchases_path do %>
-  <article>
-    <% if flash[:error].present? %>
-      <div id="error_explanation">
-        <p><%= flash[:error] %></p>
+  <div class="d-f">
+    <div class="f-1 ba b--black-30 pa3">
+      <div class="d-f ai-fs">
+        <div class="ba b--black-30 fl">
+          <%= embedded_svg(@course.cover, size: "6rem") %>
+        </div>
+
+        <div class="f-1 ml3">
+          <dl class="ma0">
+            <dt>Course</dt>
+            <dd><strong><%= @course.title %></strong></dd>
+            <dt>Access</dt>
+            <dd><strong>Lifetime</strong></dd>
+            <dt>Ower</dt>
+            <dd><strong><%= current_user.name %></strong></dd>
+          </dl>
+        </div>
       </div>
-    <% end %>
-    <label class="amount">
-      <span>Amount: $7.00</span>
-    </label>
-  </article>
+    </div>
 
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description="buy course"
-    data-amount="700"
-    data-locale="auto"
-  ></script>
-<% end %>
+    <div class="ml3 pa3 ba b--black-30">
+      <%= form_tag course_purchases_path do %>
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+          data-description="buy course"
+          data-amount="700"
+          data-locale="auto"
+        ></script>
+
+        <article class="mt3">
+          <% if flash[:error].present? %>
+            <div id="error_explanation">
+              <p><%= flash[:error] %></p>
+            </div>
+          <% end %>
+          <label class="amount">
+            <span style="font-weight: bold; color: #b12704">Order Total: $7.00</span>
+          </label>
+        </article>
+      <% end %>
+    </div>
+  </div>
+</main>

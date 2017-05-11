@@ -63,3 +63,7 @@ html { box-sizing: border-box }
   height: 1em;
   width: 1em;
 }
+
+dt::after {
+  content: ": ";
+}

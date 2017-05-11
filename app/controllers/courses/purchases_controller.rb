@@ -33,6 +33,8 @@ module Courses
 
       purchase.save
 
+      redirect_to purchases_path, :notice => 'Thanks for your purchase!'
+
     rescue Stripe::CardError => e
       Bugsnag.notify(e)
       flash[:error] = e.message

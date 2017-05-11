@@ -1,28 +1,30 @@
-<p id="notice"><%= notice %></p>
-
-<div class="center mw8 pa3">
+<main class="center mw8 pa3">
   <h2>Your purchases</h2>
-  <table class="w-100">
-    <% @purchases.each do |purchase| %>
-      <tr>
-        <td>
-          <div>
-            <%= embedded_svg(purchase.course.cover, size: "32px") %>
-          </div>
-        </td>
+  <% if @purchases.length > 0 %>
+    <table class="w-100">
+      <% @purchases.each do |purchase| %>
+        <tr>
+          <td>
+            <div>
+              <%= embedded_svg(purchase.course.cover, size: "32px") %>
+            </div>
+          </td>
 
-        <td>
-          <%= link_to course_path(purchase.course) do %>
-            <%= purchase.course.title %>
-          <% end %>
-        </td>
+          <td>
+            <%= link_to course_path(purchase.course) do %>
+              <%= purchase.course.title %>
+            <% end %>
+          </td>
 
-        <td>
-          <%= purchase.created_at.strftime("%F") %>
-        </td>
+          <td>
+            <%= purchase.created_at.strftime("%F") %>
+          </td>
 
-        <!-- TODO: show the price. -->
-      </tr>
-    <% end %>
-  </table>
-</div>
+          <!-- TODO: show the price. -->
+        </tr>
+      <% end %>
+    </table>
+  <% else %>
+    <p>You have not purchased any courses.</p>
+  <% end %>
+</main>
