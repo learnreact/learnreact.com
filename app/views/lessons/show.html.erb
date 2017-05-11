@@ -41,6 +41,8 @@
     </ul>
   </div>
 
-  <%= render partial: "courses/purchase_button_or_info",
-             locals:  { course: @lesson.course } %>
+  <% if !@lesson.course.free %>
+    <%= render partial: "courses/purchase_button_or_info",
+               locals:  { course: @lesson.course } %>
+  <% end %>
 </main>
