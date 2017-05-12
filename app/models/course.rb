@@ -8,7 +8,7 @@ class Course < ApplicationRecord
   end
 
   def price
-    700
+    400
   end
 
   def to_param
