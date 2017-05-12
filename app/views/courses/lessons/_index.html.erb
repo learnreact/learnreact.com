@@ -1,0 +1,28 @@
+<ul class="list pl0">
+  <% if course.free || user_signed_in? && current_user.courses.include?(course) %>
+    <% course.lessons.each_with_index do |lesson, i| %>
+      <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
+        <%= link_to lesson, style: "text-decoration: none" do %>
+          <%= i + 1 %>
+          <%= lesson.title %>
+        <% end %>
+      </li>
+    <% end %>
+  <% else %>
+    <% course.lessons.each_with_index do |lesson, i| %>
+      <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
+        <% if i <= course.preview_length %>
+          <%= link_to lesson, style: "text-decoration: none" do %>
+            <%= i + 1 %>
+            <%= lesson.title %>
+          <% end %>
+        <% else %>
+          <span>
+            <%= i %>
+            <%= lesson.title %>
+          </span>
+        <% end %>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

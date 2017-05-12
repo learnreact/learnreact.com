@@ -45,35 +45,8 @@
       <% end %>
     </h4>
 
-    <!-- DUP: courses/show -->
-    <ul class="list pl0">
-      <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@lesson.course) %>
-        <% @lesson.course.lessons.each_with_index do |lesson, i| %>
-          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
-            <%= link_to lesson, style: "text-decoration: none" do %>
-              <%= i %>
-              <%= lesson.title %>
-            <% end %>
-          </li>
-        <% end %>
-      <% else %>
-        <% @lesson.course.lessons.each_with_index do |lesson, i| %>
-          <li class="lh-copy pv2 ba bl-0 bt-0 br-0 b--dotted b--black-30">
-            <% if i <= @lesson.course.preview_length %>
-              <%= link_to lesson, style: "text-decoration: none" do %>
-                <%= i %>
-                <%= lesson.title %>
-              <% end %>
-            <% else %>
-              <span>
-                <%= i %>
-                <%= lesson.title %>
-              </span>
-            <% end %>
-          </li>
-        <% end %>
-      <% end %>
-    </ul>
+    <%= render partial: "courses/lessons/index",
+               locals:  { course: @lesson.course } %>
   </div>
 
   <% if !@lesson.course.free %>
