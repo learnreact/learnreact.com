@@ -11,7 +11,7 @@ module Courses
     def create
       course = Course.find_by(params[:slug])
 
-      @amount = 700
+      @amount = Course.new.price
 
       customer = Stripe::Customer.create(
         :email => params[:stripeEmail],

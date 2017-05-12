@@ -7,6 +7,10 @@ class Course < ApplicationRecord
     4
   end
 
+  def price
+    700
+  end
+
   def to_param
     "#{slug}"
   end
