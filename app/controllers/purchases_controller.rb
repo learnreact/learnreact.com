@@ -1,5 +1,11 @@
 class PurchasesController < ApplicationController
+  include SessionsHelper
+
   def index
-    @purchases = Purchase.includes([:user, :course]).all
+    if user_signed_in?
+      @purchases = Purchase.where(user: current_user)
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 end

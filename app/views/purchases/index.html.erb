@@ -1,6 +1,6 @@
 <main class="center mw8 pa3">
   <h2>Your purchases</h2>
-  <% if @purchases.length > 0 %>
+  <% if @purchases.count > 0 %>
     <table class="w-100">
       <% @purchases.each do |purchase| %>
         <tr>
