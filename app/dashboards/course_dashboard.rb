@@ -2,16 +2,16 @@ require "administrate/base_dashboard"
 
 class CourseDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
-    lessons: Field::HasMany,
     id: Field::Number,
     title: Field::String,
-    description: Field::String,
+    description: Field::Text,
     hidden: Field::Boolean,
     slug: Field::String,
-    created_at: Field::DateTime,
-    updated_at: Field::DateTime,
     cover: Field::Text,
     free: Field::Boolean,
+    lessons: Field::HasMany,
+    created_at: Field::DateTime,
+    updated_at: Field::DateTime,
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
