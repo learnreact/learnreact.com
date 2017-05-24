@@ -1,9 +1,5 @@
-<% if user_signed_in? %>
-  <% if current_user.courses.include?(course) %>
-     <%= link_to "Purchased", purchases_path %>
-  <% else %>
-    <%= link_to 'Buy this course', new_course_purchase_path(course), class: "btn buy-btn" %>
-  <% end %>
+<% if user_signed_in? && current_user.courses.include?(course) %>
+   <%= link_to "Purchased", purchases_path %>
 <% else %>
-  <%= link_to 'Sign in to purchase this course', signin_path, class: "btn buy-btn", "data-no-turbolink": true %>
+  <%= link_to 'Buy this course', new_course_purchase_path(course), class: "btn buy-btn" %>
 <% end %>

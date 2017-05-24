@@ -2,13 +2,15 @@ module Courses
   class PurchasesController < ApplicationController
     include SessionsHelper
 
-    before_action :authenticate_user!
+    before_action :set_session_return_to
 
     def new
       @course = Course.find_by(params[:slug])
     end
 
     def create
+      authenticate_user!
+
       course = Course.find_by(params[:slug])
 
       @amount = Course.new.price

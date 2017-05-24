@@ -9,7 +9,23 @@ html { box-sizing: border-box }
 *, *:before, *:after { box-sizing: inherit }
 
 .btn {
-  border-radius: .125rem;
+  border-radius: .25rem;
+}
+
+.action-btn {
+  background-color: blue;
+  border-color: blue;
+  color: white;
+}
+.action-btn:hover {
+  background-color: darkblue;
+  border-color: darkblue;
+  color: white;
+}
+.action-btn:active {
+  background-color: black;
+  border-color: black;
+  color: white;
 }
 
 .buy-btn {
