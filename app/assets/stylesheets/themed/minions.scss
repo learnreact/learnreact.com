@@ -1,0 +1,18 @@
+$colors: (
+  green: #61bb46,
+  yellow: #fdb827,
+  orange: #f5821f,
+  red: #e03a3e,
+  purple: #963d97,
+  blue: #009ddc,
+);
+
+[class^=bc-] {
+  border-style: solid;
+}
+
+@each $color, $hex in $colors {
+  .c-#{$color} { color: $hex }
+  .bc-#{$color} { border-color: $hex }
+  .gc-#{$color} { background-color: $hex }
+}

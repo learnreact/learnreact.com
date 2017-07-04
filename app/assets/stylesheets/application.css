@@ -1,5 +1,13 @@
-/*= require ./platform */
-/*= require ./adapters */
-/*= require ./minions */
-/*= require ./btns */
-/*= require ./libs */
+/*= require ./body */
+/*= require ./border-box */
+
+/*= require ./themed/minions */
+
+/*= require ./btn */
+/*= require ./action-btn */
+/*= require ./buy-btn */
+
+/*= require ./dropdown */
+/*= require ./dropdown-menu */
+
+/*= require ./symbol */
