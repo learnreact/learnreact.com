@@ -62,13 +62,13 @@
                 >
                   <ul class="list pa1 ma1">
                     <li><%= link_to 'Purchases', purchases_path %></li>
-                    <li><%= link_to 'Sign out', signout_path, "data-no-turbolink": true %></li>
+                    <li><%= link_to 'Sign out', signout_path, "data-turbolinks": false %></li>
                   </ul>
                 </div>
               </div>
             <% else %>
               <div>
-                <%= link_to 'Sign in with Github', signin_path, class: "btn ma3", "data-no-turbolink": true %>
+                <%= link_to 'Sign in with Github', signin_path, class: "btn ma3", "data-turbolinks": false %>
               </div>
             <% end %>
           </div>
