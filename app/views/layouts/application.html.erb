@@ -4,13 +4,29 @@
       <title>LearnReact</title>
       <%= csrf_meta_tags %>
 
+      <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" />
       <link rel="stylesheet" href="https://unpkg.com/btn.css@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/cf.css@0.0.1" />
       <link rel="stylesheet" href="https://unpkg.com/rem-point@1.0.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.border-width@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.border-top-width@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.border-bottom-width@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.outline-width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.font-weight@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.display@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.flex@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.flex-direction@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.flex-grow@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.flex-shrink@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.flex-basis@0.3.1" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.float@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.font-weight@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.align-items@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.text-align@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.font-style@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--mn.css" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--md.css" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--lg.css" />
       <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
 
       <%= yield :opg %>
@@ -21,12 +37,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="black-80">
+  <body class="c-black tracking">
     <div>
-      <header class="bb b--black-10">
-        <div class="mw8 d-f ai-c center">
+      <header class="bw-0 bbw-1p bc-white1">
+        <div class="d-f ai-c" style="margin: 0 auto; max-width: 64em">
           <div class="f-1 center">
-            <h1 class="m-0 pl3" style="font-size: 1rem">
+            <h1 class="m-0 p-2" style="font-size: 1rem">
               <%= link_to 'Learn React', root_path, class: "black-80", style: "text-decoration: none" %>
             </h1>
           </div>
@@ -81,19 +97,19 @@
       <% end %>
 
       <% if flash[:alert] %>
-        <div class="white bg-red ph3 pv2 mw8 center"><%= flash[:alert] %></div>
+        <div class="c-white gc-red px-2 py-1" style="margin: 0 auto; max-width: 64em"><%= flash[:alert] %></div>
       <% end %>
 
       <%= yield %>
 
-      <footer class="bt b--black-10">
-        <div class="pv3 mw8 center">
+      <footer class="bw-0 btw-1p bc-white1">
+        <div class="py-2" style="margin: 0 auto; max-width: 64em">
           <% if !user_signed_in? %>
             <%= render "layouts/newsletter_form" %>
           <% end %>
 
-          <div class="gray mt3 ph3">
-            <div class="mt3 i">
+          <div class="c-black7 mt-2 px-2">
+            <div class="mt-2 fs-i">
               <small>© Copyright 2017, Michael Chan</small>
             </div>
             <div>

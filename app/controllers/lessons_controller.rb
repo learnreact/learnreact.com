@@ -7,6 +7,10 @@ class LessonsController < ApplicationController
     @lesson = Lesson.find_by(slug: params[:id])
   end
 
+  def index
+    @lessons = Lesson.all()
+  end
+
   private
     def lesson_params
       params.require(:lesson).permit(:course_id, :title, :description, :video_embed, :transcript, :free, :slug)

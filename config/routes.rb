@@ -11,7 +11,7 @@ Rails.application.routes.draw do
       resources :purchases, only: [:new, :create]
     end
   end
-  resources :lessons, only: [:show]
+  resources :lessons, only: [:index, :show]
   resources :purchases, only: [:index]
 
   root "courses#index"
