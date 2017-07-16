@@ -1,23 +1,23 @@
-<main class="mw8 pa3 center">
+<main class="xw-64r p-2 m-0a">
   <h3>Review your order</h3>
 
   <div class="d-f">
-    <div class="f-1 ba b--black-30 pa3">
-      <div class="d-f ai-fs">
-        <div class="ba b--black-30 fl">
-          <%= embedded_svg(@course.cover, size: "6rem") %>
-        </div>
-
-        <div class="f-1 ml2">
-          <dd><strong><%= @course.title %></strong></dd>
-          <dd><strong>Lifetime</strong></dd>
-        </div>
-      </div>
+    <div class="f-1 bw-1p p-2">
+      <strong><%= @course.title %></strong>
+      <p>
+        <%= @course.description %>
+      </p>
+      <dl>
+        <dt><strong>Lessons:</strong></dt>
+        <dd><%= @course.lessons.count %></dd>
+        <dt><strong>Length:</strong></dt>
+        <dd>15 min.</dd>
+      </dl>
     </div>
 
-    <div class="ml3 pa3 ba b--black-30">
+    <div class="bw-1p ml-2 p-3">
       <% if current_user %>
-        <%= form_tag course_purchases_path, class: "tc" do %>
+        <%= form_tag course_purchases_path, class: "ta-c" do %>
           <script
             src="https://checkout.stripe.com/checkout.js" class="stripe-button"
             data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -26,13 +26,13 @@
             data-locale="auto"
           ></script>
 
-          <article class="mt3">
+          <article class="mt-2">
             <% if flash[:error].present? %>
               <div id="error_explanation">
                 <p><%= flash[:error] %></p>
               </div>
             <% end %>
-            <p class="tc">
+            <p class="ta-c">
               <small>
                 By buying this course, you agree to<br />learnreact.com's <a href="/terms" target="_blank" rel="noopener">Terms and Conditions of Use</a>.
               </small>
@@ -45,8 +45,8 @@
         <% end %>
       <% else %>
         <article>
-          <div class="tc">
-            <%= link_to 'Sign in to buy', signin_path, class: "btn action-btn", "data-no-turbolink": true %>
+          <div class="ta-c">
+            <%= link_to 'Log in to buy...', signin_path, class: "btn buy-btn", "data-turbolinks": false %>
           </div>
 
           <% if flash[:error].present? %>
@@ -54,7 +54,7 @@
               <p><%= flash[:error] %></p>
             </div>
           <% end %>
-          <p class="tc">
+          <p class="ta-c">
             <small>
               By buying this course, you agree to<br />learnreact.com's <a href="/terms" target="_blank" rel="noopener">Terms and Conditions of Use</a>.
             </small>

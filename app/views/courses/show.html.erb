@@ -6,30 +6,20 @@
   <meta property="og:image" content="http://images.learnreact.com.s3.amazonaws.com/og-image.png" />
 <% end %>
 
-<main class="p-2 mw8 center">
-  <div class="dt">
-    <div class="dtc v-top">
-      <div class="mw4 db outline black-10">
-        <%= embedded_svg(@course.cover, size: "100%") %>
-      </div>
-    </div>
-    <div class="dtc v-top pl3">
+<main class="p-2 xw-64r m-0a">
+  <div>
+    <div>
       <h4
-        class="ma0 mb2"
+        class="m-0"
         property="og:title"
         content="<%= @course.title%>"
       ><%= @course.title %></h4>
-      <p class="lh-copy mv0 measure-wide"><%= @course.description %></p>
-
-      <div class="pv4">
-        <% if !@course.free %>
-          <%= render partial: "courses/purchase_button_or_info",
-                     locals:  { course: @course } %>
-        <% end %>
-      </div>
     </div>
   </div>
-
-  <%= render partial: "courses/lessons/index",
-             locals:  { course: @course } %>
 </main>
+
+<div class="xw-64r m-0a">
+  <div class="cf p-1">
+    <%= render partial: "lessons/lesson", collection: @course.lessons %>
+  </div>
+</div>

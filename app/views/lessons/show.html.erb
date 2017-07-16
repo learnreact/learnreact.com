@@ -1,36 +1,42 @@
-<main class="pa3 mw8 center">
+<main class="p-2 xw-64r m-0a">
   <div>
-    <div class="ba b--black-10">
+    <h4 class="m-0 mb-1 fw-n">
+      <%= link_to course_path(@lesson.course), class: "c-black td-n td-u:h" do %>
+        <%= @lesson.course.title %>:
+      <% end %>
+    </h4>
+
+    <h4 class="mt-0">
+      <%= @lesson.title %>
+    </h4>
+
+
+    <div class="ow-1p">
       <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@lesson.course) %>
         <%= @lesson.video_embed.html_safe %>
       <% else %>
-        <div style="position: relative">
-          <img
-            style="display:block"
-            src="http://images.learnreact.com.s3.amazonaws.com/course-unavailable.jpg"
-            alt="<%= @lesson.title %> is available with the purchase of the <%= @lesson.course %> course."
-          />
-          <div style="position: absolute; top: 0; justify-content: center; left: 0; color: white; flex-direction: column; width: 100%; height: 100%; display: flex;">
-            <h2 style="margin: 0 auto; font-weight: bold;">
-              This Lesson is for course owners.
+        <div>
+          <div class="d-f fd-c ai-c t-0 jc-c l-0 df-c p-4" style="height: 100%">
+            <h2 class="font-size-1 m-0a fw-b">
+              This Lesson has to be bought
             </h2>
 
             <br />
 
-            <p style="margin: 0 auto; color: #ccc">
-              Purchase this course to get lifetime access to all <%= @lesson.course.lessons.count %> lessons.
+            <p class="m-0a">
+              Buy the course and get all <%= @lesson.course.lessons.count %> lessons.
             </p>
 
             <br />
 
-            <div class="center" style="font-size: 1.5rem">
+            <div class="m-0a p-2">
               <%= render partial: "courses/purchase_button_or_info",
                          locals:  { course: @lesson.course } %>
             </div>
 
 
             <% if !user_signed_in? %>
-              <p style="margin: 1rem auto; color: #ccc">
+              <p>
                 Already own it? <%= link_to 'Sign in', signin_path %>
               </p>
             <% end %>
@@ -38,19 +44,17 @@
         </div>
       <% end %>
     </div>
-
-    <h4>
-      <%= link_to course_path(@lesson.course), class: "black-80", style: "text-decoration: none" do %>
-        <%= @lesson.course.title %>
-      <% end %>
-    </h4>
-
-    <%= render partial: "courses/lessons/index",
-               locals:  { course: @lesson.course } %>
   </div>
-
-  <% if !@lesson.course.free %>
-    <%= render partial: "courses/purchase_button_or_info",
-               locals:  { course: @lesson.course } %>
-  <% end %>
 </main>
+
+<div class="xw-64r m-0a">
+  <div class="cf p-1">
+    <% @lesson.course.lessons.each do |lesson| %>
+      <% if lesson.id == @lesson.id %>
+        <%= render partial: "current_lesson", locals: { lesson: lesson } %>
+        <% else %>
+        <%= render partial: "lesson", locals: { lesson: lesson } %>
+      <% end %>
+    <% end %>
+  </div>
+</div>

@@ -1,15 +1,9 @@
-<main class="center mw8 pa3">
-  <h2>Your purchases</h2>
+<main class="m-0a xw-64r px-2">
+  <h2 class="font-size-1">Your purchases</h2>
   <% if @purchases.count > 0 %>
-    <table class="w-100">
+    <table class="w-100%">
       <% @purchases.each do |purchase| %>
         <tr>
-          <td>
-            <div>
-              <%= embedded_svg(purchase.course.cover, size: "32px") %>
-            </div>
-          </td>
-
           <td>
             <%= link_to course_path(purchase.course) do %>
               <%= purchase.course.title %>

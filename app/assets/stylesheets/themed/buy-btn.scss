@@ -1,0 +1,19 @@
+@import "./colors";
+
+.buy-btn {
+  background-color: orange;
+  color: black;
+  outline-color: black;
+}
+.buy-btn:hover {
+  background-color: orange;
+  color: black;
+  outline-color: black;
+}
+.buy-btn:active {
+  background-color: darkorange;
+  rolor: black;
+  outline-color: black;
+}
+// .buy-btn:focus {}
+// .buy-btn:hover:focus {}

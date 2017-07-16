@@ -5,14 +5,15 @@
       <%= csrf_meta_tags %>
 
       <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" />
-      <link rel="stylesheet" href="https://unpkg.com/btn.css@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/cf.css@0.0.1" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.margin@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/rem-point@1.0.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.border-width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.border-top-width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.border-bottom-width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.outline-width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.font-weight@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.position@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.display@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.flex@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.flex-direction@0.3.0" />
@@ -24,76 +25,83 @@
       <link rel="stylesheet" href="https://unpkg.com/minions.align-items@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.text-align@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.font-style@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--mn.css" />
       <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--md.css" />
       <link rel="stylesheet" href="https://unpkg.com/minions.width@0.3.0/dist/material/width--lg.css" />
-      <link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+      <link rel="stylesheet" href="https://unpkg.com/minions.text-decoration@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.line-height@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.justify-content@0.3.0" />
+      <link rel="stylesheet" href="https://unpkg.com/minions.list-style-type@0.3.0" />
+
 
       <%= yield :opg %>
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 
       <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="copyright" content="&copy; 2017 Michael Chan" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body class="c-black tracking">
     <div>
-      <header class="bw-0 bbw-1p bc-white1">
-        <div class="d-f ai-c" style="margin: 0 auto; max-width: 64em">
-          <div class="f-1 center">
-            <h1 class="m-0 p-2" style="font-size: 1rem">
-              <%= link_to 'Learn React', root_path, class: "black-80", style: "text-decoration: none" %>
-            </h1>
-          </div>
-
-          <div>
-            <% if user_signed_in? %>
-              <div id="userDropdown" data-dropdown class="dropdown pa3">
-                <div>
-                  <img
-                    src="<%= @current_user.avatar_url %>"
-                    class="s-3 br-100 ba dib" alt="avatar"
-                  >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 16 16"
-                    class="symbol symbol-caret-down"
-                    style="vertical-align: .5rem; font-size: .5rem"
-                    aria-labelledby="title"
-                    role="img"
-                  >
-                    <title id="title">caret-down icon</title>
-                    <path
-                      class="cls-1"
-                      d="M15.865 4.049l-7.537 9.288a.422.422 0 0 1-.655 0L.135 4.049a.422.422 0 0 1 .328-.688h15.074a.422.422 0 0 1 .328.688z"
-                      data-name="Layer 1"
-                      role="presentation"
-                    />
-                  </svg>
-                </div>
-                <div
-                  data-dropdown-menu
-                  class="dropdown-menu ba b--black-40 bg-white"
-                >
-                  <ul class="list pa1 ma1">
-                    <li><%= link_to 'Purchases', purchases_path %></li>
-                    <li><%= link_to 'Sign out', signout_path, "data-turbolinks": false %></li>
-                  </ul>
-                </div>
-              </div>
-            <% else %>
-              <div>
-                <%= link_to 'Sign in with Github', signin_path, class: "btn ma3", "data-turbolinks": false %>
-              </div>
-            <% end %>
-          </div>
+      <header class="d-f ai-c p-2" style="margin: 0 auto; max-width: 64em">
+        <div class="f-1 center">
+          <h1 class="m-0 font-size-1" style="font-weight: normal">
+            <%= link_to 'Learn React', root_path, class: "c-black td-n td-u:h" %>
+          </h1>
         </div>
 
+        <div>
+          <% if user_signed_in? %>
+            <div id="userDropdown" data-dropdown class="dropdown">
+              <div>
+                <img
+                  src="<%= @current_user.avatar_url %>"
+                  class="s-3 br-circle bw-1p d-ib" alt="avatar"
+                >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 16 16"
+                  class="symbol symbol-caret-down"
+                  style="vertical-align: .5rem; font-size: .5rem"
+                  aria-labelledby="title"
+                  role="img"
+                >
+                  <title id="title">caret-down icon</title>
+                  <path
+                    class="cls-1"
+                    d="M15.865 4.049l-7.537 9.288a.422.422 0 0 1-.655 0L.135 4.049a.422.422 0 0 1 .328-.688h15.074a.422.422 0 0 1 .328.688z"
+                    data-name="Layer 1"
+                    role="presentation"
+                  />
+                </svg>
+              </div>
+              <div
+                data-dropdown-menu
+                class="dropdown-menu bw-1p gc-white"
+              >
+                <ul class="lst-n p-1 m-1">
+                  <li><%= link_to 'Purchases', purchases_path %></li>
+                  <li><%= link_to 'Sign out', signout_path, "data-turbolinks": false %></li>
+                </ul>
+              </div>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to 'Log in with Github', signin_path, class: "btn login-btn", "data-turbolinks": false %>
+            </div>
+          <% end %>
+        </div>
       </header>
 
       <% if flash[:notice] %>
-        <div class="white bg-blue pa3 pv2 mw8 center"><%= flash[:notice] %></div>
+        <div class="px-2 xw-64r m-0a">
+          <div class="px-2 py-1 c-white gc-blue m-0a">
+            <%= flash[:notice] %>
+          </div>
+        </div>
       <% end %>
 
       <% if flash[:alert] %>
@@ -102,19 +110,25 @@
 
       <%= yield %>
 
-      <footer class="bw-0 btw-1p bc-white1">
+      <footer>
         <div class="py-2" style="margin: 0 auto; max-width: 64em">
           <% if !user_signed_in? %>
-            <%= render "layouts/newsletter_form" %>
+            <div class="p-2">
+              <%= render "layouts/newsletter_form" %>
+            </div>
           <% end %>
 
-          <div class="c-black7 mt-2 px-2">
-            <div class="mt-2 fs-i">
-              <small>© Copyright 2017, Michael Chan</small>
-            </div>
-            <div>
-              <small><a href="/terms" class="gray no-underline" target="_blank" rel="noopener">Terms and Conditions of Use</a></small>
-            </div>
+          <div class="c-black7 mt-2 px-2" style="font-size: .85rem" xmlns:dc="http://purl.org/dc/elements/1.1/">
+            <p class="mt-2" property="dc:rights">&copy;
+              <span property="dc:dateCopyrighted">2017</span>
+              <span property="dc:publisher">Michael Chan</span>
+            </p>
+
+            <p>
+              <a href="/terms" class="c-black7 td-n td-u:h" target="_blank" rel="noopener">Terms and Conditions of Use</a>
+            </p>
+          </div>
+
           </div>
         </div>
       </footer>

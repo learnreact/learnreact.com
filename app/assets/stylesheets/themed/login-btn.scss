@@ -1,0 +1,16 @@
+@import "./colors";
+
+.login-btn {
+  color: blue;
+  outline-color: blue;
+}
+.login-btn:hover {
+  color: white;
+  background-color: blue;
+  outline-color: blue;
+}
+.login-btn:active {
+  color: white;
+  background-color: darkblue;
+  outline-color: darkblue;
+}

@@ -1,8 +1,7 @@
 <div class="f-l w-50%@mn w-25%@md w-20%@lg p-1">
-  <%= link_to lesson, class: "db link dim black", title: "#{lesson.title} on learnreact.com" do %>
-    <div style="height: 200px;" class="d-f fd-c w-100% ow-1p p-2">
-      <div class="fg-1 fs-1 fb-0% fw-900"><%= lesson.title %></div>
-      <div class="fg-1 fs-1 fb-0% c-black7"><%= lesson.course.title %></div>
+  <%= link_to lesson, class: "d-b c-black td-n td-u:h", title: "#{lesson.title} on learnreact.com" do %>
+    <div style="height: 175px;" class="ow-1p p-2">
+      <%= lesson.title %>
     </div>
   <% end %>
 </div>

@@ -1,12 +1,15 @@
 /*= require ./body */
 /*= require ./border-box */
 /*= require ./tracking */
-
-/*= require ./themed/minions */
+/*= require ./font-size */
 
 /*= require ./btn */
-/*= require ./action-btn */
-/*= require ./buy-btn */
+
+/*= require ./minions-extensions */
+
+/*= require ./themed/minions */
+/*= require ./themed/login-btn */
+/*= require ./themed/buy-btn */
 
 /*= require ./dropdown */
 /*= require ./dropdown-menu */
