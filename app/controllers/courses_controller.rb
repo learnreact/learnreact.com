@@ -4,7 +4,7 @@ class CoursesController < ApplicationController
   before_action :set_session_return_to
 
   def index
-    @courses = Course.all
+    @courses = Course.all.visible
   end
 
   def show

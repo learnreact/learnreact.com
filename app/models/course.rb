@@ -3,6 +3,10 @@ class Course < ApplicationRecord
 
   validates_presence_of :slug
 
+  def self.visible
+    where(hidden: false)
+  end
+
   def preview_length
     4
   end
