@@ -12,7 +12,7 @@
 
 
     <div class="ow-1p">
-      <% if @lesson.course.free || user_signed_in? && current_user.courses.include?(@lesson.course) %>
+      <% if @lesson.free || @lesson.course.free || (user_signed_in? && current_user.courses.include?(@lesson.course)) %>
         <%= @lesson.video_embed.html_safe %>
       <% else %>
         <div>
