@@ -32,6 +32,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :slug,
     :course,
     :description,
+    :video_embed,
     :free,
     :transcript,
   ].freeze
