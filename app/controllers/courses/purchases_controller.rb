@@ -5,13 +5,13 @@ module Courses
     before_action :set_session_return_to
 
     def new
-      @course = Course.find_by(params[:slug])
+      @course = Course.find_by(slug: params[:course_id])
     end
 
     def create
       authenticate_user!
 
-      course = Course.find_by(params[:slug])
+      course = Course.find_by(slug: params[:course_id])
 
       @amount = Course.new.price
 
