@@ -15,9 +15,9 @@ class UserDashboard < Administrate::BaseDashboard
   }.freeze
 
   COLLECTION_ATTRIBUTES = [
-    :name,
     :nickname,
-    :created_at,
+    :name,
+    :email,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
@@ -28,6 +28,7 @@ class UserDashboard < Administrate::BaseDashboard
     :nickname,
     :email,
     :avatar_url,
+    :created_at,
     :purchases,
   ].freeze
 
