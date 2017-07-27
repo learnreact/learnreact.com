@@ -7,7 +7,6 @@ class LessonDashboard < Administrate::BaseDashboard
     title: Field::String,
     description: Field::Text,
     video_embed: Field::Text,
-    transcript: Field::Text,
     free: Field::Boolean,
     slug: Field::String,
     created_at: Field::DateTime,
@@ -16,6 +15,7 @@ class LessonDashboard < Administrate::BaseDashboard
 
   COLLECTION_ATTRIBUTES = [
     :title,
+    :slug,
     :course,
   ].freeze
 
@@ -34,7 +34,6 @@ class LessonDashboard < Administrate::BaseDashboard
     :description,
     :video_embed,
     :free,
-    :transcript,
   ].freeze
 
   def display_resource(lesson)
