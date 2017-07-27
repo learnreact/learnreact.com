@@ -7,7 +7,6 @@ class CourseDashboard < Administrate::BaseDashboard
     description: Field::Text,
     hidden: Field::Boolean,
     slug: Field::String,
-    cover: Field::Text,
     free: Field::Boolean,
     lessons: Field::HasMany,
     created_at: Field::DateTime,
@@ -16,8 +15,8 @@ class CourseDashboard < Administrate::BaseDashboard
 
   COLLECTION_ATTRIBUTES = [
     :title,
-    :description,
     :lessons,
+    :slug,
   ].freeze
 
   SHOW_PAGE_ATTRIBUTES = [
