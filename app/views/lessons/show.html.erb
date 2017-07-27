@@ -45,6 +45,12 @@
       <% end %>
     </div>
   </div>
+
+  <% if user_chan? %>
+    <div class="py-2">
+      <%= link_to "Admin lesson", edit_admin_lesson_path(@lesson), class: "btn", "data-turbolinks": false %>
+    </div>
+  <% end %>
 </main>
 
 <div class="xw-64r m-0a">

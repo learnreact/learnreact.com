@@ -22,4 +22,10 @@
   <div class="cf p-1">
     <%= render partial: "lessons/lesson", collection: @course.lessons %>
   </div>
+
+  <% if user_chan? %>
+    <div class="p-2">
+      <%= link_to "Admin course", edit_admin_course_path(@course), class: "btn", "data-turbolinks": false %>
+    </div>
+  <% end %>
 </div>

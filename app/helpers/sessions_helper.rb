@@ -11,6 +11,10 @@ module SessionsHelper
     return true if current_user
   end
 
+  def user_chan?
+    current_user&.provider_id == 658360
+  end
+
   def correct_user?
     @user = User.find(params[:id])
     unless current_user == @user

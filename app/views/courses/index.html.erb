@@ -2,4 +2,10 @@
   <div class="cf p-1">
     <%= render(partial: "course", collection: @courses) || "No courses." %>
   </div>
+
+  <% if user_chan? %>
+    <div class="p-2">
+      <%= link_to "Admin courses", admin_courses_path, class: "btn", "data-turbolinks": false %>
+    </div>
+  <% end %>
 </main>
