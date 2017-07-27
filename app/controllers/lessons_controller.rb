@@ -10,9 +10,4 @@ class LessonsController < ApplicationController
   def index
     @lessons = Lesson.all()
   end
-
-  private
-    def lesson_params
-      params.require(:lesson).permit(:course_id, :title, :description, :video_embed, :transcript, :free, :slug)
-    end
 end
