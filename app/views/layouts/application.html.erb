@@ -105,7 +105,19 @@
       <% end %>
 
       <% if flash[:alert] %>
-        <div class="c-white gc-red px-2 py-1" style="margin: 0 auto; max-width: 64em"><%= flash[:alert] %></div>
+        <div class="px-2 xw-64r m-0a">
+          <div class="px-2 py-1 c-white gc-red m-0a">
+            <%= flash[:alert] %>
+          </div>
+        </div>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="px-2 xw-64r m-0a">
+          <div class="px-2 py-1 c-white gc-red m-0a">
+            <%= flash[:error] %>
+          </div>
+        </div>
       <% end %>
 
       <%= yield %>

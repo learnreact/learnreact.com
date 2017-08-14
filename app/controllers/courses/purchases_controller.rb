@@ -40,7 +40,7 @@ module Courses
     rescue Stripe::CardError => e
       Bugsnag.notify(e)
       flash[:error] = e.message
-      redirect_to new_course_purchases_path
+      redirect_to new_course_purchase_path(params[:course_id])
     end
   end
 end
