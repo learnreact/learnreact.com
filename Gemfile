@@ -40,7 +40,6 @@ gem 'administrate', '~> 0.5.0'
 gem 'bugsnag', '~> 5.3', '>= 5.3.1'
 gem 'redcarpet', '~> 3.4'
 gem 'stripe', '~> 2.4'
-gem 'rack-reverse-proxy', '~> 0.12.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
