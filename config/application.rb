@@ -17,11 +17,10 @@ module LearnReact
     # -- all .rb files in that directory are automatically loaded.
 
     config.middleware.insert(0, Rack::ReverseProxy) do
-      reverse_proxy_options preserve_host: false
-      if Rails.env.production? or Rails.env.staging?
-        reverse_proxy_options force_ssl: true, replace_response_host: true
+      if Rails.env.production?
+        reverse_proxy_options preserve_host: true
+        reverse_proxy '/changelog', 'https://learnreact.github.io/changelog/index.html'
       end
-      reverse_proxy /^\/changelog(\/?.*)$/, 'https://learnreact.github.io/changelog/'
     end
   end
 end
