@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
   def new
-    rediruct_to Rails.env.production? ? "https://learnreact.com/auth/github" : "/auth/github"
+    redirect_to Rails.env.production? ? "https://learnreact.com/auth/github" : "/auth/github"
   end
 
   def create
