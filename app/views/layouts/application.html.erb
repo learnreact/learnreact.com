@@ -49,7 +49,7 @@
       <header class="d-f ai-c p-2" style="margin: 0 auto; max-width: 64em">
         <div class="f-1 center">
           <h1 class="m-0 font-size-1" style="font-weight: normal">
-            <%= link_to 'Learn React', root_path, class: "c-black td-n td-u:h" %>
+            <%= link_to 'Learn React', Rails.env.production? ? "https://learnreact.com/" : "/", class: "c-black td-n td-u:h" %>
           </h1>
         </div>
 

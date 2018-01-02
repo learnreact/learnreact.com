@@ -10,16 +10,16 @@ class SessionsController < ApplicationController
                       :provider_id => auth['uid'].to_s).first || User.create_with_omniauth(auth)
     reset_session
     session[:user_id] = user.id
-    redirect_to root_path, :notice => 'Signed in!'
+    redirect_to Rails.env.production? ? "https://learnreact.com/" : "/", :notice => 'Signed in!'
   end
 
   def destroy
     return_to = session.delete(:return_to)
     reset_session
-    redirect_to root_path, :notice => 'Signed out!'
+    redirect_to Rails.env.production? ? "https://learnreact.com/" : "/", :notice => 'Signed out!'
   end
 
   def failure
-    redirect_to root_path, :alert => "Authentication error: #{params[:message].humanize}"
+    redirect_to Rails.env.production? ? "https://learnreact.com/" : "/", :alert => "Authentication error: #{params[:message].humanize}"
   end
 end
