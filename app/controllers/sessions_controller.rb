@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
   def destroy
     return_to = session.delete(:return_to)
     reset_session
-    redirect_to return_to || root_path, :notice => 'Signed out!'
+    redirect_to root_path, :notice => 'Signed out!'
   end
 
   def failure
