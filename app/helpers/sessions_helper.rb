@@ -18,13 +18,13 @@ module SessionsHelper
   def correct_user?
     @user = User.find(params[:id])
     unless current_user == @user
-      redirect_to Rails.env.production? ? "https://learnreact.com/" : "/", :alert => "Access denied."
+      redirect_to root_path, :alert => "Access denied."
     end
   end
 
   def authenticate_user!
     if !current_user
-      redirect_to Rails.env.production? ? "https://learnreact.com/" : "/", :alert => 'You need to sign in for access to this page.'
+      redirect_to root_path, :alert => 'You need to sign in for access to this page.'
     end
   end
 
