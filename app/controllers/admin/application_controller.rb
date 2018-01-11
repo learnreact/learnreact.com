@@ -11,7 +11,7 @@ module Admin
     include SessionsHelper
 
     def authenticate_admin
-      return if current_user&.provider_id == 658360
+      return if current_user&.provider_id == 658360 || current_user&.provider_id == 35316290
 
       raise ActionController::RoutingError.new('Not Found')
     end
