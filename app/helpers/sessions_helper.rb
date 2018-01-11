@@ -12,7 +12,7 @@ module SessionsHelper
   end
 
   def user_chan?
-    current_user&.provider_id == 658360
+    current_user&.provider_id == 658360 || current_user&.provider_id == 35316290
   end
 
   def correct_user?
