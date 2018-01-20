@@ -9,3 +9,63 @@
 .br-circle {
   border-radius: 9999px;
 }
+
+.c-green {
+  color: #61bb46;
+}
+.bc-green {
+  border-color: #61bb46;
+}
+.gc-green {
+  background-color: #61bb46;
+}
+
+.c-yellow {
+  color: #fdb827;
+}
+.bc-yellow {
+  border-color: #fdb827;
+}
+.gc-yellow {
+  background-color: #fdb827;
+}
+
+.c-orange {
+  color: #f5821f;
+}
+.bc-orange {
+  border-color: #f5821f;
+}
+.gc-orange {
+  background-color: #f5821f;
+}
+
+.c-red {
+  color: #e03a3e;
+}
+.bc-red {
+  border-color: #e03a3e;
+}
+.gc-red {
+  background-color: #e03a3e;
+}
+
+.c-purple {
+  color: #963d97;
+}
+.bc-purple {
+  border-color: #963d97;
+}
+.gc-purple {
+  background-color: #963d97;
+}
+
+.c-blue {
+  color: #009ddc;
+}
+.bc-blue {
+  border-color: #009ddc;
+}
+.gc-blue {
+  background-color: #009ddc;
+}

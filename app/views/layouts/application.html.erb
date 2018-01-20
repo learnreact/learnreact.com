@@ -44,7 +44,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="c-black tracking">
+  <body class="c-black tracking" style="background-color: #F4F4F4">
     <div>
       <header class="d-f ai-c p-2" style="margin: 0 auto; max-width: 64em">
         <div class="f-1 center">
@@ -112,6 +112,9 @@
         </div>
       <% end %>
 
+          <div class="box m-2 p-2" style="border-radius: .5rem">
+          test
+          </div>
       <% if flash[:error] %>
         <div class="px-2 xw-64r m-0a">
           <div class="px-2 py-1 c-white gc-red m-0a">
