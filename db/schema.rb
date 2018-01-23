@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180123053906) do
+ActiveRecord::Schema.define(version: 20180123073549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,14 @@ ActiveRecord::Schema.define(version: 20180123053906) do
     t.index ["user_id"], name: "index_purchases_on_user_id"
   end
 
+  create_table "subscriptions", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "subscription_token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_subscriptions_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "provider"
     t.integer "provider_id"
@@ -65,4 +73,5 @@ ActiveRecord::Schema.define(version: 20180123053906) do
   add_foreign_key "lessons", "courses"
   add_foreign_key "purchases", "courses"
   add_foreign_key "purchases", "users"
+  add_foreign_key "subscriptions", "users"
 end

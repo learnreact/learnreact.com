@@ -11,34 +11,37 @@ class SubscriptionsController < ApplicationController
   def create
     authenticate_user!
 
-    # course = Course.find_by(slug: params[:course_id])
-
-    # @amount = Course.new.price
-    @amount = 2018
-
     # store retrievable customer on user model
-    customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken],
-      :plan => "yearly-12"
-    )
+    customer =
+      if current_user.customer_token.present?
+        Stripe::Customer.retrieve(current_user.customer_token)
+      else
+        Stripe::Customer.create(
+          :email => params[:stripeEmail],
+          :source  => params[:stripeToken],
+          :plan => "yearly-12"
+        )
+      end
 
-    stripe_charge = Stripe::Charge.create(
+    stripe_subscription = Stripe::Subscription.create(
       :customer    => customer.id,
-      :amount      => @amount,
-      :description => 'Annual Subscription — 2018 Promo',
-      :currency    => 'usd'
+      :items => [{
+        :plan => "silver-express-044"
+      }]
     )
 
-    # purchase = Purchase.new(
-    #   :charge_token => stripe_charge.id,
-    #   :course_id    => course.id,
-    #   :user_id      => current_user.id
-    # )
+    @subscription = Subscription.new(
+      :subscription_token => stripe_subscription.id,
+      :user_id => current_user.id,
+    )
 
-    # purchase.save
+    ActiveRecord::Base.transaction do
+      current_user.update(customer_token: customer.id)
+      @subscription.save
+    end
 
-    redirect_to purchases_path, :notice => 'Thanks for your purchase!'
+    # redirect_to subscriptions_path, :notice => 'Thanks for your purchase!'
+    flash[:notice] = "Thanks for your purchase"
 
   rescue Stripe::CardError => e
     Bugsnag.notify(e)
