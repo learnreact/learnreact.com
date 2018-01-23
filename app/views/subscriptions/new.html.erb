@@ -1,0 +1,14 @@
+<h1>hi</h1>
+
+
+<%= form_tag subscriptions_path, class: "ta-c" do %>
+  <script
+    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description="Subscription for 1 year"
+    data-name="2018 January Promo"
+    data-amount="2018"
+    data-locale="auto"
+    data-label="Subscribe for 2018"
+  ></script>
+<% end %>
