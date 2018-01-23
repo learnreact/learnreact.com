@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :purchases
   has_many :courses, through: :purchases
+  has_one :subscription
 
   def self.create_with_omniauth(auth)
     create! do |user|
@@ -12,6 +13,22 @@ class User < ApplicationRecord
          user.email = auth["info"]["email"] || ""
          user.avatar_url = auth["info"]["image"] || ""
       end
+    end
+  end
+
+  def can_access_course?(course)
+    if course.free || self.subscription.present? || self.courses.include?(course)
+      return true
+    else
+      return false
+    end
+  end
+
+  def can_access_lesson?(lesson)
+    if lesson.free || self.subscription.present? || self.courses.include?(lesson.course)
+      return true
+    else
+      return false
     end
   end
 end
