@@ -7,6 +7,7 @@ class LessonDashboard < Administrate::BaseDashboard
     title: Field::String,
     description: Field::Text,
     video_embed: Field::Text,
+    transcript: Field::Text,
     free: Field::Boolean,
     slug: Field::String,
     created_at: Field::DateTime,
@@ -33,6 +34,7 @@ class LessonDashboard < Administrate::BaseDashboard
     :course,
     :description,
     :video_embed,
+    :transcript,
     :free,
   ].freeze
 
