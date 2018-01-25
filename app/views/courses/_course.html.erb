@@ -1,6 +1,6 @@
 <div class="f-l w-50%@mn w-25%@md w-20%@lg p-1">
-  <%= link_to course, class: "d-b c-black td-n td-u:h", title: "#{course.title} on learnreact.com" do %>
-    <div style="height: 175px;" class="d-f fd-c w-100% ow-1p">
+  <%= link_to course, class: "box d-b c-black td-n td-u:h", title: "#{course.title} on learnreact.com" do %>
+    <div style="height: 175px;" class="d-f fd-c w-100%">
       <div class="fs-1 fg-1 fb-0% p-2">
         <%= course.title %>
       </div>
@@ -9,7 +9,7 @@
           <%= course.lessons.count %> lessons
         </div>
         <div>
-          15 min
+          <%= course.duration || "15 min" %>
         </div>
       </div>
     </div>
