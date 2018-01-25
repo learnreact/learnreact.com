@@ -1,4 +1,4 @@
-<% if user_signed_in? && current_user.can_access_course?(course) %>
+<% if user_signed_in? && ContentAccessUser.new(current_user).can_access_course?(course) %>
    <%= link_to "Purchased", purchases_path %>
 <% else %>
   <%= link_to 'Buy this course', new_course_purchase_path(course), class: "btn buy-btn" %>
