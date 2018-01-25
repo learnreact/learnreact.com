@@ -16,3 +16,10 @@
 /*= require ./dropdown-menu */
 
 /*= require ./symbol */
+
+/*= require_self */
+
+a {
+  text-decoration-skip: ink;
+  text-decoration-skip-ink: auto;
+}

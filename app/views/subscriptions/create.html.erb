@@ -1,7 +1,25 @@
-<h1>you did it</h1>
+<main class="m-0a xw-64r d-f jc-c p-2">
+  <div class="box p-4@mn p-6@md" style="border-radius: 1rem; max-width: 30em">
+    <h1 class="mt-0">Thanks for your support!</h1>
 
-<ul>
-  <li><%= @subscription.id %></li>
-  <li><%= @subscription.user.name %></li>
-  <li><%= @subscription.subscription_token %></li>
-</ul>
+    <p>
+      I love to make training content for the React community.
+      Your support is making that possible.
+    </p>
+
+    <p>
+      In addition to this site, your support keeps references like
+      <a href="https://reactpatterns.com" target="_blank">reactpatterns.com</a>,
+      <a href="https://reactcheatsheet.com" target="_blank">reactcheatsheet.com</a>,
+      ond <a href="https://react.holiday" target="_blank">react.holiday</a> running.
+    </p>
+
+    <p>
+      💖 <a href="https://twitter.com/chantastic" targte="_blank">chantastic</a>
+    </p>
+
+    <hr class="my-4" style="border-style: solid; border-width: 1px 0; border-color: #eee" />
+
+    <%= link_to "Go the courses", courses_path %>
+  </div>
+</main>

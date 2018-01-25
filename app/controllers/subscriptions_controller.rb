@@ -1,5 +1,9 @@
 class SubscriptionsController < ApplicationController
+  layout "subscription"
+  
   include SessionsHelper
+
+  before_action :set_session_return_to
 
   def new
     # if user_signed_in?
@@ -19,14 +23,14 @@ class SubscriptionsController < ApplicationController
         Stripe::Customer.create(
           :email => params[:stripeEmail],
           :source  => params[:stripeToken],
-          :plan => "yearly-12"
+          # :plan => "yearly-18"
         )
       end
 
     stripe_subscription = Stripe::Subscription.create(
       :customer    => customer.id,
       :items => [{
-        :plan => "silver-express-044"
+        :plan => "yearly-18"
       }]
     )
 

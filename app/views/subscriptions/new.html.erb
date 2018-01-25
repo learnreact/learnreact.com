@@ -1,14 +1,57 @@
-<h1>hi</h1>
+<main class="m-0a xw-64r d-f jc-c p-2">
+  <%# TODO: add check for status %>
+  <% if current_user.present? && current_user.subscription.present? %>
+    <div>
+      <h1>You good.</h1>
+      <%# TODO: LOL, make this real %>
+      <p>
+        You've got until <%= (current_user.subscription.created_at + 1.years).strftime("%x") %>.
+      </p>
+      <p>
+        I'll let you know when it's coming up.
+      </p>
+    </div>
+  <% else %>
+    <div class="box p-4@mn p-6@md" style="border-radius: 1rem; max-width: 30em">
+      <h2 class="o-h fw-900 mt-0 c-blue mb-1" style="font-size: 2rem">Get everything</h2>
+      <h2 class="o-h mt-0 c-blue fw-400"><em>$18 yearly</em></h2>
 
+      <hr style="border-style: solid; border-width: 1px 0; border-color: #eee" />
 
-<%= form_tag subscriptions_path, class: "ta-c" do %>
-  <script
-    src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description="Subscription for 1 year"
-    data-name="2018 January Promo"
-    data-amount="2018"
-    data-locale="auto"
-    data-label="Subscribe for 2018"
-  ></script>
-<% end %>
+      <p>
+        Subscribe today and get all of 2017 and 2018 🎉
+      </p>
+
+      <p>
+        Current courses include:
+      <ul style="padding-left: 1em; line-height: 1.5em">
+        <li><a href="https://learnreact.com/courses/function-components" target="_blank">Essential React</a></li> 
+        <li><a href="https://learnreact.com/courses/function-components" target="_blank">Function Components</a></li>
+        <li><a href="https://learnreact.com/courses/style-with-components" target="_blank">Style with Components</a></li>
+        <li>...and everything I record in 2018</li>
+      </p>
+
+      <hr style="border-style: solid; border-width: 1px 0; border-color: #eee" />
+
+      <div class="pt-4">
+        <% if current_user.present? %>
+          <%= form_tag subscriptions_path, class: "ta-c" do %>
+            <script
+              src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+              data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+              data-description="Subscription for 1 year"
+              data-name="Learn React Subscription"
+              data-amount="1800"
+              data-locale="auto"
+              data-label="Subscribe for $18"
+            ></script>
+          <% end %>
+        <% else %>
+          <div class="ta-c">
+            <%= link_to 'Log in to buy...', signin_path, class: "btn buy-btn", "data-turbolinks": false %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</main>
