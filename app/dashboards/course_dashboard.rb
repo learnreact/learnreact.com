@@ -8,6 +8,7 @@ class CourseDashboard < Administrate::BaseDashboard
     hidden: Field::Boolean,
     slug: Field::String,
     free: Field::Boolean,
+    incomplete: Field::Boolean,
     lessons: Field::HasMany,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
@@ -33,6 +34,7 @@ class CourseDashboard < Administrate::BaseDashboard
     :slug,
     :description,
     :free,
+    :incomplete,
     :hidden,
     :lessons,
   ].freeze
