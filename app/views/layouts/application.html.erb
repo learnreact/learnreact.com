@@ -34,7 +34,6 @@
       <link rel="stylesheet" href="https://unpkg.com/minions.justify-content@0.3.0" />
       <link rel="stylesheet" href="https://unpkg.com/minions.list-style-type@0.3.0" />
 
-
       <%= yield :opg %>
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -42,6 +41,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="copyright" content="&copy; <%= Date.current.year %> Michael Chan" />
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application' %>
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/03b6ee2f58c8b4427c8ba9735/2bda355069894555167e9863c.js");</script>
   </head>
 
