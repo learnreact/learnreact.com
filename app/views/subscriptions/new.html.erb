@@ -14,7 +14,7 @@
   <% else %>
     <div class="box p-4@mn p-6@md" style="border-radius: 1rem; max-width: 30em">
       <h2 class="o-h fw-900 mt-0 c-blue mb-1" style="font-size: 2rem">Get everything</h2>
-      <h2 class="o-h mt-0 c-blue fw-400"><em>$18 for 2018</em></h2>
+      <h2 class="o-h mt-0 c-blue fw-400"><em>$36 for 1 year</em></h2>
 
       <hr style="border-style: solid; border-width: 1px 0; border-color: #eee" />
 
@@ -43,9 +43,9 @@
               data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
               data-description="Subscription for 1 year"
               data-name="Learn React Subscription"
-              data-amount="1800"
+              data-amount="3600"
               data-locale="auto"
-              data-label="Subscribe for $18"
+              data-label="Subscribe for $36"
             ></script>
           <% end %>
         <% else %>

@@ -23,14 +23,13 @@ class SubscriptionsController < ApplicationController
         Stripe::Customer.create(
           :email => params[:stripeEmail],
           :source  => params[:stripeToken],
-          # :plan => "yearly-18"
         )
       end
 
     stripe_subscription = Stripe::Subscription.create(
       :customer    => customer.id,
       :items => [{
-        :plan => "yearly-18"
+        :plan => "yearly-36"
       }]
     )
 
