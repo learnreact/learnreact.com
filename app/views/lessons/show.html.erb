@@ -36,14 +36,21 @@
 
             <% if !user_signed_in? %>
               <p>
-                Already own it? <%= link_to 'Sign in', signin_path %>
+                Already a subscriber? <%= link_to 'Log in', signin_path %>
               </p>
             <% end %>
           </div>
         </div>
       <% end %>
     </div>
+
   </div>
+
+  <% if @lesson.free && !ContentAccessUser.new(current_user).has_subscription? %>
+    <div class="py-2">
+      <%= link_to 'Subscribe for $36', new_subscription_path, class: "btn buy-btn" %>
+    </div>
+  <% end %>
 
   <% if user_chan? %>
     <div class="py-2">

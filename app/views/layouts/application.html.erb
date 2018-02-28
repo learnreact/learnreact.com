@@ -92,7 +92,8 @@
             </div>
           <% else %>
             <div>
-              <%= link_to 'Log in with Github', signin_path, class: "btn login-btn", "data-turbolinks": false %>
+              <%= link_to 'Log in', signin_path, class: "btn link-btn", "data-turbolinks": false %>
+              <%= link_to 'Sign up', new_subscription_path, class: "btn buy-btn" %>
             </div>
           <% end %>
         </div>

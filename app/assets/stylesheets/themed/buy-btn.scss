@@ -1,14 +1,14 @@
 @import "./colors";
 
 .buy-btn {
-  background-color: orange;
-  color: black;
-  outline-color: black;
+  background-color: map-get($colors, red);
+  color: map-get($colors, white);
+  outline-color: map-get($colors, red-);
 }
 .buy-btn:hover {
-  background-color: orange;
-  color: black;
-  outline-color: black;
+  background-color: map-get($colors, red-);
+  color: map-get($colors, white);
+  outline-color: map-get($colors, red-);
 }
 .buy-btn:active {
   background-color: darkorange;

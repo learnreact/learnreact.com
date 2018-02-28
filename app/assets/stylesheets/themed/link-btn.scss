@@ -1,0 +1,19 @@
+@import "./colors";
+
+.link-btn {
+  background-color: transparent;
+  color: map-get($colors, blue);
+  outline-color: transparent;
+}
+.link-btn:hover {
+  background-color: transparent;
+  color: map-get($colors, blue-);
+  outline-color: transparent;
+}
+.link-btn:active {
+  background-color: transparent;
+  color: map-get($colors, blue-);
+  outline-color: transparent;
+}
+// .buy-btn:focus {}
+// .buy-btn:hover:focus {}
