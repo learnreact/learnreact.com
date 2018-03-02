@@ -6,26 +6,39 @@
   <meta property="og:image" content="http://images.learnreact.com.s3.amazonaws.com/og-image.png" />
 <% end %>
 
-<main class="p-2 xw-64r m-0a">
-  <div>
-    <div>
-      <h4
-        class="m-0"
-        property="og:title"
-        content="<%= @course.title%>"
-      ><%= @course.title %></h4>
-    </div>
-  </div>
-</main>
-
-<div class="xw-64r m-0a">
-  <div class="cf p-1">
-    <%= render partial: "lessons/lesson", collection: @course.lessons %>
+<main class="xw-64r m-0a">
+  <div class="py-4 px-2 topography-background" style="border-width: 1px 0; border-style: solid; border-color: #efefef">
+    <%= @course.lessons.first.video_embed.html_safe %>
   </div>
 
-  <% if user_chan? %>
-    <div class="p-2">
-      <%= link_to "Admin course", edit_admin_course_path(@course), class: "btn", "data-turbolinks": false %>
+  <% if !ContentAccessUser.new(current_user).has_subscription? %>
+    <div class="m-2">
+      <%= link_to 'Subscribe for $36', new_subscription_path, class: "btn buy-btn", style: "width: 100%" %>
     </div>
   <% end %>
-</div>
+
+  <div class="m-2">
+    <h1
+      class="m-0 fw-900"
+      property="og:title"
+      content="<%= @course.title%>"
+    ><%= @course.title %></h1>
+  </div>
+
+  <div class="m-2">
+    <%= @course.description %>
+  </div>
+
+  <div class="px-2">
+    <h4>Lessons: </h4>
+    <ul class="p-0 bw-1p bc-white1" style="list-style-type: none">
+      <% @course.lessons.each_with_index do |lesson, i| %>
+        <%= link_to lesson, class: "d-b c-black td-n td-u:h", title: "#{lesson.title} on learnreact.com" do %>
+          <li class="p-1">
+            <%= lesson.title %>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </div>
+</main>
