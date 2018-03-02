@@ -43,8 +43,7 @@ class SubscriptionsController < ApplicationController
       @subscription.save
     end
 
-    # redirect_to subscriptions_path, :notice => 'Thanks for your purchase!'
-    flash[:notice] = "Thanks for your purchase"
+    redirect_to successful_new_subscription_path, :notice => "Charge succeeded!"
 
   rescue Stripe::CardError => e
     Bugsnag.notify(e)

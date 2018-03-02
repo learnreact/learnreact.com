@@ -13,7 +13,9 @@ Rails.application.routes.draw do
   end
   resources :lessons, only: [:index, :show]
   resources :purchases, only: [:index]
-  resources :subscriptions, only: [:new, :create]
+  resources :subscriptions, only: [:new, :create] do
+    get 'successful', on: :new # REST exception for analytics tracking
+  end
 
   root "courses#index"
 
