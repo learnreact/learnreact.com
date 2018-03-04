@@ -48,7 +48,7 @@
 
   <% if @lesson.free && !ContentAccessUser.new(current_user).has_subscription? %>
     <div class="py-2">
-      <%= link_to 'Subscribe for $36', new_subscription_path, class: "btn buy-btn" %>
+      <%= link_to 'Subscribe', new_subscription_path, class: "btn buy-btn" %>
     </div>
   <% end %>
 

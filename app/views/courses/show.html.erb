@@ -13,7 +13,7 @@
 
   <% if !ContentAccessUser.new(current_user).has_subscription? %>
     <div class="m-2">
-      <%= link_to 'Subscribe for $36', new_subscription_path, class: "btn buy-btn", style: "width: 100%" %>
+      <%= link_to 'Subscribe', new_subscription_path, class: "btn buy-btn", style: "width: 100%; text-align: center" %>
     </div>
   <% end %>
 
