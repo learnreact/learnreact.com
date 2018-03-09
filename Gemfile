@@ -43,6 +43,7 @@ gem 'stripe', '~> 2.4'
 gem 'rack-reverse-proxy', '~> 0.12.0'
 gem 'rack-rewrite', '~> 1.5', '>= 1.5.1'
 gem 'webpacker', '~> 3.2', '>= 3.2.1'
+gem 'gibbon', '~> 3.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
