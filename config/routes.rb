@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     get 'successful', on: :new # REST exception for analytics tracking
   end
 
+  namespace :my do
+    resource :subscription, only: [:show]
+  end
+
   root "courses#index"
 
   get '/auth/:provider/callback' => 'sessions#create'

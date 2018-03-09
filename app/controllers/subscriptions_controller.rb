@@ -12,6 +12,13 @@ class SubscriptionsController < ApplicationController
     #   raise ActionController::RoutingError.new('Not Found')
     # end
   end
+
+  def show
+    @subscription = Subscription.find(params[:id])
+
+    # @course = Course.find_by!(slug: params[:id])
+  end
+
   def create
     authenticate_user!
 
