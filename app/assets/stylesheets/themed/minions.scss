@@ -5,13 +5,13 @@
 }
 
 @each $color, $hex in $colors {
-  .c-#{$color} {
+  .c-#{"" + $color} {
     color: $hex;
   }
-  .bc-#{$color} {
+  .bc-#{"" + $color} {
     border-color: $hex;
   }
-  .gc-#{$color} {
+  .gc-#{"" + $color} {
     background-color: $hex;
   }
 }
