@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     resource :subscription, only: [:show]
   end
 
+  namespace :stripe do
+    resources :webhook, only: :create
+  end
+
   root "courses#index"
 
   get '/auth/:provider/callback' => 'sessions#create'
