@@ -7,7 +7,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.0.beta2'
+gem 'rails', '~> 5.2.0'
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 1.0'
 # Use Puma as the app server
@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
-gem 'administrate', '~> 0.9.0'
+gem 'administrate', '~> 0.10.0'
 gem 'bugsnag', '~> 6.6', '>= 6.6.4'
 gem 'redcarpet', '~> 3.4'
 gem 'stripe', '~> 3.11'
@@ -49,7 +49,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
-  gem 'capybara', '~> 2.18'
+  gem 'capybara', '~> 3.3.1'
   gem 'selenium-webdriver'
 end
 
