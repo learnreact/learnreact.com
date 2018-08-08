@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   end
   resources :lessons, only: [:index, :show]
   resources :purchases, only: [:index]
-  resources :subscriptions, only: [:new, :create] do
+  resources :subscriptions, only: [:new] do
     get 'successful', on: :new # REST exception for analytics tracking
   end
 

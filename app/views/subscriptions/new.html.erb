@@ -11,9 +11,9 @@
         I'll let you know when it's coming up.
       </p>
     </div>
-  <% else %>
+  <% elseif false %>
     <div class="box p-4@mn p-6@md" style="border-radius: 1rem; max-width: 30em">
-      <h2 class="o-h fw-900 mt-0 c-blue mb-1" style="font-size: 2rem">Get everything!</h2>
+      <h2 class="o-h fw-900 mt-0 c-blue mb-1" style="font-size: 2rem">We've moved!</h2>
       <h2 class="o-h mt-0 fw-400 c-black7"><em><strong class="c-blue">$36</strong> for 1 year</em></h2>
 
       <hr style="border-style: solid; border-width: 1px 0; border-color: #eee" />
@@ -50,10 +50,23 @@
           <% end %>
         <% else %>
           <div class="ta-c">
-            <%= link_to 'Log in to buy...', signin_path, class: "btn buy-btn", "data-turbolinks": false %>
+            <%# link_to 'Log in to buy...', signin_path, class: "btn buy-btn", "data-turbolinks": false %>
           </div>
         <% end %>
       </div>
+    </div>
+  <% else %>
+    <div class="box p-4@mn p-6@md" style="border-radius: 1rem; max-width: 30em">
+    <h2 class="o-h fw-900 mt-0 c-blue mb-1" style="font-size: 2rem">We're moving!</h2>
+    <br />
+    <h2 class="o-h mt-0 fw-400 c-black7">
+      Get <em><strong class="c-blue">50%</strong> at reactpatterns.com.</em>
+    </h2>
+
+    <br />
+
+    <div style="text-align:center">
+    <a target="_blank" rel="noreferrer" style="font-size: 1.2rem" class="btn buy-btn" href="https://school.reactpatterns.com/p/subscription/?product_id=705894&coupon_code=2018SWITCH">Buy on reactpatterns.com</a>
     </div>
   <% end %>
 </main>
