@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'omniauth', '~> 1.6', '>= 1.6.1'
 gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
-gem 'administrate', '~> 0.10.0'
+gem 'administrate', '~> 0.13.0'
 gem 'bugsnag', '~> 6.6', '>= 6.6.4'
 gem 'redcarpet', '~> 3.4'
 gem 'stripe', '~> 3.11'
