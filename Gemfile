@@ -34,7 +34,7 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'omniauth', '~> 1.6', '>= 1.6.1'
+gem 'omniauth', '~> 1.9'
 gem 'omniauth-github', '~> 1.2', '>= 1.2.3'
 gem 'administrate', '~> 0.10.0'
 gem 'bugsnag', '~> 6.6', '>= 6.6.4'
